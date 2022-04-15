@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.scss';
+import Maps from './components/Maps/Maps';
 import ButtonAppBar from "./components/Nav/NavBar"
 
 class App extends Component {
@@ -31,7 +32,8 @@ class App extends Component {
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data
-        </button>        
+        </button>
+        <Maps />
       </div>
     );
   }
