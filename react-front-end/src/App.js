@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.scss';
+import ButtonAppBar from "./components/Nav/NavBar"
 
 class App extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <ButtonAppBar />
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data
