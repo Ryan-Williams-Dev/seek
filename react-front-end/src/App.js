@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.scss';
-import Maps from './components/Maps/Maps';
+import Maps from './components/Maps';
 import ButtonAppBar from "./components/Nav/NavBar"
 
 class App extends Component {
