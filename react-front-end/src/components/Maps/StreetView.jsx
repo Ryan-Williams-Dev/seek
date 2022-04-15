@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { GoogleMap, useJsApiLoader, useLoadScript, Marker } from "@react-google-maps/api";
 
-export default function Maps() {
+export default function StreetView() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
@@ -13,7 +13,7 @@ export default function Maps() {
 
   return <GoogleMap 
   zoom={10} 
-  center={{lat: 44, lng: -80}}
+  center={{lat: 48.373223, lng: -123.586957}}
   mapContainerClassName="map-container"
   ></GoogleMap>
 

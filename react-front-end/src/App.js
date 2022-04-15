@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.scss';
-import Maps from './components/Maps';
-import ButtonAppBar from "./components/Nav/NavBar"
+import ButtonAppBar from "./components/Nav/NavBar";
+import StreetView from './components/Maps/StreetView';
+import Map from './components/Maps/Map';
 
 class App extends Component {
   constructor(props) {
@@ -33,7 +34,8 @@ class App extends Component {
         <button onClick={this.fetchData} >
           Fetch Data
         </button>
-        <Maps />
+        <StreetView />
+        <Map />
       </div>
     );
   }
