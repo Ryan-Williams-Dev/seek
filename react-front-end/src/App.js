@@ -6,6 +6,7 @@ import Map from './components/Maps/Map';
 import { Theme, DarkTheme } from './theme/themeOptions';
 import { ThemeProvider } from "@mui/material/styles"
 import { CssBaseline } from '@mui/material';
+import { GoogleMap } from '@react-google-maps/api';
 
 function App() {
 
@@ -22,13 +23,19 @@ function App() {
   //   }) 
   // }
 
-
   return (
     <ThemeProvider theme={Theme}>
       <CssBaseline>
         <div className="App">
           <ButtonAppBar />   
-          <StreetView />
+          <GoogleMap
+          id="example"
+          mapContainerClassName="map-container"
+          zoom={7}
+          center={{lat: 48.373229, lng: -123.586959}}
+          >
+            <StreetView />
+          </GoogleMap>
           <Map />
         </div>
       </CssBaseline>

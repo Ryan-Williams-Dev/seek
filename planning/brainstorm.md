@@ -29,16 +29,16 @@ APIs
 
 ### Ask A Mentor
 
-- Is there any reason to use Firebase for constructing our back end?
+- ~~Is there any reason to use Firebase for constructing our back end?~~
 - Auth 0 is unneccessarily complex?
 - Stack recommendations.
 - DB structure for users, locations, friends etc.
 - Next.js?
 - Mobile multi-page app AND desktop SPA?
 - what kind of database do you recommend?
-- should we store the user's total score in the users table? or make a big function that totals the score from all of that user's guesses?
+- ~~should we store the user's total score in the users table? or make a big function that totals the score from all of that user's guesses?~~
 - migration / ORM libraries for node (knex / prisma / sequelize)
-- can we use the react-express boilerplate and just change the versions?
+- ~~can we use the react-express boilerplate and just change the versions?~~
 - Tailwind, maybe alongside scss?
 
 ### Want to work on...?

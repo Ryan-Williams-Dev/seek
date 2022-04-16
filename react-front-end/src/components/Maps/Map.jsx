@@ -1,4 +1,5 @@
 import { GoogleMap, useJsApiLoader, useLoadScript, Marker } from "@react-google-maps/api";
+import mapStyles from "../../mapStyles";
 
 export default function Map() {
   const { isLoaded } = useJsApiLoader({
@@ -7,6 +8,10 @@ export default function Map() {
   })
 
   if (!isLoaded) return <div>Loading...</div>
+
+  const options = {
+    styles: mapStyles
+  }
 
   return <GoogleMap 
   zoom={2.5}
