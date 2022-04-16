@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS game_type CASCADE;
+DROP TABLE IF EXISTS game_types CASCADE;
 
-CREATE TABLE games_type (
+CREATE TABLE games_types (
   id SERIAL PRIMARY KEY NOT NULL,
   type VARCHAR(255) NOT NULL,
   description TEXT

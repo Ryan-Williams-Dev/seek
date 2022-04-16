@@ -1,0 +1,10 @@
+INSERT INTO game_types (
+  name,
+  description
+) VALUES (
+  "daily",
+  "The daily challenge, everyone gets the same map"
+), (
+  "user_selected",
+  "A user selected location"
+);
