@@ -9,17 +9,17 @@ INSERT INTO users (
 ) VALUES (
   'testuser',
   'test@test.com',
-  'testpass'
+  'testpass',
   'test',
   'user',
-  '',
+  'image.com',
   'Test user for testing purposes'
 ), (
   'user2',
   'fake@email.com',
-  'testpass'
+  'testpass',
   'user',
   '2',
-  '',
+  'image2.com',
   'Hello'
 );

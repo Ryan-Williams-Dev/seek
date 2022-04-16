@@ -5,9 +5,9 @@ if (process.env.DATABASE_URL) {
   dbParams = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    user: "seeker",
-    password: "seeker",
-    database: "seek"
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
   };
 }
 
