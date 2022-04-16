@@ -9,7 +9,8 @@ export default function Map() {
   if (!isLoaded) return <div>Loading...</div>
 
   return <GoogleMap 
-  zoom={2} 
+  zoom={2.5}
+  center={{lat: 50, lng: 50}}
   mapContainerClassName="map-container"
   ></GoogleMap>
 
