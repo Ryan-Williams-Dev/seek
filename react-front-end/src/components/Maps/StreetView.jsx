@@ -11,7 +11,8 @@ export default function StreetView() {
   if (loadError) return `Error loading maps: ${loadError}`;
 
   const options = {
-    disableDefaultUI: true
+    disableDefaultUI: true,
+    zoomControl: true
   }
   return <StreetViewPanorama 
     position={{lat: 48.373229, lng:-123.586959}}
