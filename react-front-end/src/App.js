@@ -3,11 +3,9 @@ import './App.scss';
 import ButtonAppBar from "./components/Nav/NavBar";
 import StreetView from './components/Maps/StreetView';
 import Map from './components/Maps/Map';
-import AltMap from './components/Maps/AltMap';
 import { Theme, DarkTheme } from './theme/themeOptions';
 import { ThemeProvider } from "@mui/material/styles"
 import { CssBaseline } from '@mui/material';
-import { Wrapper, Status } from '@googlemaps/react-wrapper'
 import { GoogleMap } from '@react-google-maps/api';
 
 function App() {
@@ -24,18 +22,6 @@ function App() {
   //     });
   //   }) 
   // }
-
-  // const render = (status) => {
-  //   switch (status) {
-  //     case Status.LOADING:
-  //       return <h2>Loading...</h2>;
-  //     case Status.FAILURE:
-  //       return <h2>Error</h2>;
-  //     case Status.SUCCESS:
-  //       return <AltMap />
-  //   }
-  // }
-  // <Wrapper apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} render={render} />
 
   return (
     <ThemeProvider theme={Theme}>
