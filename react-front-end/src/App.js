@@ -1,44 +1,43 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import './App.scss';
 import ButtonAppBar from "./components/Nav/NavBar";
 import StreetView from './components/Maps/StreetView';
 import Map from './components/Maps/Map';
+import ButtonAppBar from "./components/Nav/NavBar"
+import { Theme, DarkTheme } from './theme/themeOptions';
+import { ThemeProvider } from "@mui/material/styles"
+import { CssBaseline } from '@mui/material';
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      message: 'Click the button to load data!'
-    }
-  }
+function App() {
 
-  fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
+  // fetchData = () => {
+  //   axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
+  //   .then((response) => {
+  //     // handle success
+  //     console.log(response.data) // The entire response from the Rails API
 
-      console.log(response.data.message) // Just the message
-      this.setState({
-        message: response.data.message
-      });
-    }) 
-  }
+  //     console.log(response.data.message) // Just the message
+  //     this.setState({
+  //       message: response.data.message
+  //     });
+  //   }) 
+  // }
 
-  render() {
-    return (
-      <div className="App">
-        <ButtonAppBar />
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>
-        <StreetView />
-        <Map />
-      </div>
-    );
-  }
+
+  return (
+    <ThemeProvider theme={Theme}>
+      <CssBaseline>
+        <div className="App">
+          <ButtonAppBar />   
+          <button onClick={this.fetchData} >
+            Fetch Data
+          </button>
+          <StreetView />
+          <Map />
+        </div>
+      </CssBaseline>
+    </ThemeProvider>
+  );
 }
 
 export default App;
