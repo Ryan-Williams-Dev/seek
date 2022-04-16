@@ -1,5 +1,8 @@
 // import axios from 'axios';
 import './App.scss';
+import ButtonAppBar from "./components/Nav/NavBar";
+import StreetView from './components/Maps/StreetView';
+import Map from './components/Maps/Map';
 import ButtonAppBar from "./components/Nav/NavBar"
 import { Theme, DarkTheme } from './theme/themeOptions';
 import { ThemeProvider } from "@mui/material/styles"
@@ -20,11 +23,17 @@ function App() {
   //   }) 
   // }
 
+
   return (
     <ThemeProvider theme={Theme}>
       <CssBaseline>
         <div className="App">
           <ButtonAppBar />   
+          <button onClick={this.fetchData} >
+            Fetch Data
+          </button>
+          <StreetView />
+          <Map />
         </div>
       </CssBaseline>
     </ThemeProvider>
