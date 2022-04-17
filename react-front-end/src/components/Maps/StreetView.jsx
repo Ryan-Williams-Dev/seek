@@ -11,7 +11,8 @@ export default function StreetView() {
 
   const options = {
     disableDefaultUI: true,
-    zoomControl: true
+    zoomControl: true,
+    showRoadLabels: false
   }
   return <StreetViewPanorama 
     position={{lat: 48.373229, lng:-123.586959}}
