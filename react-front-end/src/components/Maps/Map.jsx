@@ -13,7 +13,9 @@ export default function Map() {
   if (loadError) return `Error loading maps: ${loadError}`;
 
   const options = {
-    styles: mapStyles
+    styles: mapStyles,
+    disableDefaultUI: true,
+    zoomControl: true
   }
 
   return <GoogleMap 
