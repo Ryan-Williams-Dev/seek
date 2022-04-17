@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import mapStyles from "../../mapStyles";
 
@@ -12,12 +12,12 @@ export default function Map() {
 
   const onMapClick = useCallback((event) => {
     
-    setMarkers( () => [{
+    
+    setMarkers(() => [{
       lat: event.latLng.lat(),
       lng: event.latLng.lng(),
       time: new Date()
     }]);
-    console.log("Markers:", markers)
   }, []);
 
   if (!isLoaded) return <div>Loading...</div>;
