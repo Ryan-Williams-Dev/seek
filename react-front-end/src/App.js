@@ -6,7 +6,8 @@ import Map from './components/Maps/Map';
 import { Theme, DarkTheme } from './theme/themeOptions';
 import { ThemeProvider } from "@mui/material/styles"
 import { CssBaseline } from '@mui/material';
-import { GoogleMap } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+
 
 function App() {
 
@@ -22,6 +23,14 @@ function App() {
   //     });
   //   }) 
   // }
+
+  const { isLoaded, loadError } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
+  })
+
+  if (!isLoaded) return <div>Loading...</div>
+  if (loadError) return `Error loading maps: ${loadError}`;
 
   return (
     <ThemeProvider theme={Theme}>
