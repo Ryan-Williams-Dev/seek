@@ -23,6 +23,7 @@ export default function Map() {
   zoom={2.5}
   center={{lat: 50, lng: 50}}
   mapContainerClassName="map-container"
+  options={options}
   ></GoogleMap>
 
 }
