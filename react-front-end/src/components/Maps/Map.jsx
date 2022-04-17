@@ -11,7 +11,6 @@ export default function Map() {
   const [markers, setMarkers] = useState([]);
 
   const onMapClick = useCallback((event) => {
-    if (markers)
     
     setMarkers( () => [{
       lat: event.latLng.lat(),
