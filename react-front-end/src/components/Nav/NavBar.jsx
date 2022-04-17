@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { AppBar, Box, Toolbar, Typography, Button, IconButton, Drawer } from '@mui/material';
+import { AppBar, Box, Toolbar, Typography, Button, IconButton, Drawer, Divider } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import Drawerlist from './DrawerList';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 export default function ButtonAppBar(props) {
 
@@ -9,6 +11,7 @@ export default function ButtonAppBar(props) {
   const toggleDrawer = (open) => (event) => {
     setDrawerOpen(open);
   };
+
 
   return (
     <>
@@ -33,9 +36,18 @@ export default function ButtonAppBar(props) {
         </AppBar>
       </Box>
       <Drawer 
+        background-color='primary'
         open={drawerOpen}
         onClose={toggleDrawer(false)}
-      >Hello</Drawer>
+      >
+        <IconButton edge="end" onClick={toggleDrawer(false)}>
+          <ArrowBackIosNewIcon />
+        </IconButton>
+
+        <Divider />
+
+        <Drawerlist />
+      </Drawer>
     </>  
   );
 }
