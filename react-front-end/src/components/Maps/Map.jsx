@@ -1,9 +1,5 @@
-/* global google */
-/* eslint-disable no-undef */
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import mapStyles from "../../mapStyles";
-
-const google = window.google;
 
 export default function Map() {
   const { isLoaded, loadError } = useJsApiLoader({
@@ -14,7 +10,6 @@ export default function Map() {
   if (!isLoaded) return <div>Loading...</div>
   if (loadError) return `Error loading maps: ${loadError}`;
 
-
   const options = {
     styles: mapStyles
   }
@@ -23,6 +18,7 @@ export default function Map() {
   zoom={2.5}
   center={{lat: 50, lng: 50}}
   mapContainerClassName="map-container"
+  options={options}
   ></GoogleMap>
 
 }
