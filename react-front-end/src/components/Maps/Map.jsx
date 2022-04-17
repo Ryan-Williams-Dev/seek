@@ -8,16 +8,17 @@ export default function Map() {
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
   });
+  
   const [markers, setMarkers] = useState([]);
 
   const onMapClick = useCallback((event) => {
-    
-    
     setMarkers(() => [{
       lat: event.latLng.lat(),
       lng: event.latLng.lng(),
       time: new Date()
     }]);
+    // console.log("EVENT:", event)
+    // console.log("MARKERS:", markers)
   }, []);
 
   if (!isLoaded) return <div>Loading...</div>;
