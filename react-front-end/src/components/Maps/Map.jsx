@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import mapStyles from "../../mapStyles";
 
 export default function Map() {
-  const [markers, setMarkers] = useState([]);
+  
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
   });
+  const [markers, setMarkers] = useState([]);
+
+  const onMapClick = useCallback((event) => {
+    if (markers)
+    
+    setMarkers( () => [{
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng(),
+      time: new Date()
+    }]);
+    console.log("Markers:", markers)
+  }, []);
 
   if (!isLoaded) return <div>Loading...</div>;
   if (loadError) return `Error loading maps: ${loadError}`;
 
+  // see https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions
   const options = {
     styles: mapStyles,
     disableDefaultUI: true,
@@ -23,14 +36,7 @@ export default function Map() {
     center={{lat: 50, lng: 50}}
     mapContainerClassName="map-container"
     options={options}
-    onClick={(event) => {
-      setMarkers( current => [...current, {
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-        time: new Date()
-      }])
-      console.log("Markers:", markers)
-    }}
+    onClick={onMapClick}
   >
     {markers.map((marker) => (
     <Marker 
