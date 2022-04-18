@@ -1,12 +1,15 @@
 // import axios from 'axios';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import ButtonAppBar from "./components/Nav/NavBar";
-import StreetView from './components/Maps/StreetView';
-import Map from './components/Maps/Map';
+// eslint-disable-next-line no-unused-vars
 import { Theme, DarkTheme } from './theme/themeOptions';
 import { ThemeProvider } from "@mui/material/styles"
 import { CssBaseline } from '@mui/material';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import Index from './pages';
+import Account from './pages/account';
+import Leaderboards from './pages/leaderboards';
+import CreateCustomGame from './pages/custom_game';
 
 
 function App() {
@@ -24,29 +27,40 @@ function App() {
   //   }) 
   // }
 
-  const { isLoaded, loadError } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
-  })
-
-  if (!isLoaded) return <div>Loading...</div>
-  if (loadError) return `Error loading maps: ${loadError}`;
-
   return (
     <ThemeProvider theme={Theme}>
       <CssBaseline>
-        <div className="App">
-          <ButtonAppBar />   
-          <GoogleMap
-          id="example"
-          mapContainerClassName="map-container"
-          zoom={7}
-          center={{lat: 48.373229, lng: -123.586959}}
-          >
-            <StreetView />
-          </GoogleMap>
-          <Map />
-        </div>
+        <Router>
+          <div className="App">
+
+            <ButtonAppBar />   
+
+            <div className='content'>
+
+              <Switch>
+
+                <Route exact path="/">
+                  <Index/>
+                </Route>
+
+                <Route exact path="/account">
+                  <Account/>
+                </Route>
+              
+                <Route exact path="/leaderboards">
+                  <Leaderboards />
+                </Route>
+              
+                <Route exact path="/custom-game">
+                  <CreateCustomGame />
+                </Route>
+              
+              </Switch>
+
+            </div>
+
+          </div>
+        </Router>
       </CssBaseline>
     </ThemeProvider>
   );

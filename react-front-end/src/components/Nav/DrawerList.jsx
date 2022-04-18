@@ -1,35 +1,25 @@
-import { Box, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
-import { VideogameAsset , ManageAccounts, Leaderboard } from "@mui/icons-material";
-// import DrawerListItem from "./DrawerListitem";
+import { Box, List } from "@mui/material";
+import DrawerlistItem from "./DrawerListItem";
 
 
 const Drawerlist = (props) => {
 
+  // NOTE: add route to iconMatcher function in DrawerListItem component too
   // To add a link to drawer, add the name to the links array
-  const links = ['Custom Game', 'Account', 'Leaderboards']
+  const links = [
+    { route: '/', text: 'Daily Game'},
+    { route: '/custom-game', text: 'Create Custom Game' },
+    { route: '/account', text: 'Account' },
+    { route: '/leaderboards', text: 'Leaderboards' },
+  ]
 
-  // Add a matching case to this switch function returning the desired icon for list item
-  const iconMatcher = (linkName) => {
-    switch(linkName) {
-      case 'Custom Game':
-        return (<VideogameAsset />);
-      case 'Account':
-        return (<ManageAccounts />);
-      case 'Leaderboards':
-        return (<Leaderboard/>)
-      default:
-        return '';
-    }
-  }
-
-  const listItems = links.map((item) => {
+  const listItems = links.map((item, index) => {
     return (
-        <ListItem button key={item}>
-          <ListItemIcon>
-            {iconMatcher(item)}
-          </ListItemIcon>
-          <ListItemText primary={item} />
-        </ListItem>
+      <DrawerlistItem
+        key={index}
+        text={item.text}
+        route={item.route}
+      />
     )
   })
 
@@ -37,7 +27,7 @@ const Drawerlist = (props) => {
     <Box
       role="presentation"
     >
-      <List>
+      <List onClick={props.onClickItem} >
         {listItems}
       </List>
     </Box>
