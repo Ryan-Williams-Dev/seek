@@ -10,6 +10,7 @@ export default function Map() {
   });
   
   const [markers, setMarkers] = useState([]);
+  const [center, setCenter] = useState({lat: 50, lng: 50})
 
   const onMapClick = useCallback((event) => {
     setMarkers(() => [{
@@ -32,7 +33,7 @@ export default function Map() {
         lat: newCenter.lat(),
         lng: newCenter.lng()
       }
-      console.log(newCenterCoords);
+      setCenter({...newCenterCoords})
     }
   };
 
@@ -46,15 +47,14 @@ export default function Map() {
     zoomControl: true
   }
 
-
   return <GoogleMap 
     zoom={2.5}
-    center={{lat: 50, lng: 50}}
+    center={center}
     mapContainerClassName="map-container"
     options={options}
     onClick={onMapClick}
     onLoad={handleOnLoad}
-    onCenterChanged={handleCenterChanged}
+    onDragEnd={handleCenterChanged}
   >
     {markers.map((marker) => (
     <Marker 
