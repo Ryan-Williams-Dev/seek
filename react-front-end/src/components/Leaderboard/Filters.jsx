@@ -1,4 +1,5 @@
 import { InputLabel, MenuItem, Select, FormControl } from "@mui/material";
+import { useState } from "react";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -22,6 +23,12 @@ const filters = [
 
 
 export default function Filters() {
+  const [filter, setFilter] = useState()
+
+  const handleChange = (event) => {
+    setFilter(event.target.value);
+    // filter function goes here
+  }
 
   return (
     <div>
@@ -30,9 +37,9 @@ export default function Filters() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={"value"}
+          value={filter}
           label="LdrBoard Filter"
-          // onChange={handleChange}
+          onChange={handleChange}
         >
           <MenuItem value={"Total Score"}>Total Score</MenuItem>
           <MenuItem value={"Name"}>Name</MenuItem>
