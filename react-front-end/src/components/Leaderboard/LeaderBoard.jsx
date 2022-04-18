@@ -12,6 +12,8 @@ const rows = [
 
 export default function Leaderboard() {
   return (
+    
+    
     <TableContainer component={Paper}>
       <Table sx={{minWidth: 650}} size="small" aria-label="a dense table">
         <TableHead>
@@ -24,7 +26,20 @@ export default function Leaderboard() {
           </TableRow>
         </TableHead>
         <TableBody>
-          
+          {rows.map(row => (
+            <TableRow
+              key={row.name}
+              sx={{ '&:last-child td, &:last-child th': {border: 0} }}
+            >
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              <TableCell align="right">{row.totalScore}</TableCell>
+              <TableCell align="right">{row.gamesPlayed}</TableCell>
+              <TableCell align="right">{row.lastGameScore}</TableCell>
+              <TableCell align="right">{row.lastWeekScore}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
