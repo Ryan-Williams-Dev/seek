@@ -23,7 +23,7 @@ const filters = [
 
 
 export default function Filters() {
-  const [filter, setFilter] = useState()
+  const [filter, setFilter] = useState("")
 
   const handleChange = (event) => {
     setFilter(event.target.value);
@@ -32,7 +32,7 @@ export default function Filters() {
 
   return (
     <div>
-      <FormControl fullWidth>
+      <FormControl sx={{ width: 300 }} size="small">
         <InputLabel id="demo-simple-select-label">Filter By...</InputLabel>
         <Select
           labelId="demo-simple-select-label"
