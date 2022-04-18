@@ -21,6 +21,21 @@ export default function Map() {
     // console.log("MARKERS:", markers)
   }, []);
 
+  const [mapref, setMapRef] = useState(null);
+  const handleOnLoad = map => {
+    setMapRef(map);
+  };
+  const handleCenterChanged = () => {
+    if (mapref) {
+      const newCenter = mapref.getCenter();
+      const newCenterCoords = {
+        lat: newCenter.lat(),
+        lng: newCenter.lng()
+      }
+      console.log(newCenterCoords);
+    }
+  };
+
   if (!isLoaded) return <div>Loading...</div>;
   if (loadError) return `Error loading maps: ${loadError}`;
 
@@ -31,12 +46,15 @@ export default function Map() {
     zoomControl: true
   }
 
+
   return <GoogleMap 
     zoom={2.5}
     center={{lat: 50, lng: 50}}
     mapContainerClassName="map-container"
     options={options}
     onClick={onMapClick}
+    onLoad={handleOnLoad}
+    onCenterChanged={handleCenterChanged}
   >
     {markers.map((marker) => (
     <Marker 
