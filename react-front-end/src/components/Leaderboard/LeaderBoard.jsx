@@ -13,7 +13,6 @@ const rows = [
 export default function Leaderboard() {
   return (
     
-    
     <TableContainer component={Paper}>
       <Table sx={{minWidth: 650}} size="small" aria-label="a dense table">
         <TableHead>
