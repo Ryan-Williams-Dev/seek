@@ -21,5 +21,18 @@ const calculateDistance = (gameLocation, guessLocation) => {
   // Converts distance from miles to kilometers.
   distance = distance * 1.609344;
 
-  return distance;
-}
+  return distance.toFixed(3);
+};
+
+// TEST DATA
+// const game = {
+//   gameLat: 50.46395829044944,
+//   gameLng: -3.559119893159155
+// };
+
+// const guess = {
+//   guessLat: 52.51422658198417,
+//   guessLng: 13.468929037717059
+// };
+
+// console.log(calculateDistance(game, guess));
