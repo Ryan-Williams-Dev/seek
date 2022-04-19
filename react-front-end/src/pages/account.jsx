@@ -6,6 +6,7 @@ const Account = () => {
   return (
     <div>
       <AboutCard />
+      <FriendsList />
 
     </div>
   );
