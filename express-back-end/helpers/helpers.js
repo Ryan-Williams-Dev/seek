@@ -60,17 +60,4 @@ const calculateScore = (distance) => {
   return score;
 };
 
-// TEST DATA
-// const game = {
-//   gameLat: 50.46395829044944,
-//   gameLng: -3.559119893159155
-// };
-
-// const guess = {
-//   guessLat: 52.51422658198417,
-//   guessLng: 13.468929037717059
-// };
-
-// console.log(calculateDistance(game, guess));
-
 module.exports = { calculateDistance, calculateScore };
