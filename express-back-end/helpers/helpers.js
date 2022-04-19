@@ -30,7 +30,34 @@ const calculateDistance = (gameLocation, guessLocation) => {
 };
 
 const calculateScore = (distance) => {
-   
+  let score;
+  if (distance >= 1000) {
+    score = 0;
+  } else if (distance >= 500 && distance < 1000) {
+    score = distance * 0.25;
+  } else if (distance >= 200 && distance < 500) {
+    score = distance * 0.5;
+  } else if (distance >= 100 && distance < 200) {
+    score = distance * 0.75;
+  } else if (distance >= 40 && distance < 100) {
+    score = distance;
+  } else if (distance >= 20 && distance < 40) {
+    score = distance * 1.25;
+  } else if (distance >= 8 && distance < 20) {
+    score = distance * 1.5;
+  } else if (distance >= 3 && distance < 8) {
+    score = distance * 1.75;
+  } else if (distance >= 1 && distance < 3) {
+    score = distance * 2;
+  } else if (distance >= 0.5 && distance < 1) {
+    score = distance * 3;
+  } else if (distance >= 0.15 && distance < 0.5 ) {
+    score = distance * 3.5;
+  } else if (distance < 0.15) {
+    score = distance * 4;
+  }
+
+  return score;
 };
 
 // TEST DATA
