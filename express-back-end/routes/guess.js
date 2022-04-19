@@ -19,7 +19,7 @@ module.exports = (db) => {
       res.send("Guess inserted correctly")
     })
     .catch(err => {
-      console.log(err)
+      console.log("Error!", err)
       res.send(err)
     })
   })
