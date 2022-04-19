@@ -1,6 +1,10 @@
 import { useState, useCallback, useRef } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import mapStyles from "../../mapStyles";
+import { Button } from "@mui/material"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapPin } from '@fortawesome/free-solid-svg-icons'
+import { onSubmitGuess } from '../../helpers/maps/map-helpers';
 
 export default function Map() {
   
@@ -68,6 +72,15 @@ export default function Map() {
       }}
     />
     ))}
+
+    <Button 
+      variant="contained"
+      startIcon={<FontAwesomeIcon
+        icon={faMapPin}
+      />}
+      onClick={() => onSubmitGuess(markers[0])}
+    >Submit</Button>
+
   </GoogleMap>
 
 }

@@ -1,5 +1,6 @@
 require("dotenv").config({silent: true});
 
+const cors = require('cors')
 const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
@@ -22,11 +23,16 @@ db.query('SELECT * FROM users LIMIT 1;')
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
+App.use(cors());
 
 // Sample GET route
-App.get('/api/data', (req, res) => res.json({
-  message: "Seems to work!",
+App.get('/', (req, res) => res.json({
+  message: "Server is running!",
 }));
+
+const guessRoutes = require('./routes/guess')
+
+App.use('/api/guess', guessRoutes(db));
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
