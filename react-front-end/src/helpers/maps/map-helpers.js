@@ -10,3 +10,15 @@ export const onSubmitGuess = (marker) => {
       alert("Error, please try again " + err)
     })
 }
+
+export const getDailyGame = () => {
+  return axios.get('/api/games')
+    .then(res => {
+      console.log("From map helpers file: ", res)
+      return res.data
+    })
+    .catch(err => {
+      console.log(err)
+      return err
+    })
+}
