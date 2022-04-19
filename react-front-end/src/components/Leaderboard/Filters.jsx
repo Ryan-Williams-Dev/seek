@@ -6,7 +6,7 @@ const filters = [
   "Name",
   "Games Played",
   "Last Game Score",
-  "Last Week Score",
+  "Last Week Score"
 ];
 
 export default function Filters() {
