@@ -4,7 +4,7 @@ const Account = () => {
   
   
   return (
-    <div>
+    <div className='account-page'>
       <AboutCard />
 
     </div>
