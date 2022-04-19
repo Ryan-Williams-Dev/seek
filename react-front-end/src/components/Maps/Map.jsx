@@ -22,8 +22,6 @@ export default function Map() {
       lng: event.latLng.lng(),
       time: new Date()
     }]);
-    // console.log("EVENT:", event)
-    // console.log("MARKERS:", markers)
   }, []);
 
   const [mapref, setMapRef] = useState(null);
