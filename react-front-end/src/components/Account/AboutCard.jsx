@@ -1,15 +1,19 @@
-import { Card, CardContent, CardMedia, Typography } from '@mui/material'
-import './about-card-styles.scss'
+import { Card, CardActions, CardContent, CardMedia, Typography, Button, Fab } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import './about-card-styles.scss';
 
 const AboutCard = () => {
   return (
-    <Card className='profile-card' sx={{ maxWidth: 345 }}>
+    <Card className='profile-card-contents' sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
         image="/static/images/avatar1.jpg"
         alt="profile-photo"
       />
+        <Fab color="secondary" size="small" aria-label="edit">
+          <EditIcon />
+        </Fab>
       <CardContent>
         <Typography gutterBottom variant="h4">
           Zarah Liao
@@ -23,6 +27,10 @@ const AboutCard = () => {
           <dd>5</dd>
         </ul>
       </CardContent>
+      <CardActions>
+        <Button size="small">Edit Details</Button>
+        <Button size="small">Share</Button>
+      </CardActions>
     </Card>
   );
 }

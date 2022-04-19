@@ -1,9 +1,15 @@
 @import '../../theme/variables.scss';
 
-.profile-card {
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-card-contents {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 85vw;
 }
 
 .about-list {
