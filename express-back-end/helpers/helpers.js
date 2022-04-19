@@ -1,3 +1,8 @@
+/* REMINDER: calculateDistance function will require refactoring if the argument objects don't come with the key names that are used
+in the function definition below.
+Code sourced and modified from: https://www.geodatasource.com/developers/javascript under LGPLv3 license. */
+
+
 
 const calculateDistance = (gameLocation, guessLocation) => {
   const { gameLat, gameLng } = gameLocation;
@@ -8,7 +13,7 @@ const calculateDistance = (gameLocation, guessLocation) => {
   const theta = gameLng - guessLng;
 
   const radTheta = Math.PI * theta / 180;
-  let distance = Math.sin(radGameLat) *  Math.sin(radGuessLat) + Math.cos(radGameLat) * Math.cos(radGuessLat) * Math.cos(radTheta);
+  let distance = Math.sin(radGameLat) * Math.sin(radGuessLat) + Math.cos(radGameLat) * Math.cos(radGuessLat) * Math.cos(radTheta);
 
   if (distance > 1) {
     distance = 1;
