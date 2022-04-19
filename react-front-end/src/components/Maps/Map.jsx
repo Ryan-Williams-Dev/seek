@@ -22,8 +22,6 @@ export default function Map() {
       lng: event.latLng.lng(),
       time: new Date()
     }]);
-    // console.log("EVENT:", event)
-    // console.log("MARKERS:", markers)
   }, []);
 
   const [mapref, setMapRef] = useState(null);
@@ -48,7 +46,6 @@ export default function Map() {
   const options = {
     styles: mapStyles,
     disableDefaultUI: true,
-    zoomControl: true
   }
 
   return <GoogleMap 
@@ -78,7 +75,8 @@ export default function Map() {
       startIcon={<FontAwesomeIcon
         icon={faMapPin}
       />}
-      onClick={() => onSubmitGuess(markers[0])}
+      onClick={() => onSubmitGuess(markers[0]) }
+      sx={{m: 1, mb: 3.5 }}
     >Submit</Button>
 
   </GoogleMap>

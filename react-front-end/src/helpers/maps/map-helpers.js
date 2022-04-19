@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const onSubmitGuess = (marker) => {
-  axios.post('/api/guess', marker)
+  axios.post('api/guess', marker)
     .then(res => {
       console.log("success: ", res.data)
     })
@@ -12,9 +12,8 @@ export const onSubmitGuess = (marker) => {
 }
 
 export const getDailyGame = () => {
-  return axios.get('/api/games')
+  return axios.get('api/games')
     .then(res => {
-      console.log("From map helpers file: ", res)
       return res.data
     })
     .catch(err => {
