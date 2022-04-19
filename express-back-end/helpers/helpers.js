@@ -2,8 +2,6 @@
 in the function definition below.
 Code sourced and modified from: https://www.geodatasource.com/developers/javascript under LGPLv3 license. */
 
-
-
 const calculateDistance = (gameLocation, guessLocation) => {
   const { gameLat, gameLng } = gameLocation;
   const { guessLat, guessLng } = guessLocation;
@@ -29,6 +27,10 @@ const calculateDistance = (gameLocation, guessLocation) => {
   return distance.toFixed(3);
 };
 
+const calculateScore = (distance) => {
+
+};
+
 // TEST DATA
 // const game = {
 //   gameLat: 50.46395829044944,
@@ -41,3 +43,5 @@ const calculateDistance = (gameLocation, guessLocation) => {
 // };
 
 // console.log(calculateDistance(game, guess));
+
+module.exports = { calculateDistance, calculateScore };
