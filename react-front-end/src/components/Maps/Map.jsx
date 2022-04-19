@@ -4,7 +4,7 @@ import mapStyles from "../../mapStyles";
 import { Button } from "@mui/material"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons'
-import { onSubmit } from '../../helpers/maps/map-helpers';
+import { onSubmitGuess } from '../../helpers/maps/map-helpers';
 
 export default function Map() {
   
@@ -78,7 +78,7 @@ export default function Map() {
       startIcon={<FontAwesomeIcon
         icon={faMapPin}
       />}
-      onClick={() => onSubmit(markers[0])}
+      onClick={() => onSubmitGuess(markers[0])}
     >Submit</Button>
 
   </GoogleMap>

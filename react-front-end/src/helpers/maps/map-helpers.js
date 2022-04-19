@@ -1,8 +1,11 @@
 import axios from 'axios';
 
-export const onSubmit = (marker) => {
-  const { lat, lng } = marker;
-  const data = { lat, lng } 
-  console.log("Marker: ", data)
-  // axios.post('/api/guess', marker)
+export const onSubmitGuess = (marker) => {
+  axios.post('/api/guess', marker)
+    .then(res => {
+      console.log("success: ", res)
+    })
+    .catch(err => {
+      console.log("unsuccessful: ", err)
+    })
 }
