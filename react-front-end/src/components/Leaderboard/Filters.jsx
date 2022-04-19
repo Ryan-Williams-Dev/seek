@@ -9,7 +9,7 @@ const filters = [
   "Last Week Score",
 ];
 
-export default function Filters() {
+const Filters = () => {
   const [filter, setFilter] = useState("")
 
   const handleChange = (event) => {
@@ -34,8 +34,7 @@ export default function Filters() {
         </Select>
       </FormControl>
     </div>
-      
   );
-
-
 }
+
+export default Filters;

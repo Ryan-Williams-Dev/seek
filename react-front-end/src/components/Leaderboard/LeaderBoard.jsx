@@ -1,4 +1,4 @@
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 const createData = (name, totalScore, gamesPlayed, lastGameScore, lastWeekScore) => {
   return { name, totalScore, gamesPlayed, lastGameScore, lastWeekScore };
@@ -10,7 +10,7 @@ const rows = [
   createData("Ryan Williams", 3995, 16, 190, 745)
 ]
 
-export default function Leaderboard() {
+const Leaderboard = () => {
   return (
     
     <TableContainer component={Paper}>
@@ -44,3 +44,5 @@ export default function Leaderboard() {
     </TableContainer>
   );
 }
+
+export default Leaderboard
