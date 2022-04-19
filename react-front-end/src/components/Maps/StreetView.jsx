@@ -12,7 +12,7 @@ export default function StreetView() {
         const { latitude, longitude } = res
         setCoords({
           lat: Number(latitude),
-          lng: Number(longitude)
+          lng: Number(longitude),
         })
       })
   }, []);
@@ -30,7 +30,8 @@ export default function StreetView() {
       position={coords}
       visible={true}
       options={options}
-    ></StreetViewPanorama>
+    >
+    </StreetViewPanorama>
   )
 
 }
