@@ -3,8 +3,10 @@ in the function definition below.
 Code sourced and modified from: https://www.geodatasource.com/developers/javascript under LGPLv3 license. */
 
 const calculateDistance = (gameLocation, guessLocation) => {
-  const { gameLat, gameLng } = gameLocation;
-  const { guessLat, guessLng } = guessLocation;
+  const gameLat = gameLocation.latitude;
+  const gameLng = gameLocation.longitude;
+  const guessLat = guessLocation.lat;
+  const guessLng = guessLocation.lat;
 
   const radGameLat = Math.PI * gameLat / 180;
   const radGuessLat = Math.PI * guessLat / 180;
