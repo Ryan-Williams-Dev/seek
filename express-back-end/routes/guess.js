@@ -1,6 +1,7 @@
 const express = require("express");
+const { calculateDistance, calculateScore } = require("../helpers/helpers");
 const router = express.Router();
-import { calculateDistance, calculateScore } from '../helpers/helpers'
+
 
 
 module.exports = (db) => {
@@ -23,21 +24,16 @@ module.exports = (db) => {
     Promise.all([promiseA, promiseB])
       .then(results => {
         console.log("Results:", results);
+        res.send("Guess inserted correctly");
         const answer = results[0];
         const distance = calculateDistance(answer, req.body);
         const score = calculateScore(distance);
-        res.send({distance, score});
+        res.send("Guess inserted correctly!", {distance, score});
       })
-      .catch();
-
-      // .then(result => {
-      //   console.log(result);
-      //   res.send("Guess inserted correctly");
-      // })
-      // .catch(err => {
-      //   console.log("Error!", err);
-      //   res.send(err);
-      // });
+      .catch(err => {
+        console.log("Error:", err);
+        res.send(err)
+      });
 
   });
 

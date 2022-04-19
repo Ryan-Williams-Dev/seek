@@ -28,7 +28,7 @@ const calculateDistance = (gameLocation, guessLocation) => {
 };
 
 const calculateScore = (distance) => {
-
+  console.log("calculateScore function accessed.");
 };
 
 // TEST DATA
