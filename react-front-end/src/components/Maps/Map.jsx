@@ -1,6 +1,10 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import mapStyles from "../../mapStyles";
+import { Button } from "@mui/material"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapPin } from '@fortawesome/free-solid-svg-icons'
+import { onSubmitGuess } from '../../helpers/maps/map-helpers';
 
 export default function Map() {
   
@@ -18,8 +22,6 @@ export default function Map() {
       lng: event.latLng.lng(),
       time: new Date()
     }]);
-    // console.log("EVENT:", event)
-    // console.log("MARKERS:", markers)
   }, []);
 
   const [mapref, setMapRef] = useState(null);
@@ -44,7 +46,6 @@ export default function Map() {
   const options = {
     styles: mapStyles,
     disableDefaultUI: true,
-    zoomControl: true
   }
 
   return <GoogleMap 
@@ -68,6 +69,16 @@ export default function Map() {
       }}
     />
     ))}
+
+    <Button 
+      variant="contained"
+      startIcon={<FontAwesomeIcon
+        icon={faMapPin}
+      />}
+      onClick={() => onSubmitGuess(markers[0]) }
+      sx={{m: 1, mb: 3.5 }}
+    >Submit</Button>
+
   </GoogleMap>
 
 }

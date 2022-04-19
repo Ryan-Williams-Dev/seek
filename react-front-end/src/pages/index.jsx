@@ -18,8 +18,6 @@ const Index = () => {
       <GoogleMap
         id="example"
         mapContainerClassName="map-container"
-        zoom={7}
-        center={{lat: 48.373229, lng: -123.586959}}
         >
           <StreetView />
         </GoogleMap>
