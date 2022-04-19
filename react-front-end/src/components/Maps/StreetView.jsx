@@ -1,4 +1,4 @@
-import { StreetViewPanorama, useJsApiLoader } from "@react-google-maps/api";
+import { StreetViewPanorama } from "@react-google-maps/api";
 import { getDailyGame } from "../../helpers/maps/map-helpers";
 import { useEffect, useState } from "react";
 
