@@ -34,11 +34,6 @@ const guessRoutes = require('./routes/guess')
 
 App.use('/api/guess', guessRoutes(db));
 
-// App.post('/api/guess', (req, res) => {
-//   console.log("success, this is what I received: ", req.body);
-//   res.send({message: "Hello from the backend"});
-// })
-
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
