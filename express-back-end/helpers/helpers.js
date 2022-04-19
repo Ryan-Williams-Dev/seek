@@ -60,4 +60,10 @@ const calculateScore = (distance) => {
   return score;
 };
 
+const game = {};
+const guess = {lat: 51.70663210602697, lng: 67.90055248618782,};
+
+console.log("calculateDistance:", calculateDistance(game, guess))
+
+
 module.exports = { calculateDistance, calculateScore };

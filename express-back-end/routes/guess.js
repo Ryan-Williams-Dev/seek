@@ -16,13 +16,13 @@ module.exports = (db) => {
         game_id, user_id, latitude, longitude, score
       ) VALUES (
         $1, $2, $3, $4, $5
-      );`, [ 1, 1, String(lat), String(lng), 500 ]
+      );`, [ 1, 1, lat, lng, 500 ]
     );
     
     Promise.all([promiseA, promiseB])
       .then((results) => {
-        console.log("Results:", results);
         const answer = results[0].rows[0];
+        console.log("Answer:", answer);
         console.log("req.body:", req.body);
         const distance = calculateDistance(answer, req.body);
         const score = calculateScore(distance);
