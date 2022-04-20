@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { GoogleMap, useJsApiLoader, StreetViewPanorama } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import mapStyles from '../../mapStyles';
 
 const CustomGameMap = () => {
