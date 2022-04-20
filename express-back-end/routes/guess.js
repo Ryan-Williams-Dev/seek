@@ -22,8 +22,6 @@ module.exports = (db) => {
     Promise.all([promiseA, promiseB])
       .then((results) => {
         const answer = results[0].rows[0];
-        console.log("Answer:", answer);
-        console.log("req.body:", req.body);
         const distance = calculateDistance(answer, req.body);
         const score = calculateScore(distance);
         res.send({distance, score, answer});
