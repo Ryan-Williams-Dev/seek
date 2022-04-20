@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import mapStyles from '../../mapStyles';
+import { Button } from "@mui/material"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapPin } from '@fortawesome/free-solid-svg-icons'
+
 
 const CustomGameMap = () => {
   
@@ -20,14 +24,23 @@ const CustomGameMap = () => {
   return (
     <div>
       <GoogleMap 
-    zoom={1}
-    center={center}
-    mapContainerClassName="map-container-full"
-    options={options}
-    // onClick={onMapClick}
-    // onLoad={handleOnLoad}
-    // onDragEnd={handleCenterChanged}
-  ></GoogleMap>
+        zoom={1}
+        center={center}
+        mapContainerClassName="map-container-full"
+        options={options}
+        // onClick={onMapClick}
+        // onLoad={handleOnLoad}
+        // onDragEnd={handleCenterChanged}
+      >
+        <Button 
+          variant="contained"
+          startIcon={<FontAwesomeIcon
+            icon={faMapPin}
+          />}
+          sx={{m: 1, mb: 3.5 }}
+          >Set Location
+        </Button>
+      </GoogleMap>
     </div>
   );
 }
