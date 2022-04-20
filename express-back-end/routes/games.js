@@ -6,7 +6,7 @@ module.exports = (db) => {
 
   router.get('/', (req, res) => {
     db.query(`
-      SELECT latitude, longitude FROM games WHERE id = 2;
+      SELECT latitude, longitude FROM games WHERE id = 1;
     `)
       .then(data => {
         coords = data.rows[0]
