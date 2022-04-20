@@ -2,7 +2,7 @@ import { Card, CardContent, Typography, CardActions, CardHeader, Button } from '
 
 const Stats = () => {
   return (
-    <Card className='profile-card-contents' sx={{ maxWidth: 345 }}>
+    <Card className='info-card-contents' sx={{ maxWidth: 345 }}>
       <CardContent>
         <Typography gutterBottom variant="h4">
           Stats

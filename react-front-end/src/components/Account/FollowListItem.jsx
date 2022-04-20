@@ -1,10 +1,13 @@
+import { Avatar } from '@mui/material'
+import { deepOrange } from '@mui/material/colors';
 
-const FollowList = () => {
+const FollowListItem = () => {
   return (
-    <div>
-      <p>FollowListItem</p>
+    <div className='follow-list-item'>
+      <Avatar sx={{ bgcolor: deepOrange[500] }}>RM</Avatar>
+      <p>Ryan MacEachern</p>
     </div>
   );
 }
 
-export default FollowList;
+export default FollowListItem;

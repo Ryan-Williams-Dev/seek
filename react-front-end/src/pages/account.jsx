@@ -1,5 +1,6 @@
 import AboutCard from '../components/Account/AboutCard';
 import Stats from '../components/Account/Stats'
+import FollowList from '../components/Account/FollowList'
 
 const Account = () => {
   
@@ -13,6 +14,7 @@ const Account = () => {
       </div>
       <div className='info-row'>
         <Stats />
+        <FollowList />
       </div>
     </>
   );
