@@ -12,7 +12,6 @@ const Index = () => {
   if (!isLoaded) return <div>Loading...</div>
   if (loadError) return `Error loading maps: ${loadError}`;
 
-
   return (
     <>
       <GoogleMap
