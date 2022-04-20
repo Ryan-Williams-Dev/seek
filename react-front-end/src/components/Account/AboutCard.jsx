@@ -23,8 +23,6 @@ const AboutCard = () => {
           <dd>zarah101@hotmail.com</dd>
           <dt><strong>Location</strong></dt>
           <dd>Vancouver, BC, Canada</dd>
-          <dt><strong>Streak</strong></dt>
-          <dd>5</dd>
         </ul>
       </CardContent>
       <CardActions>

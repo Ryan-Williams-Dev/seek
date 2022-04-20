@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <>
       <GoogleMap
-        id="example"
+        id="street-view-wrapper"
         mapContainerClassName="map-container"
         >
           <StreetView />

@@ -4,7 +4,7 @@ const FollowList = () => {
   
   
   return (
-    <h3>Insert Follow List here</h3>
+    <h3>Insert Follow List Items here</h3>
   );
 }
 

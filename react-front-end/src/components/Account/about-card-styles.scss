@@ -1,8 +1,9 @@
 @import '../../theme/variables.scss';
 
-.account-page {
+.profile-header {
   display: flex;
   justify-content: center;
+  margin: 50px 0 100px;
 }
 
 .profile-card-contents {
@@ -15,4 +16,8 @@
 .about-list {
   flex-direction: row;
   justify-content: center;
+}
+
+.info-row {
+
 }
