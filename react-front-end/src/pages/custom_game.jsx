@@ -12,11 +12,7 @@ const CreateCustomGame = () => {
 
   
   return (
-    <>
-      {/* <StreetViewPanorama />*/} 
-
       <CustomGameMap />
-    </>
   );
 }
 

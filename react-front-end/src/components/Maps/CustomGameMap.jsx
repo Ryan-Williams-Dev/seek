@@ -22,7 +22,7 @@ const CustomGameMap = () => {
       <GoogleMap 
     zoom={1}
     center={center}
-    mapContainerClassName="map-container"
+    mapContainerClassName="map-container-full"
     options={options}
     // onClick={onMapClick}
     // onLoad={handleOnLoad}
