@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import mapStyles from "../../mapStyles";
-import { Button } from "@mui/material"
+import { Button, Card, Typography } from "@mui/material"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons'
-import { onSubmitGuess } from '../../helpers/maps/map-helpers';
+import axios from 'axios';
 
 export default function Map() {
   
@@ -15,6 +15,7 @@ export default function Map() {
   
   const [markers, setMarkers] = useState([]);
   const [center, setCenter] = useState({lat: 50, lng: 50})
+  const [result, setResult] = useState()
 
   const onMapClick = useCallback((event) => {
     setMarkers(() => [{
@@ -39,6 +40,18 @@ export default function Map() {
     }
   };
 
+   const onSubmitGuess = (marker) => {
+    axios.post('api/guess', marker)
+      .then(res => {
+        console.log("success: ", res.data)
+        setResult(res.data);
+      })
+      .catch(err => {
+        console.log("unsuccessful: ", err)
+        alert("Error, please try again " + err)
+      })
+  }
+
   if (!isLoaded) return <div>Loading...</div>;
   if (loadError) return `Error loading maps: ${loadError}`;
 
@@ -47,6 +60,7 @@ export default function Map() {
     styles: mapStyles,
     disableDefaultUI: true,
   }
+
 
   return <GoogleMap 
     zoom={2.5}

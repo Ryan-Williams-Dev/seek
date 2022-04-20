@@ -1,8 +1,12 @@
 import StreetView from '../components/Maps/StreetView';
 import Map from '../components/Maps/Map';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { useState } from 'react';
+import Scoreboard from '../components/Maps/Scoreboard';
 
 const Index = () => {
+
+  const [result, setResult] = useState(true)
 
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
@@ -15,12 +19,13 @@ const Index = () => {
 
   return (
     <>
-      <GoogleMap
+      {result && <Scoreboard />}
+      { !result && <GoogleMap
         id="example"
         mapContainerClassName="map-container"
         >
           <StreetView />
-        </GoogleMap>
+        </GoogleMap>}
       <Map />
     </>
   );
