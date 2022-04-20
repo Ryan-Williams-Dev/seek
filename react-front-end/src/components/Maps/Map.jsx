@@ -61,11 +61,13 @@ export default function Map() {
     <Marker 
       key={marker.time.toISOString()}
       position={{ lat: marker.lat, lng: marker.lng }}
+      animation={window.google.maps.Animation.DROP}
+      title="Here!"
       icon={{
-        url: '/icons/map_blue.svg',
-        scaledSize: new window.google.maps.Size(30, 30),
+        url: '/icons/pin-svgrepo-com.svg',
+        scaledSize: new window.google.maps.Size(50, 50),
         origin: new window.google.maps.Point(0, 0),
-        anchor: new window.google.maps.Point(15, 15)
+        anchor: new window.google.maps.Point(24.5, 49),
       }}
     />
     ))}

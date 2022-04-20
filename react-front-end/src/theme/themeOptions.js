@@ -4,15 +4,15 @@ const Theme = createTheme({
   palette: {
     type: 'light',
     primary: {
-      main: '#3A7091',
+      main: '#1e2124',
     },
     secondary: {
-      main: '#917349',
+      main: '#abdfec',
       contrastText: '#fffffe',
     },
     background: {
       default: '#eff0f3',
-      paper: '#fffffe',
+      paper: '#abdfec',
     },
     text: {
       primary: '#0d0d0d',
@@ -24,7 +24,7 @@ const Theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Open Sans',
+    fontFamily: 'Bungee',
   },
 });
 const DarkTheme = createTheme({

@@ -28,7 +28,7 @@ export default function ButtonAppBar(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
               SEEK
             </Typography>
             <Button variant='outlined' color="inherit" >Login</Button>
