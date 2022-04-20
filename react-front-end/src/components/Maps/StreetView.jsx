@@ -1,29 +1,9 @@
 import { StreetViewPanorama } from "@react-google-maps/api";
-import { getDailyGame } from "../../helpers/maps/map-helpers";
-import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { faStreetView } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function StreetView() {
-
-  const [coords, setCoords] = useState()
-
-  useEffect(() => {
-    getDailyGame()
-      .then(res => {
-        const { latitude, longitude } = res
-        setCoords({
-          lat: Number(latitude),
-          lng: Number(longitude),
-        })
-      })
-  }, []);
-
-
-  const resetLoc = () => {
-    setCoords({...coords})
-  } 
+export default function StreetView(props) {
 
   // see https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaOptions
   const options = {
@@ -35,7 +15,7 @@ export default function StreetView() {
   return (
     <>
       <StreetViewPanorama 
-        position={coords}
+        position={props.coords}
         visible={true}
         options={options}
       >
@@ -43,7 +23,7 @@ export default function StreetView() {
       <Button 
         variant="contained"
         sx={{ zIndex: 1, m: 1, mb: 3.5 }}
-        onClick={resetLoc}
+        onClick={props.resetLoc}
         endIcon={<FontAwesomeIcon
           icon={faStreetView}
 />}

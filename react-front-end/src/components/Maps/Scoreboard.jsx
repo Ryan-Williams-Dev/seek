@@ -1,5 +1,5 @@
 import { Leaderboard, Share } from "@mui/icons-material";
-import { Button, Card, Divider, Typography } from "@mui/material";
+import { Button, Card, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 
@@ -21,16 +21,15 @@ const Scoreboard = (props) => {
         component="div"
         sx={{color: '#ad0b0b' }}
       >
-        {/* Score: {result.score} */}
-        Score: 4000
+        Score: {props.score}
       </Typography>
 
       <Typography 
         variant="h4" 
-        component="div" 
+        component="div"
+        sx={{textAlign: 'center'}}
       >
-        {/* Score: {result.score} */}
-        Distance: 367km
+        Distance: {props.distance}km
       </Typography>
 
       <div className="scoreboard-buttons">
