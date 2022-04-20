@@ -1,12 +1,18 @@
-import { Avatar } from '@mui/material'
+import { Avatar, TableRow, TableCell } from '@mui/material'
 import { deepOrange } from '@mui/material/colors';
 
-const FollowListItem = () => {
+const FollowListItem = (props) => {
+  const {initials, name} = props;
+  
   return (
-    <div className='follow-list-item'>
-      <Avatar sx={{ bgcolor: deepOrange[500] }}>RM</Avatar>
-      <p>Ryan MacEachern</p>
-    </div>
+    <TableRow className='follow-list-item'>
+      <TableCell>
+        <Avatar sx={{ bgcolor: deepOrange[500] }}>{initials}</Avatar>
+      </TableCell>
+      <TableCell>
+        <p>{name}</p>
+      </TableCell>
+    </TableRow>
   );
 }
 
