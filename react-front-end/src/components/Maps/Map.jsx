@@ -88,7 +88,7 @@ export default function Map() {
 
     <Button 
       variant="contained"
-      startIcon={<FontAwesomeIcon
+      endIcon={<FontAwesomeIcon
         icon={faMapPin}
       />}
       onClick={() => onSubmitGuess(markers[0]) }

@@ -29,4 +29,15 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  border-style: inset;
+  border-color: black;
+  border-width: 0.4em;
+  border-radius: 0% !important;
+
+  &-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
 }

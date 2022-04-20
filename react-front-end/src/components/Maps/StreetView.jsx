@@ -44,7 +44,7 @@ export default function StreetView() {
         variant="contained"
         sx={{ zIndex: 1, m: 1, mb: 3.5 }}
         onClick={resetLoc}
-        startIcon={<FontAwesomeIcon
+        endIcon={<FontAwesomeIcon
           icon={faStreetView}
 />}
       >Reset</Button>

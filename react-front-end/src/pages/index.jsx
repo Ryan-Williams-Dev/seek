@@ -6,7 +6,7 @@ import Scoreboard from '../components/Maps/Scoreboard';
 
 const Index = () => {
 
-  const [result, setResult] = useState(true)
+  const [result, setResult] = useState(false)
 
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
@@ -20,12 +20,14 @@ const Index = () => {
   return (
     <>
       {result && <Scoreboard />}
+
       { !result && <GoogleMap
         id="example"
         mapContainerClassName="map-container"
         >
           <StreetView />
         </GoogleMap>}
+
       <Map />
     </>
   );
