@@ -25,4 +25,4 @@ const stringAvatar = (name) => {
   };
 }
 
-module.exports = { stringToColor, stringAvatar }
+module.exports = stringAvatar
