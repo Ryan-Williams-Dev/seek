@@ -13,6 +13,7 @@ const CustomGameMap = () => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
   })
   const [center, setCenter] = useState({lat: 50, lng: 50})
+  const [marker, setMarker] = useState([]);
 
   if (!isLoaded) return <div>Loading...</div>
   if (loadError) return `Error loading maps: ${loadError}`;

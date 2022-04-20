@@ -26,7 +26,7 @@ module.exports = (db) => {
         console.log("req.body:", req.body);
         const distance = calculateDistance(answer, req.body);
         const score = calculateScore(distance);
-        res.send({distance, score});
+        res.send({distance, score, answer});
       })
       .catch(err => {
         console.log("Error:", err);
