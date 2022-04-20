@@ -1,7 +1,5 @@
 import { Card, CardContent, Table, Typography } from '@mui/material'
 import FollowListItem from './FollowListItem'
-import { deepOrange } from '@mui/material/colors';
-
 
 const FollowList = () => {
   

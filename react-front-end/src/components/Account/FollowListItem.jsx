@@ -1,13 +1,13 @@
 import { Avatar, TableRow, TableCell } from '@mui/material'
-import { deepOrange } from '@mui/material/colors';
+import { stringAvatar } from '../../helpers/maps/avatar-helpers';
 
 const FollowListItem = (props) => {
-  const {initials, name, color} = props;
+  const {initials, name} = props;
   
   return (
     <TableRow className='follow-list-item'>
       <TableCell>
-        <Avatar sx={{ bgcolor: {color} }}>{initials}</Avatar>
+        <Avatar {...stringAvatar(`${name}`)}>{initials}</Avatar>
       </TableCell>
       <TableCell>
         <p>{name}</p>
