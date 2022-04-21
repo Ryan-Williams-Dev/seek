@@ -1,15 +1,33 @@
 import { Box, Button, TextField } from '@mui/material'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import "./page-styles.scss";
+import { useContext } from 'react';
+import { authContext } from '../providers/AuthProvider';
 
 export default function Login() {
+  
+  const { login } = useContext(authContext)
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const params = {}
     params.email = event.target[0].value
     params.password = event.target[2].value
-    console.log(params)
+
+    axios.post(process.env.REACT_APP_API_BASE_URL + 'users', params)
+      .then((res) => {
+        if (!res.data.valid) {
+          return alert("Incorrect credentials")
+        } 
+        
+        console.log(res.data.user)
+        login(res.data.user)
+      })
+      .catch((err) => {
+        console.log('Front end: ', err)
+      })
   }
 
   return (
