@@ -9,7 +9,7 @@ INSERT INTO users (
 ) VALUES (
   'testuser',
   'test@test.com',
-  'testpass',
+  'test',
   'test',
   'user',
   'image.com',
