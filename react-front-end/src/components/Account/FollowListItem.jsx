@@ -1,5 +1,5 @@
 import { Avatar, TableRow, TableCell } from '@mui/material'
-import stringAvatar from '../../helpers/maps/avatar-helpers';
+import stringAvatar from '../../helpers/avatar-helpers';
 
 const FollowListItem = (props) => {
   const {initials, name} = props;

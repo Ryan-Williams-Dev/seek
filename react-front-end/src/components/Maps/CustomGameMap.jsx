@@ -6,12 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons'
 import { setGameLocation } from '../../helpers/maps/map-helpers';
 
-const CustomGameMap = () => {
+const CustomGameMap = (props) => {
   
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
   })
+
   const [center, setCenter] = useState({lat: 50, lng: 50})
   const [marker, setMarker] = useState([]);
 
@@ -22,6 +23,11 @@ const CustomGameMap = () => {
       time: new Date(),
     }]);
   }, []);
+
+  const onSubmitClick = () => {
+    setGameLocation(marker[0]);
+    props.triggerPopup()
+  }
 
   if (!isLoaded) return <div>Loading...</div>
   if (loadError) return `Error loading maps: ${loadError}`;
@@ -54,7 +60,7 @@ const CustomGameMap = () => {
       })}
       <Button 
         variant="contained"
-        onClick={() => setGameLocation(marker[0])}
+        onClick={() => onSubmitClick()}
         startIcon={<FontAwesomeIcon icon={faMapPin} />}
         sx={{m: 1, mb: 3.5 }}
         >Set Location

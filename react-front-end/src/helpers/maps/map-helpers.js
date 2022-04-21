@@ -24,6 +24,8 @@ export const getDailyGame = () => {
 }
 
 export const setGameLocation = (marker) => {
+  
+  
   console.log("Making axios request:", marker)
   axios.post('api/games', marker)
     .then(res => {
@@ -35,6 +37,7 @@ export const setGameLocation = (marker) => {
       alert("Error: " + err);
     })
 
+  
 }
 
 export const setAnswerMarker = (answer, markers, setMarkers) => {
