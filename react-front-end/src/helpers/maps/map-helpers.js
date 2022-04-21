@@ -36,3 +36,22 @@ export const setGameLocation = (marker) => {
     })
 
 }
+
+export const setAnswerMarker = (answer, markers, setMarkers) => {
+  const answerMarker = {
+    lat: answer.latitude,
+    lng: answer.longitude,
+    time: new Date(),
+    answer: true
+  }
+  setMarkers([...markers, answerMarker]);
+}
+
+export const setView = (answer, setCenter, mapRef) => {
+  const newCenterCoords = {
+    lat: answer.latitude,
+    lng: answer.longitude
+  }
+  setCenter({...newCenterCoords})
+  mapRef.current.setZoom(3.7)
+}

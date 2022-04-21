@@ -4,18 +4,37 @@ import mapStyles from "../../mapStyles";
 import { Button } from "@mui/material"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons'
+import { setAnswerMarker, setView } from '../../helpers/maps/map-helpers';
 
 export default function Map(props) {
-  
+
+  // State initialisations
+  const [markers, setMarkers] = useState([]);
+  const [center, setCenter] = useState({lat: 50, lng: 50})
+  const hasPlacedAnswer = useRef(false)
+  const mapRef = useRef(null);
+
+  // Handles initial load in logic
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
   });
   
-  const [markers, setMarkers] = useState([]);
-  const [center, setCenter] = useState({lat: 50, lng: 50})
-  const hasPlacedAnswer = useRef(false)
-
+  const handleOnLoad = map => {
+    mapRef.current = map;
+  };
+ 
+  // Perists center of view over re-renders
+  const handleCenterChanged = () => {
+    if (mapRef) {
+      const newCenter = mapRef.current.getCenter();
+      const newCenterCoords = {
+        lat: newCenter.lat(),
+        lng: newCenter.lng()
+      }
+      setCenter({...newCenterCoords})
+    }
+  };
 
   // Assigns/reassigns user marker
   const onMapClick = useCallback((event) => {
@@ -27,50 +46,29 @@ export default function Map(props) {
       answer: false
     }]);
   }, []);
+  
 
-  // If an answer has been placed, assigns answer marker
+  // This use effect fire once, upon answer submission
   useEffect(() => {
     if(props.answer && !hasPlacedAnswer.current) {
-      const answerMarker = {
-        lat: props.answer.latitude,
-        lng: props.answer.longitude,
-        time: new Date(),
-        answer: true
-      }
-      setMarkers([...markers, answerMarker]);
+      setAnswerMarker(props.answer, markers, setMarkers);
+      setView(props.answer, setCenter, mapRef)
       hasPlacedAnswer.current = true;
     }
   }, [props.answer, markers]);
-
-  const [mapref, setMapRef] = useState(null);
-  const handleOnLoad = map => {
-    setMapRef(map);
-  };
-
-  // Perists center of view over re-renders
-  const handleCenterChanged = () => {
-    if (mapref) {
-      const newCenter = mapref.getCenter();
-      const newCenterCoords = {
-        lat: newCenter.lat(),
-        lng: newCenter.lng()
-      }
-      setCenter({...newCenterCoords})
-    }
-  };
-
   
 
-  if (!isLoaded) return <div>Loading...</div>;
-  if (loadError) return `Error loading maps: ${loadError}`;
-
+  
   // see https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions
   const options = {
     styles: mapStyles,
     disableDefaultUI: true,
   }
+  
 
-
+  if (!isLoaded) return <div>Loading...</div>;
+  if (loadError) return `Error loading maps: ${loadError}`;
+  
   return <GoogleMap 
     zoom={2.5}
     center={center}
