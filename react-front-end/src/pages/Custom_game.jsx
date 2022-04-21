@@ -10,7 +10,6 @@ const CreateCustomGame = () => {
 
   if (!isLoaded) return <div>Loading...</div>
   if (loadError) return `Error loading maps: ${loadError}`;
-
   
   return (
     <div className="custom-game-page">

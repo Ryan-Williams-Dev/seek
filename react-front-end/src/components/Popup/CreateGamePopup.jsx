@@ -1,13 +1,14 @@
 import './popup-styles.scss'
+import { Button } from '@mui/material';
 
 const CreateGamePopup = (props) => {
   return (props.trigger) ? (
     <div className="popup">
       <div className="popup-inner">
         <h3>Game Saved!</h3>
-        <button className="popup-btn">Challenge A Friend!</button>
-        <button className="popup-btn">My Games</button>
-        <button className="popup-btn">Create Another Game</button>
+        <Button className="popup-btn">Challenge A Friend!</Button>
+        <Button className="popup-btn">My Games</Button>
+        <Button className="popup-btn">Create Another Game</Button>
         { props.children }
       </div>
     </div>
