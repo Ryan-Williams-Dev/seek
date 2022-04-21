@@ -15,7 +15,7 @@ const CreateCustomGame = () => {
   return (
     <div>
       <CustomGameMap />
-      <CreateGamePopup trigger={false} />
+      <CreateGamePopup trigger={true} />
     </div>
   );
 }
