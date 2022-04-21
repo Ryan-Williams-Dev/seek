@@ -6,10 +6,12 @@ import ButtonAppBar from "./components/Nav/NavBar";
 import { Theme, DarkTheme } from './theme/themeOptions';
 import { ThemeProvider } from "@mui/material/styles"
 import { CssBaseline } from '@mui/material';
-import Index from './pages';
-import Account from './pages/account';
-import Leaderboards from './pages/leaderboards';
-import CreateCustomGame from './pages/custom_game';
+import Index from './pages/Index';
+import Account from './pages/Account';
+import Leaderboards from './pages/Leaderboards';
+import CreateCustomGame from './pages/Custom_game';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 
 function App() {
@@ -41,6 +43,14 @@ function App() {
               
                 <Route exact path="/custom-game">
                   <CreateCustomGame />
+                </Route>
+              
+                <Route exact path="/login">
+                  <Login />
+                </Route>
+              
+                <Route exact path="/register">
+                  <Register />
                 </Route>
               
               </Switch>

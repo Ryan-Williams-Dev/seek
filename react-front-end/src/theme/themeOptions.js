@@ -24,7 +24,10 @@ const Theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Bungee',
+    fontFamily: "'Bungee','Roboto'",
+    TextField: {
+      fontFamily: 'Roboto'
+    }
   },
 });
 const DarkTheme = createTheme({
