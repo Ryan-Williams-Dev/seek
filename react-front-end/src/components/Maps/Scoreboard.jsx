@@ -22,7 +22,6 @@ const Scoreboard = (props) => {
         component="div"
         sx={{textDecorationLine: "underline"}}
       >
-        {/* Score: {result.score} */}
         Results
       </Typography>
 
