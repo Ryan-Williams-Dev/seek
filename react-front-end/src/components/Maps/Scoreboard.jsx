@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 
 
 const Scoreboard = (props) => {
+
+  // Links only to home page at the moment, update this with game id when we have that being pulled from the backend
+  const sharelink = () => {
+    const shareURL = process.env.REACT_APP_FRONT_END_BASE_URL
+    navigator.clipboard.writeText(shareURL)
+  }
+
   return (
     <Card className="scoreboard">
 
@@ -37,6 +44,7 @@ const Scoreboard = (props) => {
         <Button
           variant="contained"
           endIcon={<Share />}
+          onClick={sharelink}
         >
           Share
         </Button>
