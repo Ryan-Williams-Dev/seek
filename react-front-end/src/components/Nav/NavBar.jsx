@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { AppBar, Box, Toolbar, Typography, Button, IconButton, Drawer, Divider } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 import Drawerlist from './DrawerList';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import './nav-styles.scss'
 
 export default function ButtonAppBar(props) {
 
@@ -31,7 +33,11 @@ export default function ButtonAppBar(props) {
             <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
               SEEK
             </Typography>
-            <Button variant='outlined' color="inherit" >Login</Button>
+
+            <Link to="/login" className="login-button" >
+              <Button variant='outlined' color="inherit" >Login</Button>
+            </Link>
+
           </Toolbar>
         </AppBar>
       </Box>
