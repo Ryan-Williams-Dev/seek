@@ -22,6 +22,19 @@ html {
   align-items: flex-end;
 }
 
+
+.css-pc41rl{
+  height: 100%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 0.5em;
+}
+
 .scoreboard {
   height: 50%;
   width: 100%;
@@ -41,3 +54,10 @@ html {
   }
 
 }
+
+.login-register-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
