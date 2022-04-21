@@ -1,5 +1,5 @@
 import CustomGameMap from "../components/Maps/CustomGameMap";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import { useJsApiLoader } from "@react-google-maps/api";
 import CreateGamePopup from "../components/Popup/CreateGamePopup";
 import { useState } from 'react';
 
@@ -22,7 +22,7 @@ const CreateCustomGame = () => {
   return (
     <div className="custom-game-page">
       <CustomGameMap triggerPopup={triggerPopup}/>
-      <CreateGamePopup trigger={popupTrigger} />
+      <CreateGamePopup trigger={popupTrigger}  />
     </div>
   );
 }
