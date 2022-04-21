@@ -1,0 +1,19 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 50vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.popup-inner {
+  position: relative;
+  padding: 32px;
+  width: 100%;
+  
+}

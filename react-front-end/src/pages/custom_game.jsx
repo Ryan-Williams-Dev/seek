@@ -1,5 +1,6 @@
 import CustomGameMap from "../components/Maps/CustomGameMap";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import CreateGamePopup from "../components/Popup/CreateGamePopup";
 
 const CreateCustomGame = () => {
   const { isLoaded, loadError } = useJsApiLoader({
@@ -12,7 +13,10 @@ const CreateCustomGame = () => {
 
   
   return (
+    <div>
       <CustomGameMap />
+      <CreateGamePopup trigger={true} />
+    </div>
   );
 }
 
