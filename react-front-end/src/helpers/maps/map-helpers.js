@@ -14,7 +14,14 @@ import axios from 'axios';
 
 export const refreshPage = () => {
   window.location.reload(false);
-}; 
+};
+
+export const challengeLinkToClipboard = () => {
+  
+  const message = `🌎  I created a new challenge on SEEK!\n\n 📍 🕵️‍♀️ Follow this link to see how close you can get:\n\n ➡️ {challengeURL} ⬅️`
+
+  navigator.clipboard.writeText(message);
+}
 
 export const getDailyGame = () => {
   return axios.get('api/games')
