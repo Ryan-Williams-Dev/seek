@@ -24,9 +24,13 @@ html {
 
 .map-container-full {
   width: 100%;
-  height: 90vh;
+  height: 100%;
   display: flex;
   align-items: flex-end;
+}
+
+.custom-game-page{
+  height: 100%;
 }
 
 .css-pc41rl{
