@@ -9,7 +9,7 @@ const Scoreboard = (props) => {
   // Links only to home page at the moment, update this with game id when we have that being pulled from the backend
   const sharelink = () => {
     const shareURL = process.env.REACT_APP_FRONT_END_BASE_URL
-    const message = `🌎  I just scored ${score} point${score > 1 ? 's' : ''} on SEEK!\n\n 📍 My Guess was ${distance}km from the mystery location.\n\n 🕵️‍♀️ Follow this link to see how close you can get:\n\n ➡️ ${shareURL} ⬅️`
+    const message = `🌎  I just scored ${score} point${score !== 1 ? 's' : ''} on SEEK!\n\n 📍 My Guess was ${distance}km from the mystery location.\n\n 🕵️‍♀️ Follow this link to see how close you can get:\n\n ➡️ ${shareURL} ⬅️`
 
     navigator.clipboard.writeText(message);
   }
