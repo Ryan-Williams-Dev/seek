@@ -8,10 +8,6 @@ import { refreshPage, challengeLinkToClipboard } from '../../helpers/maps/map-he
 const CreateGamePopup = (props) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false)
 
-  const openSnackbar = () => {
-    setSnackbarOpen(true)
-  };
-
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -20,13 +16,14 @@ const CreateGamePopup = (props) => {
     setSnackbarOpen(false);
   };
 
+
   const snackbarAction = (
     <>
       <IconButton
         size="small"
         aria-label="close"
         color="inherit"
-        onClick={handleClose}
+        onClick={() => handleClose()}
       >
           <CloseIcon fontSize="small"/>
       </IconButton>
@@ -35,7 +32,7 @@ const CreateGamePopup = (props) => {
 
   const getChallengeLink = () => {
     challengeLinkToClipboard()
-    openSnackbar();
+    setSnackbarOpen(true)
   };
 
   return (props.trigger) ? (
@@ -43,16 +40,16 @@ const CreateGamePopup = (props) => {
       <div className="popup-inner">
         <h2>Game Saved!</h2>
         <div className='btn-row'>
-          <Button className="popup-btn" onClick={getChallengeLink}>Challenge A Friend</Button>
+          <Button className="popup-btn" onClick={() => getChallengeLink()}>Challenge A Friend</Button>
+          <Button className="popup-btn" href="/account">My Account</Button>
+          <Button className="popup-btn" onClick={refreshPage}>Create Another Game</Button>
           <Snackbar 
-            open={openSnackbar}
+            open={snackbarOpen}
             autoHideDuration={6000}
-            onClose={handleClose}
+            onClose={() => handleClose()}
             message="Challenge link copied to clipboard!"
             action={snackbarAction}
           />
-          <Button className="popup-btn" href="/account">My Account</Button>
-          <Button className="popup-btn" onClick={refreshPage}>Create Another Game</Button>
         </div>
         { props.children }
       </div>
