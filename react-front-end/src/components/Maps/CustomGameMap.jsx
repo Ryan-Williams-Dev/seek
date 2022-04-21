@@ -4,7 +4,7 @@ import mapStyles from '../../mapStyles';
 import { Button } from "@mui/material"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons'
-
+import { setGameLocation } from '../../helpers/maps/map-helpers';
 
 const CustomGameMap = () => {
   
@@ -54,9 +54,8 @@ const CustomGameMap = () => {
       })}
       <Button 
         variant="contained"
-        startIcon={<FontAwesomeIcon
-          icon={faMapPin}
-        />}
+        onClick={() => setGameLocation(marker[0])}
+        startIcon={<FontAwesomeIcon icon={faMapPin} />}
         sx={{m: 1, mb: 3.5 }}
         >Set Location
       </Button>

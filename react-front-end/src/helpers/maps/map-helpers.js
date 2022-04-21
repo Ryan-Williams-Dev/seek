@@ -18,7 +18,20 @@ export const getDailyGame = () => {
       return res.data
     })
     .catch(err => {
-      console.log(err)
+      console.log("Error:",err)
       return err
     })
+}
+
+export const setGameLocation = (marker) => {
+  axios.post('api/games', marker)
+  .then(res => {
+    console.log("Axios request made:", marker)
+    return res.data
+    })
+    .catch(err => {
+      console.log("Error:", err)
+      alert("Error, please try again: " + err)
+    })
+
 }

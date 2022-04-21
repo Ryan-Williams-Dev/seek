@@ -118,9 +118,7 @@ export default function Map(props) {
     {hasPlacedAnswer.current !== true && 
       <Button 
         variant="contained"
-        endIcon={<FontAwesomeIcon
-          icon={faMapPin}
-        />}
+        endIcon={<FontAwesomeIcon icon={faMapPin} />}
         onClick={() => props.onSubmitGuess(markers[0]) }
         sx={{m: 1, mb: 3.5 }}
       >Submit</Button>
