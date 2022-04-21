@@ -12,6 +12,10 @@ import axios from 'axios';
 //     })
 // }
 
+export const refreshPage = () => {
+  window.location.reload(false);
+}; 
+
 export const getDailyGame = () => {
   return axios.get('api/games')
     .then(res => {
@@ -21,7 +25,7 @@ export const getDailyGame = () => {
       console.log("Error:",err);
       return err;
     })
-}
+};
 
 export const setGameLocation = (marker) => {
   
@@ -38,7 +42,7 @@ export const setGameLocation = (marker) => {
     })
 
   
-}
+};
 
 export const setAnswerMarker = (answer, markers, setMarkers) => {
   const answerMarker = {
@@ -48,7 +52,7 @@ export const setAnswerMarker = (answer, markers, setMarkers) => {
     answer: true
   }
   setMarkers([...markers, answerMarker]);
-}
+};
 
 export const setView = (answer, setCenter, mapRef) => {
   const newCenterCoords = {
@@ -57,4 +61,4 @@ export const setView = (answer, setCenter, mapRef) => {
   }
   setCenter({...newCenterCoords})
   mapRef.current.setZoom(3.7)
-}
+};
