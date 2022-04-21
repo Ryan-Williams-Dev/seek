@@ -8,6 +8,7 @@ import { refreshPage, challengeLinkToClipboard } from '../../helpers/maps/map-he
 const CreateGamePopup = (props) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false)
 
+  // Handles close action for Snackbar
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -16,7 +17,7 @@ const CreateGamePopup = (props) => {
     setSnackbarOpen(false);
   };
 
-
+  // Snackbar "X" icon
   const snackbarAction = (
     <>
       <IconButton
@@ -29,7 +30,8 @@ const CreateGamePopup = (props) => {
       </IconButton>
     </>
   )
-
+  
+  // Function executes two functions simultaneously onClick
   const getChallengeLink = () => {
     challengeLinkToClipboard()
     setSnackbarOpen(true)
