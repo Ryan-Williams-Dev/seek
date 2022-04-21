@@ -46,30 +46,9 @@ export default function Map(props) {
       answer: false
     }]);
   }, []);
-
-  // If an answer has been placed, assigns answer marker,
-  // centers the map on the answer location,
-  // and zooms to an appropirate level.
-  // useEffect(() => {
-  //   if(props.answer && !hasPlacedAnswer.current) {
-  //     const answerMarker = {
-  //       lat: props.answer.latitude,
-  //       lng: props.answer.longitude,
-  //       time: new Date(),
-  //       answer: true
-  //     }
-  //     const newCenterCoords = {
-  //       lat: props.answer.latitude,
-  //       lng: props.answer.longitude
-  //     }
-
-  //     setMarkers([...markers, answerMarker]);
-  //     setCenter({...newCenterCoords})
-  //     mapRef.current.setZoom(3.7)
-  //     hasPlacedAnswer.current = true;
-  //   }
-  // }, [props.answer, markers]);
   
+
+  // This use effect fire once, upon answer submission
   useEffect(() => {
     if(props.answer && !hasPlacedAnswer.current) {
       setAnswerMarker(props.answer, markers, setMarkers);
