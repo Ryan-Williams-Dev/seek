@@ -2,8 +2,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 80%;
+  width: 60%;
   height: 50vh;
+  background-color: #3A7091;
 
   display: flex;
   justify-content: center;
@@ -13,7 +14,17 @@
 
 .popup-inner {
   position: relative;
-  padding: 32px;
+  padding: 28px;
   width: 100%;
-  
+  max-width: 640px;
+  background-color: #917349;
+  color: #fffffe;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-btn {
+
 }
