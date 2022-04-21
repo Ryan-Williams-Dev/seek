@@ -24,9 +24,7 @@ export default function StreetView(props) {
         variant="contained"
         sx={{ zIndex: 1, m: 1, mb: 3.5 }}
         onClick={props.resetLoc}
-        endIcon={<FontAwesomeIcon
-          icon={faStreetView}
-/>}
+        endIcon={<FontAwesomeIcon icon={faStreetView} />}
       >Reset</Button>
     </>
   )
