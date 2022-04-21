@@ -15,23 +15,24 @@ import axios from 'axios';
 export const getDailyGame = () => {
   return axios.get('api/games')
     .then(res => {
-      return res.data
+      return res.data;
     })
     .catch(err => {
-      console.log("Error:",err)
-      return err
+      console.log("Error:",err);
+      return err;
     })
 }
 
 export const setGameLocation = (marker) => {
+  console.log("Making axios request:", marker)
   axios.post('api/games', marker)
-  .then(res => {
-    console.log("Axios request made:", marker)
-    return res.data
+    .then(res => {
+      console.log("Axios request made successfully:");
+      return res.data;
     })
     .catch(err => {
-      console.log("Error:", err)
-      alert("Error, please try again: " + err)
+      console.log("Error:", err);
+      alert("Error: " + err);
     })
 
 }

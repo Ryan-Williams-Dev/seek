@@ -20,14 +20,22 @@ module.exports = (db) => {
 
   router.post('/', (req, res) => {
     const { lat, lng } = req.body;
-    
+    console.log("Arrived at router. Making DB query...");
     db.query(`
       INSERT INTO games (
         game_type_id, latitude, longitude
       ) VALUES (
         $1, $2, $3 
       );`, [2, lat, lng]
-    );
+    )
+      .then(data => {
+        console.log("Game location successfully inserted into database.");
+        res.send(data);
+      })
+      .catch(err => {
+        console.log("Error! Database query failed:", err);
+        res.send(err);
+      });
   });
 
   return router;
