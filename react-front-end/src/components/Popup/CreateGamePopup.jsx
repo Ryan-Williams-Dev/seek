@@ -7,7 +7,7 @@ const CreateGamePopup = (props) => {
       <div className="popup-inner">
         <h3>Game Saved!</h3>
         <div className='btn-row'>
-        <Button className="popup-btn">Challenge A Friend!</Button>
+        <Button className="popup-btn">Challenge A Friend</Button>
         <Button className="popup-btn">My Games</Button>
         <Button className="popup-btn">Create Another Game</Button>
         </div>
