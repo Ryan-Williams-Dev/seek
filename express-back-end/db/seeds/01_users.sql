@@ -46,7 +46,7 @@ INSERT INTO users (
   'Liao',
   '../../lib/images/avatar1.jpg',
   'Love puzzles!'
-) (
+), (
   'ramrod',
   'ramrod@email.com',
   'test',
@@ -62,4 +62,4 @@ INSERT INTO users (
   'Proud',
   '../../lib/images/avatar3.jpg',
   'Ready to roll!'
-) 
+);
