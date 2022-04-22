@@ -15,9 +15,8 @@ const Account = () => {
       .then(res => {
         console.log("Request successful.");
         setUserData(...res.data);
-        console.log("USERDATA:", userData);
       })
-      .catch(err => {
+      .catch(err => { 
         console.log("Error:", err);
       });
   }, []);

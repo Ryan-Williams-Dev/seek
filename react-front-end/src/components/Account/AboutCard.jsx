@@ -3,7 +3,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import './about-card-styles.scss';
 
 const AboutCard = (props) => {
-  const { first_name, last_name, email } = props;
+  const { first_name, last_name, email } = props.userData;
   
   return (
     <Card className='profile-card-contents' sx={{ maxWidth: 345 }}>
@@ -18,7 +18,7 @@ const AboutCard = (props) => {
         </Fab>
       <CardContent>
         <Typography gutterBottom variant="h4">
-          Zarah Liao
+          {first_name} {last_name}
         </Typography>
         <ul className='about-list'>
           <dt><strong>Email</strong></dt>
