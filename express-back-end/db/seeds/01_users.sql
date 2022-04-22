@@ -12,7 +12,7 @@ INSERT INTO users (
   'test',
   'test',
   'user',
-  'image.com',
+  'https://media.istockphoto.com/photos/african-mature-man-with-spectacles-picture-id1152603187?k=20&m=1152603187&s=612x612&w=0&h=GFzEtU3SUuueO3bqgM3GbQ8GTehFBM-V4CRPSbreims=',
   'Test user for testing purposes'
 ), (
   'user2',
@@ -28,7 +28,7 @@ INSERT INTO users (
   'test',
   'Ryan',
   'MacEachern',
-  '../../lib/images/ryanm.jpg',
+  'https://media.gettyimages.com/photos/handsome-young-adult-businessman-with-stubble-picture-id1250238624?s=612x612',
   'Old enough to party.'
 ), (
   'ryan-williams',
@@ -36,7 +36,7 @@ INSERT INTO users (
   'test',
   'Ryan',
   'Williams',
-  '../../lib/images/ryanw.jpg',
+  'https://media.istockphoto.com/photos/rear-view-of-a-toggenburg-goat-looking-away-picture-id516926142',
   'Greatest of All Time.'
 ), (
   'z-lo',
@@ -44,7 +44,7 @@ INSERT INTO users (
   'test',
   'Zarah',
   'Liao',
-  '../../lib/images/avatar1.jpg',
+  'https://t3.ftcdn.net/jpg/02/22/10/62/360_F_222106228_NP5f0gXi3JOCgmaTsEyg7RuyKgwDLGuY.jpg',
   'Love puzzles!'
 ), (
   'ramrod',
@@ -52,7 +52,7 @@ INSERT INTO users (
   'test',
   'Rodney',
   'Mullet',
-  '../../lib/images/avatar2.jpg',
+  'https://thumbs.dreamstime.com/z/happy-man-okay-sign-portrait-white-background-showing-31418338.jpg',
   'Go big or go home'
 ), (
   'libby499',
@@ -60,6 +60,6 @@ INSERT INTO users (
   'test',
   'Elizabeth',
   'Proud',
-  '../../lib/images/avatar3.jpg',
+  'https://media.gettyimages.com/photos/portrait-of-woman-with-afro-hair-smiling-with-white-wall-background-picture-id1218661893?s=612x612',
   'Ready to roll!'
 );

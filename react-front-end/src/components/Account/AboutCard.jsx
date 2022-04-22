@@ -3,14 +3,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import './about-card-styles.scss';
 
 const AboutCard = (props) => {
-  const { first_name, last_name, email } = props.userData;
-  
+  const { first_name, last_name, email, avatar_url } = props.userData;
+  console.log("AVATAR:", props)
   return (
     <Card className='profile-card-contents' sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
-        image="/static/images/avatar1.jpg"
+        image={avatar_url}
         alt="profile-photo"
       />
         <Fab color="secondary" size="small" aria-label="edit">
