@@ -23,8 +23,9 @@ export const challengeLinkToClipboard = () => {
   navigator.clipboard.writeText(message);
 }
 
-export const getDailyGame = () => {
-  return axios.get('api/games')
+export const getDailyGame = (userId) => {
+  console.log(userId)
+  return axios.get('api/games', {params: {userId}})
     .then(res => {
       return res.data;
     })
@@ -58,7 +59,7 @@ export const setAnswerMarker = (answer, markers, setMarkers) => {
     time: new Date(),
     answer: true
   }
-  setMarkers([...markers, answerMarker]);
+  setMarkers((prev) => [...prev, answerMarker]);
 };
 
 export const setView = (answer, setCenter, mapRef) => {

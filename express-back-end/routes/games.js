@@ -1,16 +1,39 @@
 const express = require("express");
+const { calculateDistance } = require("../helpers/helpers");
 const router = express.Router();
 
 
 module.exports = (db) => {
 
   router.get('/', (req, res) => {
-    db.query(`
-      SELECT latitude, longitude FROM games WHERE id = 1;
-    `)
-      .then(data => {
-        const coords = data.rows[0];
-        res.json(coords);
+    const userId = req.query.userId
+    const gameId = 1;
+    console.log(userId)
+    Promise.all([
+      db.query(`
+        SELECT latitude, longitude FROM games WHERE id = $1;
+      `, [gameId]),
+      db.query(`
+        SELECT * FROM guesses WHERE user_id = $1 AND game_id = $2 LIMIT 1;
+      `, [userId, gameId])
+    ])
+      .then(all => {
+        const [coordsData, guessData] = all;
+        const coords = coordsData.rows[0];
+        const guess = guessData.rows[0]
+        let distance = null
+        if (guess) {
+          distance = calculateDistance(coords, {
+            lat: guess.latitude,
+            lng: guess.longitude
+          })
+        }
+        console.log({coords, guess})
+        res.json({
+          coords,
+          guess,
+          distance
+        });
       })
       .catch(err => {
         console.log("Error!", err);

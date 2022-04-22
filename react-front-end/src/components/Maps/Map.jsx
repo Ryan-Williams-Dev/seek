@@ -50,13 +50,25 @@ export default function Map(props) {
 
   // This use effect fire once, upon answer submission
   useEffect(() => {
-    if(props.answer && !hasPlacedAnswer.current) {
-      setAnswerMarker(props.answer, markers, setMarkers);
-      setView(props.answer, setCenter, mapRef)
+    if(props.result && !hasPlacedAnswer.current) {
+      if (props.result.guess) {
+        setMarkers(() => [{
+          lat: props.result.guess.latitude,
+          lng: props.result.guess.longitude,
+          time: new Date(),
+          answer:false
+        }])
+      }
+      setAnswerMarker(props.result.answer, markers, setMarkers);
+      setView(props.result.answer, setCenter, mapRef)
       hasPlacedAnswer.current = true;
     }
-  }, [props.answer, markers]);
+  }, [props.result, markers]);
   
+  //fires on change of result state, checks user has not played this game before
+  useEffect(() => {
+    console.log('result: ',props.result)
+  }, [props.result])
 
   
   // see https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions
