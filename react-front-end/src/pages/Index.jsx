@@ -1,27 +1,41 @@
 import StreetView from '../components/Maps/StreetView';
 import Map from '../components/Maps/Map';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { authContext } from '../providers/AuthProvider'
 import Scoreboard from '../components/Maps/Scoreboard';
 import { getDailyGame } from '../helpers/maps/map-helpers';
 import axios from 'axios';
 
 const Index = () => {
+  const { user } = useContext(authContext)
 
   // Street View State and logic
   const [result, setResult] = useState(false)
   const [coords, setCoords] = useState()
 
   useEffect(() => {
-    getDailyGame()
+    const id = user ? user.id : null
+    getDailyGame(id)
       .then(res => {
-        const { latitude, longitude } = res
-        setCoords({
-          lat: Number(latitude),
-          lng: Number(longitude),
-        })
+        if (res.guess) {
+          setResult({
+            distance: res.distance,
+            answer: res.answerCoords,
+            score: res.guess.score,
+            guess: res.guess
+          })
+        }
+        
+        if (res.answerCoords) {
+          const { latitude, longitude } = res.answerCoords
+          setCoords({
+            lat: Number(latitude),
+            lng: Number(longitude),
+          })
+        }
       })
-  }, []);
+  }, [user]);
 
   const resetLoc = () => {
     setCoords({...coords})
@@ -67,7 +81,7 @@ const Index = () => {
           />
         </GoogleMap>}
 
-      <Map onSubmitGuess={onSubmitGuess} answer={result.answer}/>
+      <Map onSubmitGuess={onSubmitGuess} result={result} />
     </>
   );
 }

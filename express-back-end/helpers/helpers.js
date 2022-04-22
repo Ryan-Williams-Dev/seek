@@ -34,4 +34,8 @@ const calculateScore = (distance) => {
   return Math.round(score);
 };
 
-module.exports = { calculateDistance, calculateScore };
+const userHasPlayed = (userId, gameId) => {
+  
+}
+
+module.exports = { calculateDistance, calculateScore, userHasPlayed };
