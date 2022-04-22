@@ -1,4 +1,4 @@
-import { Card, CardContent, Table, Typography } from '@mui/material'
+import { Card, CardContent, Table, TableBody, Typography } from '@mui/material'
 import FollowListItem from './FollowListItem'
 
 const FollowList = () => {
@@ -10,10 +10,12 @@ const FollowList = () => {
           Follows
       </Typography>
       <Table sx={{minWidth: 300}} size="small" aria-label="a dense table">
-        {/* map multiple FollowListItem components here based on follows database table */}
-        <FollowListItem initials="RM" name="Ryan MacEachern" />
-        <FollowListItem initials="RW" name="Ryan Williams" />
-        <FollowListItem initials="HM" name="Hannah Montana" />
+        <TableBody>
+          {/* map multiple FollowListItem components here based on follows database table */}
+          <FollowListItem initials="RM" name="Ryan MacEachern" />
+          <FollowListItem initials="RW" name="Ryan Williams" />
+          <FollowListItem initials="HM" name="Hannah Montana" />
+        </TableBody>
       </Table>
       </CardContent>
     </Card>
