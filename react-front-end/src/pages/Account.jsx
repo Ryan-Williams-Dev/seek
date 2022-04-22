@@ -14,10 +14,12 @@ const Account = () => {
   // new route => base_URL/users/{user_id}
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_API_BASE_URL + `users/${user.email}`)
+    console.log("USERID:", user.id)
+    axios.get(process.env.REACT_APP_API_BASE_URL + `users/${user.id}`)
       .then(res => {
-        console.log("Request successful:", res.data)
-        setUserData(...res.data)
+        console.log("Request successful.");
+        setUserData(...res.data);
+        console.log("USERDATA:", userData);
       })
       .catch(err => {
         console.log("Error:", err)

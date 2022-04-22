@@ -5,9 +5,8 @@ module.exports = (db) => {
 
   // retrieve data for specific user for Account page
   router.get('/:id', (req, res) => {
-    const email = req.params.body;
-    console.log("EMAIL:", email);
-    return db.query("SELECT * FROM users WHERE email = $1;", [email])
+    const userID = req.params.id;
+    return db.query("SELECT * FROM users WHERE id = $1;", [userID])
       .then((data) => {
         console.log("Sending user data...");
         res.send(data.rows);
