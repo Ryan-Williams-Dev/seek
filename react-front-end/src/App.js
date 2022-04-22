@@ -52,7 +52,6 @@ function App() {
                   </Route>
                 
                   <Route exact path="/register">
-                    <Register />
                     { auth ? <Redirect to='/' /> : <Register />}
                   </Route>
                 
