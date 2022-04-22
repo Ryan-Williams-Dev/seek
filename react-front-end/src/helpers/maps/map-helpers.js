@@ -67,5 +67,7 @@ export const setView = (answer, setCenter, mapRef) => {
     lng: answer.longitude
   }
   setCenter({...newCenterCoords})
-  mapRef.current.setZoom(3.7)
+  if (mapRef) {
+    mapRef.current.setZoom(3.7)
+  }
 };
