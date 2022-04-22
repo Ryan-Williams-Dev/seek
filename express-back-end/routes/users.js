@@ -3,6 +3,10 @@ const router = express.Router();
 
 module.exports = (db) => {
 
+  router.get('/', (req, res) => {
+    
+  });
+
   router.post('/', (req, res) => {
     const { email, password } = req.body;
     return db.query("SELECT * FROM users WHERE email = $1;", [email])
