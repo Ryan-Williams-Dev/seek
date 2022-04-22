@@ -26,6 +26,7 @@ export const challengeLinkToClipboard = () => {
 export const getDailyGame = (userId) => {
   return axios.get('api/games', {params: {userId}})
     .then(res => {
+      console.log('data: ', res.data)
       return res.data;
     })
     .catch(err => {
@@ -66,5 +67,7 @@ export const setView = (answer, setCenter, mapRef) => {
     lng: answer.longitude
   }
   setCenter({...newCenterCoords})
-  mapRef.current.setZoom(3.7)
+  if (mapRef.current) {
+    mapRef.current.setZoom(3.7)
+  }
 };

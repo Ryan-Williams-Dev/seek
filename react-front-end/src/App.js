@@ -32,27 +32,28 @@ function App() {
                 <Switch>
 
                   <Route exact path="/">
-                    <Index/>
+                    { !auth ? <Redirect to='/login' /> : <Index/> }
                   </Route>
 
                   <Route exact path="/account">
-                    <Account/>
+                    { !auth ? <Redirect to='/login' /> : <Account/> }
                   </Route>
                 
                   <Route exact path="/leaderboards">
-                    <Leaderboards />
+                    { !auth ? <Redirect to='/login' /> : <Leaderboards /> }
                   </Route>
                 
                   <Route exact path="/custom-game">
-                    <CreateCustomGame />
+                    { !auth ? <Redirect to='/login' /> : <CreateCustomGame /> }
                   </Route>
                 
                   <Route exact path="/login">
-                    {auth ? <Redirect to='/' /> : <Login />}
+                    { auth ? <Redirect to='/' /> : <Login />}
                   </Route>
                 
                   <Route exact path="/register">
                     <Register />
+                    { auth ? <Redirect to='/' /> : <Register />}
                   </Route>
                 
                 </Switch>

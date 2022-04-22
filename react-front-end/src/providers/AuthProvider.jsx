@@ -15,6 +15,7 @@ export default function AuthProvider(props) {
   const logout = function() {
     setAuth(false);
     setUser(null);
+    window.location.reload(false);
   };
 
   // authContext will expose these items
