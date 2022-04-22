@@ -11,18 +11,16 @@ const Account = () => {
   const [userData, setUserData] = useState({})
 
   useEffect(() => {
-    console.log("USERID:", user.id)
     axios.get(`${process.env.REACT_APP_API_BASE_URL}users/${user.id}`)
       .then(res => {
         console.log("Request successful.");
         setUserData(...res.data);
+        console.log("USERDATA:", userData);
       })
       .catch(err => {
         console.log("Error:", err);
       });
   }, []);
-
-
 
   return (
     <>
