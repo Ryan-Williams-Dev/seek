@@ -11,6 +11,7 @@ import Index from './pages/Index';
 import Account from './pages/Account';
 import Leaderboards from './pages/Leaderboards';
 import CreateCustomGame from './pages/Custom_game';
+import PlayCustomGame from './pages/PlayCustomGame';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
@@ -45,6 +46,10 @@ function App() {
                 
                   <Route exact path="/custom-game">
                     { !auth ? <Redirect to='/login' /> : <CreateCustomGame /> }
+                  </Route>
+
+                  <Route path="/custom-game/:id">
+                    { !auth ? <Redirect to='/login' /> : <PlayCustomGame /> }
                   </Route>
                 
                   <Route exact path="/login">

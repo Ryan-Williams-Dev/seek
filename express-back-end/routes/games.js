@@ -6,7 +6,7 @@ const router = express.Router();
 module.exports = (db) => {
 
   router.get('/', (req, res) => {
-    const userId = req.query.userId
+    const userId = req.query.userId;
     const gameId = generateDailyGameId();
 
     Promise.all([
@@ -20,14 +20,14 @@ module.exports = (db) => {
       .then(all => {
         const [ answerCoordsData, guessData ] = all;
         const answerCoords = answerCoordsData.rows[0];
-        const guess = guessData.rows[0]
+        const guess = guessData.rows[0];
 
-        let distance = null
+        let distance = null;
         if (guess) {
           distance = calculateDistance(answerCoords, {
             lat: guess.latitude,
             lng: guess.longitude
-          })
+          });
         }
 
         res.json({
