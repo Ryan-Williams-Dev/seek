@@ -5,11 +5,12 @@ const router = express.Router();
 module.exports = (db) => {
 
   router.post('/', (req, res) => {
-    const { lat, lng } = req.body;
-    
+    const { lat, lng, gameId } = req.body;
+    console.log(req.body)
+
     db.query(
-      `SELECT latitude, longitude FROM games WHERE id = 1;`
-    )
+      `SELECT latitude, longitude FROM games WHERE id = $1;`
+    , [gameId])
     .then((results) => {
       const answer = results.rows[0];
       const distance = calculateDistance(answer, req.body);
@@ -19,7 +20,7 @@ module.exports = (db) => {
         game_id, user_id, latitude, longitude, score
       ) VALUES (
         $1, $2, $3, $4, $5
-      );`, [ 1, 1, lat, lng, score ]
+      );`, [ gameId, 1, lat, lng, score ]
     )
     .then(result => {
       res.send({distance, score, answer});

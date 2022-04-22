@@ -47,7 +47,7 @@ export default function Map(props) {
   }, []);
   
 
-  // This use effect fires upon answer submission & when user has alreadt played
+  // This use effect fires upon answer submission & when user has already played
   useEffect(() => {
     if(props.result && !hasPlacedAnswer.current) {
       if (props.result.guess) {

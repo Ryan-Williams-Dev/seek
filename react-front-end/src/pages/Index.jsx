@@ -13,11 +13,13 @@ const Index = () => {
   // Street View State and logic
   const [result, setResult] = useState(false)
   const [coords, setCoords] = useState()
+  const [gameId, setGameId] = useState()
 
   useEffect(() => {
     const id = user ? user.id : null
     getDailyGame(id)
       .then(res => {
+        setGameId(res.gameId)
         if (res.guess) {
           setResult({
             distance: res.distance,
@@ -43,7 +45,7 @@ const Index = () => {
 
   // Bottom Map State and Logic
   const onSubmitGuess = (marker) => {
-    axios.post('api/guess', marker)
+    axios.post('api/guess', {...marker, gameId})
       .then(res => {
         console.log("success: ", res.data)
         setResult(res.data);

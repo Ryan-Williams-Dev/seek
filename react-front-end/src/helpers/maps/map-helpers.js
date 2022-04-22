@@ -26,6 +26,7 @@ export const challengeLinkToClipboard = () => {
 export const getDailyGame = (userId) => {
   return axios.get('api/games', {params: {userId}})
     .then(res => {
+      console.log('data: ', res.data)
       return res.data;
     })
     .catch(err => {

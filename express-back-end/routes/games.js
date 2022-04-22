@@ -1,5 +1,5 @@
 const express = require("express");
-const { calculateDistance } = require("../helpers/helpers");
+const { calculateDistance, generateDailyGameId } = require("../helpers/helpers");
 const router = express.Router();
 
 
@@ -7,7 +7,7 @@ module.exports = (db) => {
 
   router.get('/', (req, res) => {
     const userId = req.query.userId
-    const gameId = 1;
+    const gameId = generateDailyGameId();
 
     Promise.all([
       db.query(`
@@ -33,7 +33,8 @@ module.exports = (db) => {
         res.json({
           answerCoords,
           guess,
-          distance
+          distance,
+          gameId
         });
       })
       .catch(err => {
