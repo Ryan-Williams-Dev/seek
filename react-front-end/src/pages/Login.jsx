@@ -22,7 +22,6 @@ export default function Login() {
           return alert("Incorrect credentials")
         } 
         
-        console.log(res.data.user)
         login(res.data.user)
       })
       .catch((err) => {
