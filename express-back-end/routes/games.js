@@ -8,7 +8,7 @@ module.exports = (db) => {
   router.get('/', (req, res) => {
     const userId = req.query.userId
     const gameId = 1;
-    console.log(userId)
+
     Promise.all([
       db.query(`
         SELECT latitude, longitude FROM games WHERE id = $1;
@@ -18,19 +18,20 @@ module.exports = (db) => {
       `, [userId, gameId])
     ])
       .then(all => {
-        const [coordsData, guessData] = all;
-        const coords = coordsData.rows[0];
+        const [ answerCoordsData, guessData ] = all;
+        const answerCoords = answerCoordsData.rows[0];
         const guess = guessData.rows[0]
+
         let distance = null
         if (guess) {
-          distance = calculateDistance(coords, {
+          distance = calculateDistance(answerCoords, {
             lat: guess.latitude,
             lng: guess.longitude
           })
         }
-        console.log({coords, guess})
+
         res.json({
-          coords,
+          answerCoords,
           guess,
           distance
         });

@@ -42,34 +42,26 @@ export default function Map(props) {
     setMarkers(() => [{
       lat: event.latLng.lat(),
       lng: event.latLng.lng(),
-      time: new Date(),
       answer: false
     }]);
   }, []);
   
 
-  // This use effect fire once, upon answer submission
+  // This use effect fires upon answer submission & when user has alreadt played
   useEffect(() => {
     if(props.result && !hasPlacedAnswer.current) {
       if (props.result.guess) {
         setMarkers(() => [{
           lat: props.result.guess.latitude,
           lng: props.result.guess.longitude,
-          time: new Date(),
           answer:false
         }])
       }
-      setAnswerMarker(props.result.answer, markers, setMarkers);
+      setAnswerMarker(props.result.answer, setMarkers);
       setView(props.result.answer, setCenter, mapRef)
       hasPlacedAnswer.current = true;
     }
   }, [props.result, markers]);
-  
-  //fires on change of result state, checks user has not played this game before
-  useEffect(() => {
-    console.log('result: ',props.result)
-  }, [props.result])
-
   
   // see https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions
   const options = {
@@ -90,11 +82,11 @@ export default function Map(props) {
     onLoad={handleOnLoad}
     onDragEnd={handleCenterChanged}
   >
-    {markers.map((marker) => {
+    {markers.map((marker, index) => {
         if(marker.answer) {
           return(
             <Marker 
-              key={marker.time.toISOString()}
+              key={index}
               position={{ lat: marker.lat, lng: marker.lng }}
               animation={window.google.maps.Animation.DROP}
               title="Here!"
@@ -109,7 +101,7 @@ export default function Map(props) {
         } else { 
           return(
             <Marker 
-              key={marker.time.toISOString()}
+              key={index}
               position={{ lat: marker.lat, lng: marker.lng }}
               animation={window.google.maps.Animation.DROP}
               title="Here!"

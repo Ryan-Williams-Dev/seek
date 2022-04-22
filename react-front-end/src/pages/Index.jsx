@@ -18,25 +18,24 @@ const Index = () => {
     const id = user ? user.id : null
     getDailyGame(id)
       .then(res => {
-        console.log('before the if: ', res)
         if (res.guess) {
-          console.log("res.coords: ", res.coords)
           setResult({
             distance: res.distance,
-            answer: res.coords,
+            answer: res.answerCoords,
             score: res.guess.score,
             guess: res.guess
           })
         }
-        if (res.coords) {
-          const { latitude, longitude } = res.coords
+        
+        if (res.answerCoords) {
+          const { latitude, longitude } = res.answerCoords
           setCoords({
             lat: Number(latitude),
             lng: Number(longitude),
           })
         }
       })
-  }, []);
+  }, [user]);
 
   const resetLoc = () => {
     setCoords({...coords})
