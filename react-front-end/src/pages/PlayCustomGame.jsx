@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import Scoreboard from "../components/Maps/Scoreboard";
 import Map from "../components/Maps/Map";
 import StreetView from "../components/Maps/StreetView";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+
 
 
 const PlayCustomGame = () => {
@@ -15,6 +17,8 @@ const PlayCustomGame = () => {
   if (!isLoaded) return <div>Loading...</div>
   if (loadError) return `Error loading maps: ${loadError}`;
   
+  // useEffect
+
   return (
     <>
       <GoogleMap
@@ -22,7 +26,7 @@ const PlayCustomGame = () => {
         mapContainerClassName="map-container"
         >
           <StreetView
-            coords={{lat:50, lng: 50}}
+            coords={{lat: 43.642538, lng: -79.427151}}
             resetLoc={""}
           />
         </GoogleMap>
