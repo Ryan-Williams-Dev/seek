@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef, useContext } from 'react';
-import { authContext } from '../../providers/AuthProvider';
+import { authContext } from '../providers/AuthProvider'
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import mapStyles from "../../mapStyles";
 import { Button } from "@mui/material"
@@ -123,7 +123,7 @@ export default function Map(props) {
       <Button 
         variant="contained"
         endIcon={<FontAwesomeIcon icon={faMapPin} />}
-        onClick={() => props.onSubmitGuess(markers[0], props.gameId, user, props.setResult) }
+        onClick={() => props.onSubmitGuess(markers[0], props.gameId, user) }
         sx={{m: 1, mb: 3.5 }}
       >Submit</Button>
     }

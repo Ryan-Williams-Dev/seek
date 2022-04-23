@@ -6,13 +6,12 @@ import Map from "../components/Maps/Map";
 import StreetView from "../components/Maps/StreetView";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { getCustomGame } from "../helpers/maps/map-helpers";
-import { onSubmitGuess } from "../helpers/maps/map-helpers";
 
-const PlayCustomGame = (props) => {
-  const { user } = useContext(authContext);
+const PlayCustomGame = () => {
+  // const { user } = useContext(authContext);
   const { gameID } = useParams();
-  const { result, setResult } = props;
   
+  const [result, setResult] = useState(false);
   const [coords, setCoords] = useState();
   // const [gameID, setGameID] = useState();
 
@@ -39,6 +38,8 @@ const PlayCustomGame = (props) => {
   if (!isLoaded) return <div>Loading...</div>
   if (loadError) return `Error loading maps: ${loadError}`;
 
+  
+
   return (
     <>
       <GoogleMap
@@ -51,7 +52,9 @@ const PlayCustomGame = (props) => {
           />
         </GoogleMap>
 
-      <Map onSubmitGuess={onSubmitGuess} result={result} setResult={setResult}/>
+      <Map 
+      // onSubmitGuess={""} result={""}
+       />
     </>
   );
 }
