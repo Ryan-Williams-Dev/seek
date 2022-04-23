@@ -1,5 +1,5 @@
 const express = require("express");
-const { calculateDistance, generateDailyGameId } = require("../helpers/helpers");
+const { calculateDistance, generateDailyGameNum } = require("../helpers/helpers");
 const router = express.Router();
 
 
@@ -7,25 +7,29 @@ module.exports = (db) => {
 
   router.get('/', (req, res) => {
     const userId = req.query.userId
-    const gameId = generateDailyGameId();
+    const gameNum = generateDailyGameNum();
 
-    Promise.all([
-      db.query(`
-        SELECT latitude, longitude
-        FROM games 
-        WHERE game_type_id = 1
-        LIMIT $1;
-      `, [gameId]),
+    db.query(`
+      SELECT id, latitude, longitude
+      FROM games 
+      WHERE game_type_id = 1
+      LIMIT $1;
+    `, [gameNum])
+    .then(answerData => {
+      const answer = answerData.rows[gameNum - 1];
+      const gameId = answer.id;
+      const answerCoords = {
+        latitude: answer.latitude,
+        longitude: answer.longitude
+      }
+
       db.query(`
         SELECT * FROM guesses WHERE user_id = $1 AND game_id = $2 LIMIT 1;
       `, [userId, gameId])
-    ])
-      .then(all => {
-        const [ answerCoordsData, guessData ] = all;
-        const answerCoords = answerCoordsData.rows[gameId - 1];
+      .then(guessData => {
         const guess = guessData.rows[0]
-
         let distance = null
+        
         if (guess) {
           distance = calculateDistance(answerCoords, {
             lat: guess.latitude,
@@ -44,6 +48,7 @@ module.exports = (db) => {
         console.log("Error!", err);
         res.send(err);
       });
+    });
   });
 
   router.post('/', (req, res) => {
