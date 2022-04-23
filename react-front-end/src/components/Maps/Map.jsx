@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef, useContext } from 'react';
-import { authContext } from '../providers/AuthProvider'
+import { authContext } from '../../providers/AuthProvider'
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import mapStyles from "../../mapStyles";
 import { Button } from "@mui/material"
