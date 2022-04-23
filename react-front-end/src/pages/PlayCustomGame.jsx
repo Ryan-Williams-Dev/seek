@@ -20,7 +20,7 @@ const PlayCustomGame = () => {
       .catch(err => {
         console.log(err)
       });
-  }, []);
+  }, [gameID]);
 
   const resetLoc = () => {
     setCoords({...coords})

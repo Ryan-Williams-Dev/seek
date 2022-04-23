@@ -4,8 +4,7 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { useState, useEffect, useContext } from 'react';
 import { authContext } from '../providers/AuthProvider'
 import Scoreboard from '../components/Maps/Scoreboard';
-import { getDailyGame } from '../helpers/maps/map-helpers';
-import axios from 'axios';
+import { getDailyGame, onSubmitGuess } from '../helpers/maps/map-helpers';
 
 const Index = () => {
   const { user } = useContext(authContext)
@@ -44,17 +43,17 @@ const Index = () => {
   } 
 
   // Bottom Map State and Logic
-  const onSubmitGuess = (marker, gameId, user) => {
-    axios.post('api/guess', {...marker, gameId, user})
-      .then(res => {
-        console.log("success:", res.data);
-        setResult(res.data);
-      })
-      .catch(err => {
-        // console.log("unsuccessful:", err)
-        alert("Error, please try again " + err)
-      })
-  };
+  // const onSubmitGuess = (marker, gameId, user) => {
+  //   axios.post('api/guess', {...marker, gameId, user})
+  //     .then(res => {
+  //       console.log("success:", res.data);
+  //       setResult(res.data);
+  //     })
+  //     .catch(err => {
+  //       // console.log("unsuccessful:", err)
+  //       alert("Error, please try again " + err)
+  //     })
+  // };
 
 
   // Other Logic
