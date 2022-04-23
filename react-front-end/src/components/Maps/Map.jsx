@@ -48,7 +48,6 @@ export default function Map(props) {
     }]);
   }, []);
   
-
   // This use effect fires upon answer submission & when user has already played
   useEffect(() => {
     if(props.result && !hasPlacedAnswer.current && isLoaded) {
@@ -71,7 +70,6 @@ export default function Map(props) {
     disableDefaultUI: true,
   }
   
-
   if (!isLoaded) return <div>Loading...</div>;
   if (loadError) return `Error loading maps: ${loadError}`;
   

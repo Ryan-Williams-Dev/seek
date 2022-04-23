@@ -59,9 +59,15 @@ module.exports = (db) => {
       `SELECT latitude, longitude FROM games
       WHERE game_type_id = 2 AND id = $1;`, [gameID]
     )
-      .then(data => {
-        console.log("Sending custom game data...");
-        res.send(data.rows[0]);
+      .then(answerData => {
+        console.log("answerData.rows[0]:", answerData.rows[0]);
+        const answer = answerData.rows[0];
+        // const gameId = answer.id;
+        const answerCoords = {
+          latitude: answer.latitude,
+          longitude: answer.longitude
+        };
+        res.send(answerData.rows[0]);
       })
       .catch(err => {
         console.log("get/:id", err);

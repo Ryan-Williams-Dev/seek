@@ -9,7 +9,7 @@ const PlayCustomGame = () => {
   // const { user } = useContext(authContext);
   const { gameID } = useParams();
   
-  const [result, setResult] = useState({});
+  const [result, setResult] = useState(false);
   const [coords, setCoords] = useState();
 
   useEffect(() => {
@@ -31,7 +31,6 @@ const PlayCustomGame = () => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
   });
   
-
   if (!isLoaded) return <div>Loading...</div>
   if (loadError) return `Error loading maps: ${loadError}`;
 
