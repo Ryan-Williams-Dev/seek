@@ -12,11 +12,12 @@ const PlayCustomGame = () => {
   
   const [result, setResult] = useState(false);
   const [coords, setCoords] = useState();
-  const [gameId, setGameId] = useState();
+  const [gameID, setGameId] = useState();
 
   useEffect(() => {
-    getCustomGame(gameId)
+    getCustomGame(gameID)
       .then(res => {
+        console.log("getCustomGame res:", res)
         setGameId(res.gameId)
         if (res.guess) {
           setResult({
@@ -49,11 +50,13 @@ const PlayCustomGame = () => {
         >
           <StreetView
             coords={{lat: 43.642538, lng: -79.427151}}
-            resetLoc={""}
+            // resetLoc={""}
           />
         </GoogleMap>
 
-      <Map onSubmitGuess={""} result={""} />
+      <Map 
+      // onSubmitGuess={""} result={""}
+       />
     </>
   );
 }

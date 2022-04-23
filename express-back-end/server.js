@@ -1,14 +1,14 @@
 require("dotenv").config({silent: true});
 
-const cors = require('cors')
+const cors = require('cors');
 const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
 const PORT = process.env.PORT || 8080;
 
 // DB setup
-const { Pool } = require("pg")
-const dbParams = require("./lib/db.js")
+const { Pool } = require("pg");
+const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 

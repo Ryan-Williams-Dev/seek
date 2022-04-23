@@ -7,15 +7,15 @@ module.exports = (db) => {
 
   router.get('/', (req, res) => {
     const userId = req.query.userId;
-    const gameId = generateDailyGameId();
+    const gameID = generateDailyGameId();
 
     Promise.all([
       db.query(`
         SELECT latitude, longitude FROM games WHERE id = $1;
-      `, [gameId]),
+      `, [gameID]),
       db.query(`
         SELECT * FROM guesses WHERE user_id = $1 AND game_id = $2 LIMIT 1;
-      `, [userId, gameId])
+      `, [userId, gameID])
     ])
       .then(all => {
         const [ answerCoordsData, guessData ] = all;
@@ -34,7 +34,7 @@ module.exports = (db) => {
           answerCoords,
           guess,
           distance,
-          gameId
+          gameID
         });
       })
       .catch(err => {
@@ -43,12 +43,21 @@ module.exports = (db) => {
       });
   });
 
+  // Play custom game route.
   router.get('/:id', (req, res) => {
+    console.log("req.params:", req.params);
     const gameID = req.params.id;
     return db.query(
       `SELECT latitude, longitude FROM games
       WHERE game_type_id = 2 AND id = $1;`, [gameID]
-    );
+    )
+      .then(data => {
+        console.log("Sending custom game data...");
+        res.send(data.rows);
+      })
+      .catch(err => {
+        console.log("get/:id", err);
+      });
   });
 
   router.post('/', (req, res) => {

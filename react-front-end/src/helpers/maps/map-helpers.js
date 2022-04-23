@@ -72,8 +72,8 @@ export const setView = (answer, setCenter, mapRef) => {
   }
 };
 
-export const getCustomGame = (gameId) => {
-  return axios.get('api/games/:id', {params: {gameId}})
+export const getCustomGame = (gameID) => {
+  return axios.get('api/games/:id', {params: {gameID}})
     .then(res => {
       console.log('data: ', res.data)
       return res.data;
