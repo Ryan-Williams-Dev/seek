@@ -45,7 +45,7 @@ const Index = () => {
 
   // Bottom Map State and Logic
   const onSubmitGuess = (marker) => {
-    axios.post('api/guess', {...marker, gameId})
+    axios.post('api/guess', {...marker, gameId, user})
       .then(res => {
         console.log("success:", res.data);
         setResult(res.data);

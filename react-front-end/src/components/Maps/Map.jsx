@@ -49,7 +49,7 @@ export default function Map(props) {
 
   // This use effect fires upon answer submission & when user has already played
   useEffect(() => {
-    if(props.result && !hasPlacedAnswer.current) {
+    if(props.result && !hasPlacedAnswer.current && isLoaded) {
       if (props.result.guess) {
         setMarkers(() => [{
           lat: props.result.guess.latitude,
@@ -61,7 +61,7 @@ export default function Map(props) {
       setView(props.result.answer, setCenter, mapRef)
       hasPlacedAnswer.current = true;
     }
-  }, [props.result, markers]);
+  }, [props.result, markers, isLoaded]);
   
   // see https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions
   const options = {

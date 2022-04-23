@@ -13,7 +13,6 @@ const Account = () => {
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_BASE_URL}users/${user.id}`)
       .then(res => {
-        console.log("Request successful.");
         setUserData(...res.data);
       })
       .catch(err => { 
@@ -22,17 +21,15 @@ const Account = () => {
   }, []);
 
   return (
-    <>
+    <div className='account-cards-div'>
       <div className='profile-header'>
         <div className='about-card'>
           <AboutCard userData={userData}/>
         </div>
       </div>
-      <div className='info-row'>
-        <Stats userData={userData}/>
-        <FollowList userData={userData}/>
-      </div>
-    </>
+      <Stats userData={userData}/>
+      <FollowList userData={userData}/>
+    </div>
   );
 }
 

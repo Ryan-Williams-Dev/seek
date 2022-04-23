@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { authContext } from './providers/AuthProvider';
 import './App.scss';
 import ButtonAppBar from "./components/Nav/NavBar";
-// eslint-disable-next-line no-unused-vars
-import { Theme, DarkTheme } from './theme/themeOptions';
+import { Theme } from './theme/themeOptions';
 import { ThemeProvider } from "@mui/material/styles"
 import { CssBaseline } from '@mui/material';
 import Index from './pages/Index';
@@ -14,11 +13,21 @@ import CreateCustomGame from './pages/Custom_game';
 import PlayCustomGame from './pages/PlayCustomGame';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Cookies from 'js-cookie';
+import { fetchUserData } from './helpers/users/userhelpers';
 
 
 function App() {
+  const { auth, login} = useContext(authContext)
 
-  const { auth } = useContext(authContext)
+  useEffect(() => {
+    if (Cookies.get('userId') && !auth) {
+      fetchUserData(Cookies.get('userId'))
+        .then(res => {
+          login(res.data)
+        })
+    }
+  }, [auth, login]);
   
   return (
     <ThemeProvider theme={Theme}>
@@ -58,7 +67,6 @@ function App() {
                   </Route>
                 
                   <Route exact path="/register">
-                    <Register />
                     { auth ? <Redirect to='/' /> : <Register />}
                   </Route>
                 

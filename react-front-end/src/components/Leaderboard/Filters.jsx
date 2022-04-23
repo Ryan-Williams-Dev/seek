@@ -28,8 +28,8 @@ const Filters = () => {
           label="LdrBoard Filter"
           onChange={handleChange}
         >
-          {filters.map(filter => (
-            <MenuItem value={filter}>{filter}</MenuItem>
+          {filters.map((filter, index) => (
+            <MenuItem key={index} value={filter}>{filter}</MenuItem>
           ))};
         </Select>
       </FormControl>

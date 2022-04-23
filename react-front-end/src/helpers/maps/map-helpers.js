@@ -26,7 +26,6 @@ export const challengeLinkToClipboard = () => {
 export const getDailyGame = (userId) => {
   return axios.get('api/games', {params: {userId}})
     .then(res => {
-      // console.log('data:', res.data)
       return res.data;
     })
     .catch(err => {
@@ -40,7 +39,6 @@ export const setGameLocation = (marker) => {
   console.log("Making axios request:", marker)
   axios.post('api/games', marker)
     .then(res => {
-      // console.log("Axios request made successfully:");
       return res.data;
     })
     .catch(err => {
