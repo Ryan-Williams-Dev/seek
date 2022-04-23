@@ -15,7 +15,7 @@ const PlayCustomGame = () => {
   const [gameId, setGameId] = useState();
 
   useEffect(() => {
-    getCustomGame()
+    getCustomGame(gameId)
       .then(res => {
         setGameId(res.gameId)
         if (res.guess) {

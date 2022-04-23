@@ -43,6 +43,14 @@ module.exports = (db) => {
       });
   });
 
+  router.get('/:id', (req, res) => {
+    const gameID = req.params.id;
+    return db.query(
+      `SELECT latitude, longitude FROM games
+      WHERE game_type_id = 2 AND id = $1;`, [gameID]
+    );
+  });
+
   router.post('/', (req, res) => {
     const { lat, lng } = req.body;
     console.log("Arrived at router. Making DB query...");
