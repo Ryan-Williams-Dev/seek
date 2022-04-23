@@ -53,7 +53,7 @@ module.exports = (db) => {
     )
       .then(data => {
         console.log("Sending custom game data...");
-        res.send(data.rows);
+        res.send(data.rows[0]);
       })
       .catch(err => {
         console.log("get/:id", err);

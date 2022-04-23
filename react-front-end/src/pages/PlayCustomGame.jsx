@@ -1,4 +1,4 @@
-import axios from "axios";
+import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { authContext } from "../providers/AuthProvider";
 import Scoreboard from "../components/Maps/Scoreboard";
@@ -8,26 +8,22 @@ import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { getCustomGame } from "../helpers/maps/map-helpers";
 
 const PlayCustomGame = () => {
-  const { user } = useContext(authContext);
+  // const { user } = useContext(authContext);
+  const { gameID } = useParams();
   
   const [result, setResult] = useState(false);
   const [coords, setCoords] = useState();
-  const [gameID, setGameId] = useState();
+  // const [gameID, setGameID] = useState();
 
   useEffect(() => {
     getCustomGame(gameID)
       .then(res => {
         console.log("getCustomGame res:", res)
-        setGameId(res.gameId)
-        if (res.guess) {
-          setResult({
-            distance: res.distance,
-            answer: res.answerCoords,
-            score: res.guess.score,
-            guess: res.guess
-          });
-        }
+        setCoords({lat: res.latitude, lng: res.longitude})
       })
+      .catch(err => {
+        console.log(err)
+      });
   }, []);
   
   
@@ -49,7 +45,7 @@ const PlayCustomGame = () => {
         mapContainerClassName="map-container"
         >
           <StreetView
-            coords={{lat: 43.642538, lng: -79.427151}}
+            coords={coords}
             // resetLoc={""}
           />
         </GoogleMap>

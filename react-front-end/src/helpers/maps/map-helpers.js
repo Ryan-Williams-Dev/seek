@@ -26,11 +26,11 @@ export const challengeLinkToClipboard = () => {
 export const getDailyGame = (userId) => {
   return axios.get('api/games', {params: {userId}})
     .then(res => {
-      console.log('data: ', res.data)
+      console.log('data:', res.data)
       return res.data;
     })
     .catch(err => {
-      console.log("Error:",err);
+      console.log("Error:", err);
       return err;
     })
 };
@@ -73,7 +73,7 @@ export const setView = (answer, setCenter, mapRef) => {
 };
 
 export const getCustomGame = (gameID) => {
-  return axios.get('api/games/:id', {params: {gameID}})
+  return axios.get(`/api/games/${gameID}`)
     .then(res => {
       console.log('data: ', res.data)
       return res.data;
