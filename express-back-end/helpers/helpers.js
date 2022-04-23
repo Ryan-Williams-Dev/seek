@@ -34,7 +34,7 @@ const calculateScore = (distance) => {
   return Math.round(score);
 };
 
-const generateDailyGameId = () => {
+const generateDailyGameNum = () => {
   const startDate = new Date(2022, 3, 22); // month is by index (so april = 3), setting startDay to today will result in id = 1;
   const todayDate = new Date();
   const differenceInTime = Math.abs(startDate - todayDate);
@@ -42,4 +42,4 @@ const generateDailyGameId = () => {
   return differenceInDays; 
 }
 
-module.exports = { calculateDistance, calculateScore, generateDailyGameId };
+module.exports = { calculateDistance, calculateScore, generateDailyGameNum };
