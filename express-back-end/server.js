@@ -18,14 +18,17 @@ App.use(BodyParser.json());
 App.use(Express.static('public'));
 App.use(cors());
 
+
 // Routes
 const userRoutes = require('./routes/users')
 const guessRoutes = require('./routes/guess')
 const gameRoutes = require('./routes/games')
+const fetchUserRoute = require('./routes/fetch')
 
 App.use('/users', userRoutes(db)); 
 App.use('/api/guess', guessRoutes(db));
 App.use('/api/games', gameRoutes(db));
+App.use('/api/fetch', fetchUserRoute(db));
 
 
 // Server Start

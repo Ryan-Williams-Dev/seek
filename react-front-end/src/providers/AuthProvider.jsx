@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import Cookies from 'js-cookie'
 
 export const authContext = createContext();
 
@@ -15,6 +16,7 @@ export default function AuthProvider(props) {
   const logout = function() {
     setAuth(false);
     setUser(null);
+    Cookies.remove('userId')
     window.location.reload(false);
   };
 

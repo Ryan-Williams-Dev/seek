@@ -4,6 +4,7 @@ import axios from 'axios';
 import "./page-styles.scss";
 import { useContext } from 'react';
 import { authContext } from '../providers/AuthProvider';
+import Cookies from 'js-cookie'
 
 export default function Login() {
   
@@ -20,8 +21,9 @@ export default function Login() {
       .then((res) => {
         if (!res.data.valid) {
           return alert("Incorrect credentials")
-        } 
+        }
         
+        Cookies.set('userId', res.data.user.id, { expires: 7 })
         login(res.data.user)
       })
       .catch((err) => {

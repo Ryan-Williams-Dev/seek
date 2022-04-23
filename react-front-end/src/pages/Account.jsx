@@ -13,7 +13,6 @@ const Account = () => {
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_BASE_URL}users/${user.id}`)
       .then(res => {
-        console.log("Request successful.");
         setUserData(...res.data);
       })
       .catch(err => { 
