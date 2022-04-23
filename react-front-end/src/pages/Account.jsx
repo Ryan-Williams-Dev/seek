@@ -21,17 +21,15 @@ const Account = () => {
   }, []);
 
   return (
-    <>
+    <div className='account-cards-div'>
       <div className='profile-header'>
         <div className='about-card'>
           <AboutCard userData={userData}/>
         </div>
       </div>
-      <div className='info-row'>
-        <Stats userData={userData}/>
-        <FollowList userData={userData}/>
-      </div>
-    </>
+      <Stats userData={userData}/>
+      <FollowList userData={userData}/>
+    </div>
   );
 }
 

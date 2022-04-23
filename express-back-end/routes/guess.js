@@ -5,7 +5,7 @@ const router = express.Router();
 module.exports = (db) => {
 
   router.post('/', (req, res) => {
-    const { lat, lng, gameId } = req.body;
+    const { lat, lng, gameId, user } = req.body;
     console.log(req.body)
 
     db.query(
@@ -20,7 +20,7 @@ module.exports = (db) => {
         game_id, user_id, latitude, longitude, score
       ) VALUES (
         $1, $2, $3, $4, $5
-      );`, [ gameId, 1, lat, lng, score ]
+      );`, [ gameId, user.id, lat, lng, score ]
     )
     .then(result => {
       res.send({distance, score, answer});
