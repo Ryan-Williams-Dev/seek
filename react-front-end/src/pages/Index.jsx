@@ -83,7 +83,7 @@ const Index = () => {
           />
         </GoogleMap>}
 
-      <Map onSubmitGuess={onSubmitGuess} result={result} gameId={gameId}/>
+      <Map onSubmitGuess={onSubmitGuess} result={result} setResult={setResult} gameId={gameId}/>
     </>
   );
 }

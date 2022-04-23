@@ -123,7 +123,7 @@ export default function Map(props) {
       <Button 
         variant="contained"
         endIcon={<FontAwesomeIcon icon={faMapPin} />}
-        onClick={() => props.onSubmitGuess(markers[0], props.gameId, user) }
+        onClick={() => props.onSubmitGuess(markers[0], props.gameId, user, props.setResult) }
         sx={{m: 1, mb: 3.5 }}
       >Submit</Button>
     }
