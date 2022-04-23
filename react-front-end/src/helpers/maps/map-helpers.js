@@ -1,16 +1,15 @@
 import axios from 'axios';
 
-  // export const onSubmitGuess = (marker, gameId, user) => {
-  //   axios.post('api/guess', {...marker, gameId, user})
-  //     .then(res => {
-  //       console.log("success:", res.data);
-  //       setResult(res.data);
-  //     })
-  //     .catch(err => {
-  //       // console.log("unsuccessful:", err)
-  //       alert("Error, please try again " + err)
-  //     })
-  // };
+export const onSubmitGuess = (marker, gameId, user, setResult) => {
+  axios.post('api/guess', {...marker, gameId, user})
+    .then(res => {
+      console.log("success:", res.data.body);
+      setResult(res.data);
+    })
+    .catch(err => {
+      alert("Error, please try again " + err)
+    })
+};
 
 export const refreshPage = () => {
   window.location.reload(false);

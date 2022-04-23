@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { authContext } from './providers/AuthProvider';
 import './App.scss';
 import ButtonAppBar from "./components/Nav/NavBar";
@@ -16,9 +16,10 @@ import Register from './pages/Register';
 import Cookies from 'js-cookie';
 import { fetchUserData } from './helpers/users/userhelpers';
 
-
 function App() {
   const { auth, login} = useContext(authContext)
+  const [result, setResult] = useState(false);
+
 
   useEffect(() => {
     if (Cookies.get('userId') && !auth) {
@@ -42,7 +43,7 @@ function App() {
                 <Switch>
 
                   <Route exact path="/">
-                    { !auth ? <Redirect to='/login' /> : <Index/> }
+                    { !auth ? <Redirect to='/login' /> : <Index result={result} setResult={setResult}/> }
                   </Route>
 
                   <Route exact path="/account">
@@ -59,7 +60,7 @@ function App() {
 
                   <Route path="/custom-game/:gameID">
                     {/* removed auth ternery check temporarily. put it back in after cookie tracking is setup */}
-                    <PlayCustomGame />
+                    <PlayCustomGame result={result} setResult={setResult}/>
                   </Route>
                 
                   <Route exact path="/login">

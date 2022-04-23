@@ -5,15 +5,19 @@ import { useState, useEffect, useContext } from 'react';
 import { authContext } from '../providers/AuthProvider'
 import Scoreboard from '../components/Maps/Scoreboard';
 import { getDailyGame } from '../helpers/maps/map-helpers';
-import axios from 'axios';
+import { onSubmitGuess } from '../helpers/maps/map-helpers';
 
-const Index = () => {
+const Index = (props) => {
   const { user } = useContext(authContext)
-
+  const { result, setResult } = props;
   // Street View State and logic
-  const [result, setResult] = useState(false)
+  // const [result, setResult] = useState(false);
   const [coords, setCoords] = useState()
   const [gameId, setGameId] = useState()
+
+  // handleSubmit
+  // put entire getDailyGame async block in here
+  // then use useEffect to call handleSubmit()
 
   useEffect(() => {
     const id = user ? user.id : null
@@ -44,18 +48,17 @@ const Index = () => {
   } 
 
   // Bottom Map State and Logic
-  const onSubmitGuess = (marker, gameId, user) => {
-    axios.post('api/guess', {...marker, gameId, user})
-      .then(res => {
-        console.log("success:", res.data);
-        setResult(res.data);
-      })
-      .catch(err => {
-        // console.log("unsuccessful:", err)
-        alert("Error, please try again " + err)
-      })
-  };
-
+  // const onSubmitGuess = (marker, gameId, user) => {
+  //   axios.post('api/guess', {...marker, gameId, user})
+  //     .then(res => {
+  //       console.log("success:", res.data);
+  //       setResult(res.data);
+  //     })
+  //     .catch(err => {
+  //       // console.log("unsuccessful:", err)
+  //       alert("Error, please try again " + err)
+  //     })
+  // };
 
   // Other Logic
   const { isLoaded, loadError } = useJsApiLoader({
@@ -83,7 +86,7 @@ const Index = () => {
           />
         </GoogleMap>}
 
-      <Map onSubmitGuess={onSubmitGuess} result={result} gameId={gameId}/>
+      <Map onSubmitGuess={onSubmitGuess} result={result} setResult={setResult} gameId={gameId}/>
     </>
   );
 }
