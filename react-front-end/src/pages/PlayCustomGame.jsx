@@ -1,7 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
-import { authContext } from "../providers/AuthProvider";
-import Scoreboard from "../components/Maps/Scoreboard";
+import { useState, useEffect } from "react";
 import Map from "../components/Maps/Map";
 import StreetView from "../components/Maps/StreetView";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
@@ -11,9 +9,8 @@ const PlayCustomGame = () => {
   // const { user } = useContext(authContext);
   const { gameID } = useParams();
   
-  const [result, setResult] = useState(false);
+  const [result, setResult] = useState({});
   const [coords, setCoords] = useState();
-  // const [gameID, setGameID] = useState();
 
   useEffect(() => {
     getCustomGame(gameID)
@@ -51,7 +48,7 @@ const PlayCustomGame = () => {
         </GoogleMap>
 
       <Map 
-        onSubmitGuess={onSubmitGuess} result={result} setResult={setResult}
+        onSubmitGuess={onSubmitGuess} result={result} setResult={setResult} gameID={gameID}
        />
     </>
   );
