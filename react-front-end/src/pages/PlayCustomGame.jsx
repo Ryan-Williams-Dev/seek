@@ -25,12 +25,15 @@ const PlayCustomGame = () => {
         console.log(err)
       });
   }, []);
-  
+
+  const resetLoc = () => {
+    setCoords({...coords})
+  };
   
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
-  })
+  });
   
 
   if (!isLoaded) return <div>Loading...</div>
@@ -46,7 +49,7 @@ const PlayCustomGame = () => {
         >
           <StreetView
             coords={coords}
-            // resetLoc={""}
+            resetLoc={resetLoc}
           />
         </GoogleMap>
 
