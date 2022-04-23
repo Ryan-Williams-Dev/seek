@@ -26,7 +26,7 @@ export const challengeLinkToClipboard = () => {
 export const getDailyGame = (userId) => {
   return axios.get('api/games', {params: {userId}})
     .then(res => {
-      console.log('data:', res.data)
+      // console.log('data:', res.data)
       return res.data;
     })
     .catch(err => {
@@ -40,15 +40,13 @@ export const setGameLocation = (marker) => {
   console.log("Making axios request:", marker)
   axios.post('api/games', marker)
     .then(res => {
-      console.log("Axios request made successfully:");
+      // console.log("Axios request made successfully:");
       return res.data;
     })
     .catch(err => {
-      console.log("Error:", err);
+      // console.log("Error:", err);
       alert("Error: " + err);
     })
-
-  
 };
 
 export const setAnswerMarker = (answer, setMarkers) => {
@@ -75,7 +73,6 @@ export const setView = (answer, setCenter, mapRef) => {
 export const getCustomGame = (gameID) => {
   return axios.get(`/api/games/${gameID}`)
     .then(res => {
-      console.log('data: ', res.data)
       return res.data;
     })
     .catch(err => {

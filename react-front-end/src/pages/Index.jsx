@@ -47,14 +47,14 @@ const Index = () => {
   const onSubmitGuess = (marker) => {
     axios.post('api/guess', {...marker, gameId})
       .then(res => {
-        console.log("success: ", res.data)
+        console.log("success:", res.data);
         setResult(res.data);
       })
       .catch(err => {
-        console.log("unsuccessful: ", err)
+        // console.log("unsuccessful:", err)
         alert("Error, please try again " + err)
       })
-  }
+  };
 
 
   // Other Logic

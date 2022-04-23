@@ -18,7 +18,6 @@ const PlayCustomGame = () => {
   useEffect(() => {
     getCustomGame(gameID)
       .then(res => {
-        console.log("getCustomGame res:", res)
         setCoords({lat: res.latitude, lng: res.longitude})
       })
       .catch(err => {
