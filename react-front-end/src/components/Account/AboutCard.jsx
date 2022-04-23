@@ -4,7 +4,7 @@ import './about-card-styles.scss';
 
 const AboutCard = (props) => {
   const { first_name, last_name, email, avatar_url } = props.userData;
-  console.log("AVATAR:", props)
+
   return (
     <Card className='profile-card-contents' sx={{ maxWidth: 345 }}>
       <CardMedia
