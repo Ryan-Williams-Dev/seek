@@ -16,6 +16,8 @@ const PlayCustomGame = (props) => {
   const [coords, setCoords] = useState();
   // const [gameID, setGameID] = useState();
 
+  // refactor async function outside of useEffect, then call it within useEffect
+
   useEffect(() => {
     getCustomGame(gameID)
       .then(res => {

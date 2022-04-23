@@ -15,9 +15,9 @@ const Index = (props) => {
   const [coords, setCoords] = useState()
   const [gameId, setGameId] = useState()
 
-  // handleSubmit
+  // handleLoad?
   // put entire getDailyGame async block in here
-  // then use useEffect to call handleSubmit()
+  // then use useEffect to call handleLoad?()
 
   useEffect(() => {
     const id = user ? user.id : null
