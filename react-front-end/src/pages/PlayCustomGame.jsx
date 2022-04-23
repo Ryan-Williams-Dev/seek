@@ -47,7 +47,7 @@ const PlayCustomGame = () => {
         </GoogleMap>
 
       <Map 
-        onSubmitGuess={onSubmitGuess} result={result} setResult={setResult} gameID={gameID}
+        onSubmitGuess={onSubmitGuess} result={result} setResult={setResult} gameId={gameID}
        />
     </>
   );

@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 export const onSubmitGuess = (marker, gameId, user, setResult) => {
+  console.log("Marker:", marker)
+  console.log("gameId:", gameId)
   axios.post('api/guess', {...marker, gameId, user})
     .then(res => {
       console.log("success:", res.data);
