@@ -71,3 +71,15 @@ export const setView = (answer, setCenter, mapRef) => {
     mapRef.current.setZoom(3.7)
   }
 };
+
+export const getCustomGame = (gameId) => {
+  return axios.get('api/games/:id', {params: {gameId}})
+    .then(res => {
+      console.log('data: ', res.data)
+      return res.data;
+    })
+    .catch(err => {
+      console.log("Error:",err);
+      return err;
+    })
+};

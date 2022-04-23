@@ -19,11 +19,11 @@ App.use(Express.static('public'));
 App.use(cors());
 
 // Routes
-const userRoutes = require('./routes/users')
-const guessRoutes = require('./routes/guess')
-const gameRoutes = require('./routes/games')
+const userRoutes = require('./routes/users');
+const guessRoutes = require('./routes/guess');
+const gameRoutes = require('./routes/games');
 
-App.use('/users', userRoutes(db)); 
+App.use('/users', userRoutes(db));
 App.use('/api/guess', guessRoutes(db));
 App.use('/api/games', gameRoutes(db));
 
