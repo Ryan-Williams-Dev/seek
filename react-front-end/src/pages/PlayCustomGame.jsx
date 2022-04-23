@@ -11,7 +11,7 @@ import { onSubmitGuess } from "../helpers/maps/map-helpers";
 const PlayCustomGame = (props) => {
   const { user } = useContext(authContext);
   const { gameID } = useParams();
-  const { result, setResult } = props;
+  const [result, setResult] = useState(false);
   
   const [coords, setCoords] = useState();
   // const [gameID, setGameID] = useState();
@@ -53,7 +53,7 @@ const PlayCustomGame = (props) => {
           />
         </GoogleMap>
 
-      <Map onSubmitGuess={onSubmitGuess} result={result} setResult={setResult}/>
+      <Map onSubmitGuess={onSubmitGuess} result={result} setResult={setResult} gameID={gameID}/>
     </>
   );
 }

@@ -9,9 +9,9 @@ import { onSubmitGuess } from '../helpers/maps/map-helpers';
 
 const Index = (props) => {
   const { user } = useContext(authContext)
-  const { result, setResult } = props;
+  // const { result, setResult } = props;
   // Street View State and logic
-  // const [result, setResult] = useState(false);
+  const [result, setResult] = useState(false);
   const [coords, setCoords] = useState()
   const [gameId, setGameId] = useState()
 

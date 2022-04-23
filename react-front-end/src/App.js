@@ -18,8 +18,6 @@ import { fetchUserData } from './helpers/users/userhelpers';
 
 function App() {
   const { auth, login} = useContext(authContext)
-  const [result, setResult] = useState(false);
-
 
   useEffect(() => {
     if (Cookies.get('userId') && !auth) {
@@ -43,7 +41,7 @@ function App() {
                 <Switch>
 
                   <Route exact path="/">
-                    { !auth ? <Redirect to='/login' /> : <Index result={result} setResult={setResult}/> }
+                    { !auth ? <Redirect to='/login' /> : <Index /> }
                   </Route>
 
                   <Route exact path="/account">
@@ -60,7 +58,7 @@ function App() {
 
                   <Route path="/custom-game/:gameID">
                     {/* removed auth ternery check temporarily. put it back in after cookie tracking is setup */}
-                    <PlayCustomGame result={result} setResult={setResult}/>
+                    <PlayCustomGame />
                   </Route>
                 
                   <Route exact path="/login">
