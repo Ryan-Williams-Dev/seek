@@ -1,4 +1,5 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef, useContext } from 'react';
+import { authContext } from '../providers/AuthProvider'
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import mapStyles from "../../mapStyles";
 import { Button } from "@mui/material"
@@ -7,6 +8,7 @@ import { faMapPin } from '@fortawesome/free-solid-svg-icons'
 import { setAnswerMarker, setView } from '../../helpers/maps/map-helpers';
 
 export default function Map(props) {
+  const { user } = useContext(authContext)
 
   // State initialisations
   const [markers, setMarkers] = useState([]);
@@ -121,7 +123,7 @@ export default function Map(props) {
       <Button 
         variant="contained"
         endIcon={<FontAwesomeIcon icon={faMapPin} />}
-        onClick={() => props.onSubmitGuess(markers[0]) }
+        onClick={() => props.onSubmitGuess(markers[0], props.gameId, user) }
         sx={{m: 1, mb: 3.5 }}
       >Submit</Button>
     }
