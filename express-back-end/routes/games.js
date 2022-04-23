@@ -11,7 +11,10 @@ module.exports = (db) => {
 
     Promise.all([
       db.query(`
-        SELECT latitude, longitude FROM games WHERE id = $1;
+        SELECT latitude, longitude
+        FROM games 
+        WHERE game_type_id = 1
+        LIMIT $1;
       `, [gameId]),
       db.query(`
         SELECT * FROM guesses WHERE user_id = $1 AND game_id = $2 LIMIT 1;
@@ -19,7 +22,7 @@ module.exports = (db) => {
     ])
       .then(all => {
         const [ answerCoordsData, guessData ] = all;
-        const answerCoords = answerCoordsData.rows[0];
+        const answerCoords = answerCoordsData.rows[gameId - 1];
         const guess = guessData.rows[0]
 
         let distance = null
