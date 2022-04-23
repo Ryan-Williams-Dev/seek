@@ -6,7 +6,6 @@ module.exports = (db) => {
 
   router.post('/', (req, res) => {
     const { lat, lng, gameId, user } = req.body;
-    console.log("Game ID as it is the guess post route: ", gameId)
 
     db.query(
       `SELECT latitude, longitude FROM games WHERE id = $1;`

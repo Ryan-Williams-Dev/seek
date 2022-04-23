@@ -13,7 +13,6 @@ module.exports = (db) => {
       WHERE users.id = $1
       GROUP BY first_name, last_name, email, avatar_url, followed_id;`, [userID])
       .then((data) => {
-        console.log("Sending user data...");
         res.send(data.rows);
       })
       .catch((err) => {
