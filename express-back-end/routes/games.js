@@ -1,28 +1,35 @@
 const express = require("express");
-const { calculateDistance, generateDailyGameId } = require("../helpers/helpers");
+const { calculateDistance, generateDailyGameNum } = require("../helpers/helpers");
 const router = express.Router();
 
 
 module.exports = (db) => {
 
   router.get('/', (req, res) => {
-    const userId = req.query.userId;
-    const gameID = generateDailyGameId();
+    const userId = req.query.userId
+    const gameNum = generateDailyGameNum();
 
-    Promise.all([
-      db.query(`
-        SELECT latitude, longitude FROM games WHERE id = $1;
-      `, [gameID]),
+    db.query(`
+      SELECT id, latitude, longitude
+      FROM games 
+      WHERE game_type_id = 1
+      LIMIT $1;
+    `, [gameNum])
+    .then(answerData => {
+      const answer = answerData.rows[gameNum - 1];
+      const gameId = answer.id;
+      const answerCoords = {
+        latitude: answer.latitude,
+        longitude: answer.longitude
+      }
+
       db.query(`
         SELECT * FROM guesses WHERE user_id = $1 AND game_id = $2 LIMIT 1;
-      `, [userId, gameID])
-    ])
-      .then(all => {
-        const [ answerCoordsData, guessData ] = all;
-        const answerCoords = answerCoordsData.rows[0];
-        const guess = guessData.rows[0];
-
-        let distance = null;
+      `, [userId, gameId])
+      .then(guessData => {
+        const guess = guessData.rows[0]
+        let distance = null
+        
         if (guess) {
           distance = calculateDistance(answerCoords, {
             lat: guess.latitude,
@@ -41,6 +48,7 @@ module.exports = (db) => {
         console.log("Error!", err);
         res.send(err);
       });
+    });
   });
 
   // Play custom game route.
@@ -62,7 +70,6 @@ module.exports = (db) => {
 
   router.post('/', (req, res) => {
     const { lat, lng } = req.body;
-    console.log("Arrived at router. Making DB query...");
     db.query(`
       INSERT INTO games (
         game_type_id, latitude, longitude
@@ -71,7 +78,6 @@ module.exports = (db) => {
       );`, [2, lat, lng]
     )
       .then(data => {
-        console.log("Game location successfully inserted into database.");
         res.send(data);
       })
       .catch(err => {
