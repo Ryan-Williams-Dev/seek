@@ -36,10 +36,11 @@ export const getDailyGame = (userId) => {
 
 export const setGameLocation = (marker) => {
   
-  console.log("Making axios request:", marker)
+  // console.log("Making axios request:", marker)
   axios.post('api/games', marker)
     .then(res => {
-      return res.data;
+      console.log("Response data:", res.data.rows)
+      return res.data.rows;
     })
     .catch(err => {
       // console.log("Error:", err);
