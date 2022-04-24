@@ -60,7 +60,6 @@ module.exports = (db) => {
       WHERE game_type_id = 2 AND id = $1;`, [gameID]
     )
       .then(answerData => {
-        console.log("answerData.rows[0]:", answerData.rows[0]);
         const answer = answerData.rows[0];
         // const gameId = answer.id;
         const answerCoords = {
@@ -81,10 +80,10 @@ module.exports = (db) => {
         game_type_id, latitude, longitude
       ) VALUES (
         $1, $2, $3 
-      );`, [2, lat, lng]
+      ) RETURNING id;`, [2, lat, lng]
     )
       .then(data => {
-        res.send(data);
+        res.send(data.rows[0]);
       })
       .catch(err => {
         console.log("Error! Database query failed:", err);

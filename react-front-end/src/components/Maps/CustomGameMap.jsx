@@ -25,16 +25,19 @@ const CustomGameMap = (props) => {
   }, []);
 
   const onSubmitClick = () => {
-    setGameLocation(marker[0]);
-    props.triggerPopup()
-  }
+    setGameLocation(marker[0])
+    .then(res => {
+      console.log("response:", res)
+      props.triggerPopup(res.id);
+    });
+  };
 
   if (!isLoaded) return <div>Loading...</div>
   if (loadError) return `Error loading maps: ${loadError}`;
 
   const options = {
     styles: mapStyles,
-  }
+  };
 
   return (
     <GoogleMap 
@@ -67,6 +70,6 @@ const CustomGameMap = (props) => {
       </Button>
     </GoogleMap>
   );
-}
+};
 
 export default CustomGameMap;

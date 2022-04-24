@@ -11,13 +11,12 @@ const CreateCustomGame = () => {
 
   const [popupTrigger, setPopupTrigger] = useState(false);
 
-  const triggerPopup = () => {
-    setPopupTrigger(true);
-  }
+  const triggerPopup = (gameId) => {
+    setPopupTrigger(gameId);
+  };
 
   if (!isLoaded) return <div>Loading...</div>
   if (loadError) return `Error loading maps: ${loadError}`;
-  
 
   return (
     <div className="custom-game-page">
@@ -25,6 +24,6 @@ const CreateCustomGame = () => {
       <CreateGamePopup trigger={popupTrigger}  />
     </div>
   );
-}
+};
 
 export default CreateCustomGame;

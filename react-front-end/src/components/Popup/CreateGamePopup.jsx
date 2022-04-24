@@ -29,11 +29,11 @@ const CreateGamePopup = (props) => {
           <CloseIcon fontSize="small"/>
       </IconButton>
     </>
-  )
+  );
   
   // Function executes two functions simultaneously onClick
-  const getChallengeLink = () => {
-    challengeLinkToClipboard()
+  const getChallengeLink = (gameId) => {
+    challengeLinkToClipboard(gameId)
     setSnackbarOpen(true)
   };
 
@@ -42,7 +42,7 @@ const CreateGamePopup = (props) => {
       <div className="popup-inner">
         <h2>Game Saved!</h2>
         <div className='btn-row'>
-          <Button className="popup-btn" onClick={() => getChallengeLink()}>Challenge A Friend</Button>
+          <Button className="popup-btn" onClick={() => getChallengeLink(props.trigger)}>Challenge A Friend</Button>
           <Button className="popup-btn" href="/account">My Account</Button>
           <Button className="popup-btn" onClick={refreshPage}>Create Another Game</Button>
           <Snackbar 

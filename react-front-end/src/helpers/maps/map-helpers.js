@@ -7,7 +7,6 @@ export const onSubmitGuess = (marker, gameId, user, setResult) => {
       setResult(res.data);
     })
     .catch(err => {
-      // console.log("unsuccessful:", err)
       alert("Error, please try again " + err);
     })
 };
@@ -16,9 +15,9 @@ export const refreshPage = () => {
   window.location.reload(false);
 };
 
-export const challengeLinkToClipboard = () => {
+export const challengeLinkToClipboard = (gameId) => {
   
-  const message = `🌎  I created a new challenge on SEEK!\n\n 📍 🕵️‍♀️ Follow this link to see how close you can get:\n\n ➡️ {challengeURL} ⬅️`
+  const message = `🌎  I created a new challenge on SEEK!\n\n 📍 🕵️‍♀️ Follow this link to see how close you can get:\n\n ➡️ ${process.env.REACT_APP_FRONT_END_BASE_URL}custom-game/${gameId} ⬅️`
 
   navigator.clipboard.writeText(message);
 };
@@ -36,14 +35,11 @@ export const getDailyGame = (userId) => {
 
 export const setGameLocation = (marker) => {
   
-  // console.log("Making axios request:", marker)
-  axios.post('api/games', marker)
+  return axios.post('api/games', marker)
     .then(res => {
-      console.log("Response data:", res.data.rows)
-      return res.data.rows;
+      return res.data;
     })
     .catch(err => {
-      // console.log("Error:", err);
       alert("Error: " + err);
     })
 };

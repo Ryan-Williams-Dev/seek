@@ -84,7 +84,7 @@ const Index = () => {
       <Map onSubmitGuess={onSubmitGuess} result={result} setResult={setResult} gameId={gameId}/>
     </>
   );
-}
+};
 
 export default Index;
 
