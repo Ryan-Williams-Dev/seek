@@ -1,16 +1,19 @@
 import { Card, CardActions, CardContent, CardMedia, Typography, Button, Fab } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import './about-card-styles.scss';
+import { useContext } from 'react';
+import { authContext } from '../../providers/AuthProvider';
 
-const AboutCard = (props) => {
-  const { first_name, last_name, email, avatar_url } = props.userData;
+const AboutCard = () => {
+
+  const { user } = useContext(authContext);
 
   return (
     <Card className='profile-card-contents' sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
-        image={avatar_url}
+        image={user.avatar_url}
         alt="profile-photo"
       />
         <Fab color="secondary" size="small" aria-label="edit">
@@ -18,12 +21,12 @@ const AboutCard = (props) => {
         </Fab>
       <CardContent>
         <Typography gutterBottom variant="h4">
-          {first_name} {last_name}
+          {user.first_name} {user.last_name}
         </Typography>
         <ul className='about-list'>
-          <dt><strong>Email</strong></dt>
-          <dd>{email}</dd>
-          <dt><strong>Location</strong></dt>
+          <dt><strong>Email:</strong></dt>
+          <dd>{user.email}</dd>
+          <dt><strong>Location:</strong></dt>
           <dd>Vancouver, BC, Canada</dd>
         </ul>
       </CardContent>

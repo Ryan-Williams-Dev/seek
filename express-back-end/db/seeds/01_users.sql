@@ -62,4 +62,12 @@ INSERT INTO users (
   'Proud',
   'https://media.gettyimages.com/photos/portrait-of-woman-with-afro-hair-smiling-with-white-wall-background-picture-id1218661893?s=612x612',
   'Ready to roll!'
+), (
+  'Rachie',
+  'rach@gmail.com',
+  'test',
+  'Rachel',
+  'Durham',
+  'https://media.gettyimages.com/photos/funny-glasses-picture-id912438234?k=20&m=912438234&s=612x612&w=0&h=rv5iNjCkUToc9Nydybmb65bwoAosW5FI5_XZdQWMe24=',
+  'You can not just use my likeness like this'
 );

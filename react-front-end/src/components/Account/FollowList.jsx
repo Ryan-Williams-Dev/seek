@@ -1,7 +1,18 @@
 import { Card, CardContent, Table, TableBody, Typography } from '@mui/material'
 import FollowListItem from './FollowListItem'
 
-const FollowList = () => {
+const FollowList = (props) => {
+
+  const { follows } = props;
+
+  const followList = follows.map((user, index) => {
+    const { first_name, last_name } = user
+    const initials = first_name[0] + last_name[0]
+    const fullName = `${first_name} ${last_name}` 
+    return(
+      <FollowListItem key={index} initials={initials} name={fullName} />
+    );
+  })
   
   return (
     <Card className='info-card-contents' sx={{ maxWidth: 345 }}>
@@ -11,10 +22,7 @@ const FollowList = () => {
       </Typography>
       <Table sx={{minWidth: 300}} size="small" aria-label="a dense table">
         <TableBody>
-          {/* map multiple FollowListItem components here based on follows database table */}
-          <FollowListItem initials="RM" name="Ryan MacEachern" />
-          <FollowListItem initials="RW" name="Ryan Williams" />
-          <FollowListItem initials="HM" name="Hannah Montana" />
+          {followList}
         </TableBody>
       </Table>
       </CardContent>
