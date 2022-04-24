@@ -4,6 +4,7 @@ import { Button, Snackbar } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close'
 import { refreshPage, challengeLinkToClipboard } from '../../helpers/maps/map-helpers';
+import { Link } from 'react-router-dom';
 
 const CreateGamePopup = (props) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false)
@@ -43,7 +44,10 @@ const CreateGamePopup = (props) => {
         <h2>Game Saved!</h2>
         <div className='btn-row'>
           <Button className="popup-btn" onClick={() => getChallengeLink(props.trigger)}>Challenge A Friend</Button>
-          <Button className="popup-btn" href="/account">My Account</Button>
+          <Link to="/account">
+            <Button className="popup-btn">My Account</Button>
+          </Link>
+
           <Button className="popup-btn" onClick={refreshPage}>Create Another Game</Button>
           <Snackbar 
             open={snackbarOpen}
