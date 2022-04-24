@@ -6,7 +6,7 @@ module.exports = (db) => {
   // retrieve data for specific user for Account page
   router.get('/:id', (req, res) => {
     const userId = req.params.id;
-    const user = {}
+    const user = {};
     // return db.query(
     //   `SELECT first_name, last_name, email, avatar_url, followed_id AS following, SUM(score) AS total_score FROM users
     //   JOIN follows ON users.id = user_id
