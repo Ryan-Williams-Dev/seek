@@ -24,11 +24,13 @@ const userRoutes = require('./routes/users')
 const guessRoutes = require('./routes/guess')
 const gameRoutes = require('./routes/games')
 const fetchUserRoute = require('./routes/fetch')
+const followsRoute = require('./routes/follows')
 
 App.use('/users', userRoutes(db));
 App.use('/api/guess', guessRoutes(db));
 App.use('/api/games', gameRoutes(db));
 App.use('/api/fetch', fetchUserRoute(db));
+App.use('/api/follows', followsRoute(db));
 
 
 // Server Start
