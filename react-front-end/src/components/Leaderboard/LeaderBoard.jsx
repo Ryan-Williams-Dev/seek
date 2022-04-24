@@ -14,14 +14,14 @@ const Leaderboard = () => {
   return (
     
     <TableContainer component={Paper}>
-      <Table sx={{minWidth: 650}} size="small" aria-label="a dense table">
+      <Table sx={{minWidth: 350}} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell align="right">Total Score</TableCell>
-            <TableCell align="right">Games Played</TableCell>
-            <TableCell align="right">Last Game Score</TableCell>
-            <TableCell align="right">Last Week Score</TableCell>
+            {/* <TableCell align="right">Games Played</TableCell> */}
+            {/* <TableCell align="right">Last Game Score</TableCell> */}
+            {/* <TableCell align="right">Last Week Score</TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -34,9 +34,9 @@ const Leaderboard = () => {
                 {row.name}
               </TableCell>
               <TableCell align="right">{row.totalScore}</TableCell>
-              <TableCell align="right">{row.gamesPlayed}</TableCell>
-              <TableCell align="right">{row.lastGameScore}</TableCell>
-              <TableCell align="right">{row.lastWeekScore}</TableCell>
+              {/* <TableCell align="right">{row.gamesPlayed}</TableCell> */}
+              {/* <TableCell align="right">{row.lastGameScore}</TableCell> */}
+              {/* <TableCell align="right">{row.lastWeekScore}</TableCell> */}
             </TableRow>
           ))}
         </TableBody>
