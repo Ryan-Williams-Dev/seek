@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Map from "../components/Maps/Map";
 import StreetView from "../components/Maps/StreetView";
+import Scoreboard from "../components/Maps/Scoreboard";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { getCustomGame, onSubmitGuess } from "../helpers/maps/map-helpers";
 
@@ -36,7 +37,11 @@ const PlayCustomGame = () => {
 
   return (
     <>
-      <GoogleMap
+      {result && <Scoreboard 
+        distance={result.distance}
+        score={result.score}
+      />}
+      { !result && <GoogleMap
         id="street-view-wrapper"
         mapContainerClassName="map-container"
         >
@@ -44,7 +49,7 @@ const PlayCustomGame = () => {
             coords={coords}
             resetLoc={resetLoc}
           />
-        </GoogleMap>
+        </GoogleMap>}
 
       <Map 
         onSubmitGuess={onSubmitGuess} result={result} setResult={setResult} gameId={gameID}

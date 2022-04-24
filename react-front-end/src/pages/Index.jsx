@@ -55,7 +55,6 @@ const Index = () => {
   //     })
   // };
 
-
   // Other Logic
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',

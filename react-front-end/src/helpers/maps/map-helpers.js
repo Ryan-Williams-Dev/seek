@@ -1,8 +1,6 @@
 import axios from 'axios';
 
 export const onSubmitGuess = (marker, gameId, user, setResult) => {
-  console.log("Marker:", marker)
-  console.log("gameId:", gameId)
   axios.post('api/guess', {...marker, gameId, user})
     .then(res => {
       console.log("success:", res.data);
@@ -10,7 +8,7 @@ export const onSubmitGuess = (marker, gameId, user, setResult) => {
     })
     .catch(err => {
       // console.log("unsuccessful:", err)
-      alert("Error, please try again " + err)
+      alert("Error, please try again " + err);
     })
 };
 
@@ -23,7 +21,7 @@ export const challengeLinkToClipboard = () => {
   const message = `🌎  I created a new challenge on SEEK!\n\n 📍 🕵️‍♀️ Follow this link to see how close you can get:\n\n ➡️ {challengeURL} ⬅️`
 
   navigator.clipboard.writeText(message);
-}
+};
 
 export const getDailyGame = (userId) => {
   return axios.get('api/games', {params: {userId}})
