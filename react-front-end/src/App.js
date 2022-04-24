@@ -58,8 +58,7 @@ function App() {
                   </Route>
 
                   <Route path="/custom-game/:gameID">
-                    {/* removed auth ternery check temporarily. put it back in after cookie tracking is setup */}
-                    <PlayCustomGame />
+                    { !auth ? <Redirect to='/login' /> : <PlayCustomGame />}
                   </Route>
                 
                   <Route exact path="/login">
