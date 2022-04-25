@@ -15,10 +15,7 @@ const Leaderboard = (props) => {
     return createData(first_name, last_name, total_score, games_played)
   })
     
-    // createData("Ryan MacEachern", 5185, 26, 160, 1450),
-    // createData("Zarah Liao", 4225, 18, 175, 850),
-    // createData("Ryan Williams", 3995, 16, 190, 745)
-  
+  console.log("ROWS:", rows);
   
   return (
     <TableContainer component={Paper}>
@@ -39,7 +36,7 @@ const Leaderboard = (props) => {
               sx={{ '&:last-child td, &:last-child th': {border: 0} }}
             >
               <TableCell component="th" scope="row">
-                {row.first_name} {row.last_name}
+                {row.firstName} {row.lastName}
               </TableCell>
               <TableCell align="right">{row.totalScore}</TableCell>
               {/* <TableCell align="right">{row.gamesPlayed}</TableCell> */}
