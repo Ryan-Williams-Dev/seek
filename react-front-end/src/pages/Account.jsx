@@ -14,7 +14,7 @@ const Account = () => {
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_BASE_URL}users/${user.id}`)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         setUserData({
           follows: res.data.follows,
           totals: res.data.totals[0]

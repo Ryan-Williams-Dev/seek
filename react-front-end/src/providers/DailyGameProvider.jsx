@@ -9,7 +9,7 @@ export default function AuthProvider(props) {
   const initDailyGameId = () => {
     return axios.get('api/fetch/dailyGameId')
       .then(res => {
-        console.log(res.data.gameId)
+        // console.log(res.data.gameId)
         return setDailyGameId(res.data.gameId)
       })
   }
