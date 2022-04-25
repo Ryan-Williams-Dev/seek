@@ -1,4 +1,5 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import classNames from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 import './leaderboard.scss'
 
@@ -7,6 +8,11 @@ const createData = (firstName, lastName, totalScore, gamesPlayed, username) => {
 };
 
 const Leaderboard = (props) => {
+  let columnClass = classNames('ldrbrd-column', {
+    'ldrbrd-column--collapse': props.collapse,
+    'ldrbrd-column--visible': props.visible
+  })
+  
   const { leaderboardData, followsDailyScores } = props;
   
   const rows = leaderboardData && leaderboardData.map(user => {
@@ -16,22 +22,27 @@ const Leaderboard = (props) => {
     
   return (
     <>
-      <h3>Global Leaderboard</h3>
+      <Typography 
+        variant="h5" 
+        component="div"
+        sx={{ marginTop: '1em', marginBottom: '1em' }}
+      >
+        Global Leaderboard
+      </Typography>
+      
       <TableContainer component={Paper}>
         <Table sx={{minWidth: 350}} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
               <TableCell>UserName</TableCell>
+              <TableCell align="right">Total Score</TableCell>
+              <TableCell align="right">Games Played</TableCell>
               {/* <TableCell align="right">Todays Game Score</TableCell> */}
-              <TableCell align="right" className='ldrbrd-column' id="total-score">Total Score</TableCell>
-              <TableCell align="right" className='ldrbrd-column' id="games-played">Games Played</TableCell>
-              {/* <TableCell align="right" className='ldrbrd-column' id="todays-day-score">Today's Game Score</TableCell> */}
-              {/* <TableCell align="right" className='ldrbrd-column' id="last-week-score">Last Week Score</TableCell> */}
+              {/* <TableCell align="right">Last Week Score</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
             {rows && rows.map(row => (
-              
               <TableRow
                 key={uuidv4()}
                 sx={{ '&:last-child td, &:last-child th': {border: 0} }}
@@ -40,23 +51,29 @@ const Leaderboard = (props) => {
                   {/* {row.firstName} {row.lastName} */}
                   {row.username}
                 </TableCell>
-                <TableCell align="right" className='ldrbrd-column' id="total-score">{row.totalScore}</TableCell>
-                <TableCell align="right" className='ldrbrd-column' id="games-played">{row.gamesPlayed}</TableCell>
-                {/* <TableCell align="right" className='ldrbrd-column' id="todays-day-score">{row.todaysGameScore}</TableCell> */}
-                {/* <TableCell align="right" className='ldrbrd-column' id="last-week-score">{row.lastWeekScore}</TableCell> */}
+                <TableCell align="right">{row.totalScore}</TableCell>
+                <TableCell align="right">{row.gamesPlayed}</TableCell>
+                {/* <TableCell align="right">{row.todaysGameScore}</TableCell> */}
+                {/* <TableCell align="right">{row.lastWeekScore}</TableCell> */}
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-
-      <h3>Friend's Scores Today</h3>
+      
+      <Typography 
+        variant="h5" 
+        component="div"
+        sx={{ marginTop: '1em', marginBottom: '1em' }}
+      >
+        Friends Scores Today
+      </Typography>
 
       <TableContainer component={Paper}>
         <Table sx={{minWidth: 350}} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
+              <TableCell>Username</TableCell>
               <TableCell align="right">Todays Game Score</TableCell>
             </TableRow>
           </TableHead>
