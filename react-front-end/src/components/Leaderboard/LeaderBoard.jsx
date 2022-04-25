@@ -1,10 +1,10 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
+import './leaderboard.scss'
 
 const createData = (firstName, lastName, totalScore, gamesPlayed) => {
   return { firstName, lastName, totalScore, gamesPlayed };
 };
-
 
 const Leaderboard = (props) => {
   const { leaderboardData } = props;
