@@ -4,7 +4,7 @@ import axios from 'axios';
 import "./page-styles.scss";
 import { useContext } from 'react';
 import { authContext } from '../providers/AuthProvider';
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
 export default function Login() {
   

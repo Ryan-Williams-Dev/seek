@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
 import axios from "axios";
 import AuthProvider from './providers/AuthProvider';
+import DailyGameProvider from './providers/DailyGameProvider'
 
 if (process.env.REACT_APP_API_BASE_URL) {
   axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
@@ -13,7 +13,9 @@ if (process.env.REACT_APP_API_BASE_URL) {
 
 ReactDOM.render(
   <AuthProvider>
-    <App />
+    <DailyGameProvider>
+      <App />
+    </DailyGameProvider>
   </AuthProvider>,
   document.getElementById('root')
 );

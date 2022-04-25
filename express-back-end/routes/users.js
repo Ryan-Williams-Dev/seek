@@ -20,13 +20,6 @@ module.exports = (db) => {
   // retrieve data for specific user for Account page
   router.get('/:id', (req, res) => {
     const userId = req.params.id;
-    const user = {};
-    // return db.query(
-    //   `SELECT first_name, last_name, email, avatar_url, followed_id AS following, SUM(score) AS total_score FROM users
-    //   JOIN follows ON users.id = user_id
-    //   JOIN guesses ON users.id = guesses.user_id
-    //   WHERE users.id = $1
-    //   GROUP BY first_name, last_name, email, avatar_url, followed_id;`, [userID])
 
     Promise.all([
       db.query('SELECT SUM(score) AS total_score, Count(*) AS games_played FROM guesses WHERE user_id = $1', [ userId ]),
