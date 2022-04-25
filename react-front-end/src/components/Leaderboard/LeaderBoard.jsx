@@ -1,4 +1,5 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
 
 const createData = (firstName, lastName, totalScore, gamesPlayed) => {
   return { firstName, lastName, totalScore, gamesPlayed };
@@ -7,7 +8,7 @@ const createData = (firstName, lastName, totalScore, gamesPlayed) => {
 
 const Leaderboard = (props) => {
   const { leaderboardData } = props;
-  console.log("leaderboardData:", leaderboardData)
+  // console.log("leaderboardData:", leaderboardData)
   
   const rows = leaderboardData.map(user => {
     const { first_name, last_name, games_played, total_score } = user;
@@ -34,7 +35,7 @@ const Leaderboard = (props) => {
         <TableBody>
           {rows.map(row => (
             <TableRow
-              key={row.last_name}
+              key={uuidv4()}
               sx={{ '&:last-child td, &:last-child th': {border: 0} }}
             >
               <TableCell component="th" scope="row">
