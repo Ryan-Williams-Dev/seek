@@ -3,12 +3,12 @@ const router = express.Router();
 
 module.exports = (db) => {
 
-  /* 
+  /*
   need username of all followed accounts, score for daily game
   */
 
   router.get('/:userId/:gameId', (req, res) => {
-    console.log(req.params)
+    console.log(req.params);
     const userId = req.params.userId;
     const gameId = req.params.gameId;
     db.query(`SELECT DISTINCT users.username, guesses.score
@@ -20,15 +20,14 @@ module.exports = (db) => {
     ) AND guesses.game_id = $2
     ORDER BY guesses.score DESC;
     `, [ userId, gameId ])
-    .then(r => {
-      console.log(r)
-      res.send(r.rows)
-    })
-    .catch(err => {
-      console.log(err)
-      res.send(err)
-    })
-  })
+      .then(r => {
+        res.send(r.rows);
+      })
+      .catch(err => {
+        console.log(err);
+        res.send(err);
+      });
+  });
 
   return router;
 };
