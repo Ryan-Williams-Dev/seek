@@ -5,8 +5,7 @@ const filters = [
   "Total Score",
   "Name",
   "Games Played",
-  "Last Game Score",
-  "Last Week Score"
+  "Today's Game Score",
 ];
 
 const Filters = () => {

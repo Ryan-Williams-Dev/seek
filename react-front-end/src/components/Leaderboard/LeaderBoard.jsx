@@ -20,10 +20,10 @@ const Leaderboard = (props) => {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell align="right">Total Score</TableCell>
-            {/* <TableCell align="right">Games Played</TableCell> */}
-            {/* <TableCell align="right">Last Game Score</TableCell> */}
-            {/* <TableCell align="right">Last Week Score</TableCell> */}
+            <TableCell align="right" className='ldrbrd-column' id="total-score">Total Score</TableCell>
+            <TableCell align="right" className='ldrbrd-column' id="games-played">Games Played</TableCell>
+            {/* <TableCell align="right" className='ldrbrd-column' id="todays-day-score">Today's Game Score</TableCell> */}
+            {/* <TableCell align="right" className='ldrbrd-column' id="last-week-score">Last Week Score</TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -35,10 +35,10 @@ const Leaderboard = (props) => {
               <TableCell component="th" scope="row">
                 {row.firstName} {row.lastName}
               </TableCell>
-              <TableCell align="right">{row.totalScore}</TableCell>
-              {/* <TableCell align="right">{row.gamesPlayed}</TableCell> */}
-              {/* <TableCell align="right">{row.lastGameScore}</TableCell> */}
-              {/* <TableCell align="right">{row.lastWeekScore}</TableCell> */}
+              <TableCell align="right" className='ldrbrd-column' id="total-score">{row.totalScore}</TableCell>
+              <TableCell align="right" className='ldrbrd-column' id="games-played">{row.gamesPlayed}</TableCell>
+              {/* <TableCell align="right" className='ldrbrd-column' id="todays-day-score">{row.todaysGameScore}</TableCell> */}
+              {/* <TableCell align="right" className='ldrbrd-column' id="last-week-score">{row.lastWeekScore}</TableCell> */}
             </TableRow>
           ))}
         </TableBody>
