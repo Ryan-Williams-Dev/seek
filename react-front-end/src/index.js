@@ -15,7 +15,7 @@ ReactDOM.render(
   <AuthProvider>
     <DailyGameProvider>
       <App />
-      </DailyGameProvider>
+    </DailyGameProvider>
   </AuthProvider>,
   document.getElementById('root')
 );

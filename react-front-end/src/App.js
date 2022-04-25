@@ -20,9 +20,18 @@ import { dailyGameContext } from './providers/DailyGameProvider'
 
 function App() {
   const { auth, login } = useContext(authContext)
-  const { initDailyGameId } = useContext(dailyGameContext)
+  const { initDailyGameId, dailyGameId } = useContext(dailyGameContext)
 
   const [ loginCheckCompleted, setLoginCheckCompleted ] = useState(false);
+
+  useEffect(() => {
+    if(!dailyGameId) {
+      initDailyGameId()
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  }, [initDailyGameId, dailyGameId])
 
   useEffect(() => {
     if(!Cookies.get('userId')) {
@@ -32,16 +41,13 @@ function App() {
         fetchUserData(Cookies.get('userId'))
         .then(res => {
           login(res.data)
-          initDailyGameId()
-          .then(r => {
-            setLoginCheckCompleted(true)
-          })
+          setLoginCheckCompleted(true)
         })
         .catch(err => {
           console.log(err)
         })
       }
-    }, [auth, login, initDailyGameId]);
+    }, [auth, login]);
     
     return (
       <ThemeProvider theme={Theme}>

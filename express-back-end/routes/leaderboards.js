@@ -8,6 +8,7 @@ module.exports = (db) => {
   */
 
   router.get('/:userId/:gameId', (req, res) => {
+    console.log(req.params)
     const userId = req.params.userId;
     const gameId = req.params.gameId;
     db.query(`SELECT DISTINCT users.username, guesses.score
@@ -16,7 +17,8 @@ module.exports = (db) => {
     ON users.id = guesses.user_id
     WHERE users.id IN (
       SELECT followed_id FROM follows WHERE user_id = $1
-    ) AND guesses.game_id = $2;
+    ) AND guesses.game_id = $2
+    ORDER BY guesses.score DESC;
     `, [ userId, gameId ])
     .then(r => {
       console.log(r)

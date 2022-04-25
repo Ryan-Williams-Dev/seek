@@ -8,7 +8,7 @@ import { dailyGameContext } from "../providers/DailyGameProvider";
 const Leaderboards = () => {
   const { user } = useContext(authContext);
   const { dailyGameId } = useContext(dailyGameContext)
-  const  [ leaderboardData, setLeaderboardData ] = useState([]);
+  const  [ leaderboardData, setLeaderboardData ] = useState(null);
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
   const [ followsDailyScores, setfollowsDailyScores ] = useState([])
 

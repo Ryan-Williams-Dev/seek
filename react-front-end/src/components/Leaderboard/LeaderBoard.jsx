@@ -27,7 +27,7 @@ const Leaderboard = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {followsDailyScores.map(row => (
+          {followsDailyScores && followsDailyScores.map(row => (
             <TableRow
               key={uuidv4()}
               sx={{ '&:last-child td, &:last-child th': {border: 0} }}
