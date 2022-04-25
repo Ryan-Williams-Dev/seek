@@ -8,15 +8,12 @@ const createData = (firstName, lastName, totalScore, gamesPlayed) => {
 
 const Leaderboard = (props) => {
   const { leaderboardData } = props;
-  // console.log("leaderboardData:", leaderboardData)
   
   const rows = leaderboardData.map(user => {
     const { first_name, last_name, games_played, total_score } = user;
     return createData(first_name, last_name, total_score, games_played)
   })
     
-  console.log("ROWS:", rows);
-  
   return (
     <TableContainer component={Paper}>
       <Table sx={{minWidth: 350}} size="small" aria-label="a dense table">

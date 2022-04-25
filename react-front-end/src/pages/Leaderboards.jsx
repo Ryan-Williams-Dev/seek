@@ -12,7 +12,6 @@ const Leaderboards = () => {
   const getLeaderboardData = (url, user) => {
     axios.get(`${url}users`)
       .then(res => {
-        // console.log("getLeaderboardData:", data.data.rows)
         setLeaderboardData([...res.data.rows]);
       })
       .catch(err => {
