@@ -1,10 +1,8 @@
 import { InputLabel, MenuItem, Select, FormControl } from "@mui/material";
 
 const filters = [
-  "Username",
   "Total Score",
   "Games Played",
-  "Todays Game Score",
 ];
 
 const Filters = (props) => {
@@ -12,7 +10,6 @@ const Filters = (props) => {
 
   const handleChange = (event) => {
     setFilter(event.target.value);
-    // filter function goes here
   }
 
   return (

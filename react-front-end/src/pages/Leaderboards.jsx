@@ -11,7 +11,7 @@ const Leaderboards = () => {
   const  [ leaderboardData, setLeaderboardData ] = useState(null);
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
   const [ followsDailyScores, setfollowsDailyScores ] = useState([]);
-  const [ filter, setFilter ] = useState("");
+  const [ filter, setFilter ] = useState("Total Score");
 
   const getLeaderboardData = (url, user) => {
     axios.get(`${url}users`)
@@ -43,7 +43,7 @@ const Leaderboards = () => {
   return (
     <div>
       <Filters filter={filter} setFilter={setFilter}/>
-      <Leaderboard leaderboardData={leaderboardData} followsDailyScores={followsDailyScores}/>
+      <Leaderboard leaderboardData={leaderboardData} followsDailyScores={followsDailyScores} filter={filter}/>
     </div>
   );
 }
