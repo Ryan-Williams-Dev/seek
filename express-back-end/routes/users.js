@@ -31,8 +31,8 @@ module.exports = (db) => {
               `, [ userId ])
     ])
       .then((data) => {
-        console.log('data: ', data[0].rows);
-        console.log('follows: ', data[1].rows);
+        // console.log('data: ', data[0].rows);
+        // console.log('follows: ', data[1].rows);
         res.send({
           totals: data[0].rows,
           follows: data[1].rows
