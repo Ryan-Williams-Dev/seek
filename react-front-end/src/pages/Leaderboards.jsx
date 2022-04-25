@@ -12,19 +12,20 @@ const Leaderboards = () => {
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
   const [ followsDailyScores, setfollowsDailyScores ] = useState([])
 
-  // const getLeaderboardData = (url, user) => {
-  //   axios.get(`${url}users`)
-  //     .then(res => {
-  //       setLeaderboardData([...res.data.rows]);
-  //     })
-  //     .catch(err => {
-  //       console.log("Error:", err);
-  //     })
-  // };
+  const getLeaderboardData = (url, user) => {
+    axios.get(`${url}users`)
+      .then(res => {
+        setLeaderboardData([...res.data.rows]);
+      })
+      .catch(err => {
+        console.log("Error: in catch block", err);
+      })
+  };
 
-  // useEffect(() => {
-  //   getLeaderboardData(baseUrl, user);
-  // }, [baseUrl, user]);
+  useEffect(() => {
+    console.log("in use effect");
+    getLeaderboardData(baseUrl, user);
+  }, [baseUrl, user]);
 
   useEffect(() => {
     axios.get(`api/leaderboards/${user.id}/${dailyGameId}`)

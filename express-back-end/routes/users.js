@@ -10,6 +10,7 @@ module.exports = (db) => {
       JOIN guesses ON user_id = users.id
       GROUP BY users.id;`)
       .then(data => {
+        console.log("LEADERBOARD DATA DB QUERY DATA:", data);
         res.send(data);
       })
       .catch(err => {
@@ -31,8 +32,8 @@ module.exports = (db) => {
               `, [ userId ])
     ])
       .then((data) => {
-        console.log('data: ', data[0].rows);
-        console.log('follows: ', data[1].rows);
+        // console.log('data: ', data[0].rows);
+        // console.log('follows: ', data[1].rows);
         res.send({
           totals: data[0].rows,
           follows: data[1].rows
