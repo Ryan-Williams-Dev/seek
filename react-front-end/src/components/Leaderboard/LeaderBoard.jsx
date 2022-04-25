@@ -7,7 +7,7 @@ const createData = (firstName, lastName, totalScore, gamesPlayed) => {
 };
 
 const Leaderboard = (props) => {
-  const { leaderboardData } = props;
+  const { leaderboardData, followsDailyScores } = props;
   
   const rows = leaderboardData.map(user => {
     const { first_name, last_name, games_played, total_score } = user;
@@ -20,6 +20,7 @@ const Leaderboard = (props) => {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
+            <TableCell align="right">Todays Game Score</TableCell>
             <TableCell align="right" className='ldrbrd-column' id="total-score">Total Score</TableCell>
             <TableCell align="right" className='ldrbrd-column' id="games-played">Games Played</TableCell>
             {/* <TableCell align="right" className='ldrbrd-column' id="todays-day-score">Today's Game Score</TableCell> */}
@@ -27,14 +28,16 @@ const Leaderboard = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {followsDailyScores && followsDailyScores.map(row => (
             <TableRow
               key={uuidv4()}
               sx={{ '&:last-child td, &:last-child th': {border: 0} }}
             >
               <TableCell component="th" scope="row">
-                {row.firstName} {row.lastName}
+                {/* {row.firstName} {row.lastName} */}
+                {row.username}
               </TableCell>
+              <TableCell align="right">{row.score}</TableCell>
               <TableCell align="right" className='ldrbrd-column' id="total-score">{row.totalScore}</TableCell>
               <TableCell align="right" className='ldrbrd-column' id="games-played">{row.gamesPlayed}</TableCell>
               {/* <TableCell align="right" className='ldrbrd-column' id="todays-day-score">{row.todaysGameScore}</TableCell> */}

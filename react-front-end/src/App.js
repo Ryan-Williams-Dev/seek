@@ -15,22 +15,36 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Cookies from 'js-cookie';
 import { fetchUserData } from './helpers/users/userhelpers';
+import { dailyGameContext } from './providers/DailyGameProvider'
 
 
 function App() {
   const { auth, login } = useContext(authContext)
+  const { initDailyGameId, dailyGameId } = useContext(dailyGameContext)
 
   const [ loginCheckCompleted, setLoginCheckCompleted ] = useState(false);
+
+  useEffect(() => {
+    if(!dailyGameId) {
+      initDailyGameId()
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  }, [initDailyGameId, dailyGameId])
 
   useEffect(() => {
     if(!Cookies.get('userId')) {
       setLoginCheckCompleted(true)
     }
     if (Cookies.get('userId') && !auth) {
-      fetchUserData(Cookies.get('userId'))
+        fetchUserData(Cookies.get('userId'))
         .then(res => {
           login(res.data)
           setLoginCheckCompleted(true)
+        })
+        .catch(err => {
+          console.log(err)
         })
       }
     }, [auth, login]);

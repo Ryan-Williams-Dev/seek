@@ -9,7 +9,7 @@ import { CircularProgress, Box } from '@mui/material';
 const Account = () => {
   
   const { user } = useContext(authContext);
-  const [userData, setUserData] = useState(null)
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_BASE_URL}users/${user.id}`)
@@ -36,7 +36,7 @@ const Account = () => {
       {userData && 
         <>
           <Stats totals={userData.totals}/>
-          <FollowList follows={userData.follows}/>
+          <FollowList follows={userData.follows} />
         </>
       }
 
