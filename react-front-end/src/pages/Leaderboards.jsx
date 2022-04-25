@@ -1,31 +1,33 @@
 import axios from "axios";
-import { useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { authContext } from "../providers/AuthProvider";
 import Filters from "../components/Leaderboard/Filters";
 import Leaderboard from "../components/Leaderboard/LeaderBoard";
 
 const Leaderboards = () => {
   const { user } = useContext(authContext);
+  const  [ leaderboardData, setLeaderboardData ] = useState([]);
+  const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-  const baseUrl = process.env.REACT_APP_API_BASE_URL
-  const getLeaderboardData = (user) => {
-    axios.get(`${baseUrl}users`)
+  const getLeaderboardData = (url, user) => {
+    axios.get(`${url}users`)
       .then(res => {
-        // console.log("getLeaderboardData response:", res)
+        // console.log("getLeaderboardData:", data.data.rows)
+        setLeaderboardData([...res.data.rows]);
       })
       .catch(err => {
         console.log("Error:", err);
       })
-  }
+  };
 
   useEffect(() => {
-    getLeaderboardData(user)
+    getLeaderboardData(baseUrl, user);
   }, []);
 
   return (
     <div>
       <Filters />
-      <Leaderboard />
+      <Leaderboard leaderboardData={leaderboardData}/>
     </div>
   );
 }

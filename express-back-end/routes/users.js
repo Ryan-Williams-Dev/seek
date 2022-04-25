@@ -3,6 +3,20 @@ const router = express.Router();
 
 module.exports = (db) => {
 
+  router.get('/', (req, res) => {
+    db.query(
+      `SELECT first_name, last_name, COUNT(guesses.id) as games_played, SUM(score) as total_score
+      FROM users
+      JOIN guesses ON user_id = users.id
+      GROUP BY users.id;`)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        console.log("Error: users.js route, leaderboard query...", err);
+      });
+  });
+
   // retrieve data for specific user for Account page
   router.get('/:id', (req, res) => {
     const userId = req.params.id;
@@ -24,8 +38,8 @@ module.exports = (db) => {
               `, [ userId ])
     ])
       .then((data) => {
-        console.log('data: ', data[0].rows)
-        console.log('follows: ', data[1].rows)
+        console.log('data: ', data[0].rows);
+        console.log('follows: ', data[1].rows);
         res.send({
           totals: data[0].rows,
           follows: data[1].rows

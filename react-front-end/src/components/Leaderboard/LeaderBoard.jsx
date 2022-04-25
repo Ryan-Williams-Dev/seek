@@ -1,18 +1,25 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
-const createData = (name, totalScore, gamesPlayed, lastGameScore, lastWeekScore) => {
-  return { name, totalScore, gamesPlayed, lastGameScore, lastWeekScore };
+const createData = (firstName, lastName, totalScore, gamesPlayed) => {
+  return { firstName, lastName, totalScore, gamesPlayed };
 };
 
-const rows = [
-  createData("Ryan MacEachern", 5185, 26, 160, 1450),
-  createData("Zarah Liao", 4225, 18, 175, 850),
-  createData("Ryan Williams", 3995, 16, 190, 745)
-];
 
-const Leaderboard = () => {
-  return (
+const Leaderboard = (props) => {
+  const { leaderboardData } = props;
+  console.log("leaderboardData:", leaderboardData)
+  
+  const rows = leaderboardData.map(user => {
+    const { first_name, last_name, games_played, total_score } = user;
+    return createData(first_name, last_name, total_score, games_played)
+  })
     
+    // createData("Ryan MacEachern", 5185, 26, 160, 1450),
+    // createData("Zarah Liao", 4225, 18, 175, 850),
+    // createData("Ryan Williams", 3995, 16, 190, 745)
+  
+  
+  return (
     <TableContainer component={Paper}>
       <Table sx={{minWidth: 350}} size="small" aria-label="a dense table">
         <TableHead>
@@ -27,11 +34,11 @@ const Leaderboard = () => {
         <TableBody>
           {rows.map(row => (
             <TableRow
-              key={row.name}
+              key={row.last_name}
               sx={{ '&:last-child td, &:last-child th': {border: 0} }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.first_name} {row.last_name}
               </TableCell>
               <TableCell align="right">{row.totalScore}</TableCell>
               {/* <TableCell align="right">{row.gamesPlayed}</TableCell> */}
