@@ -30,7 +30,7 @@ module.exports = (db) => {
 
     Promise.all([
       db.query('SELECT SUM(score) AS total_score, Count(*) AS games_played FROM guesses WHERE user_id = $1', [ userId ]),
-      db.query(`SELECT first_name, last_name
+      db.query(`SELECT DISTINCT first_name, last_name
                 FROM users 
                 WHERE id IN (
                   SELECT followed_id FROM follows WHERE user_id = $1
