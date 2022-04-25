@@ -2,16 +2,16 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 import { v4 as uuidv4 } from 'uuid';
 import './leaderboard.scss'
 
-const createData = (firstName, lastName, totalScore, gamesPlayed) => {
-  return { firstName, lastName, totalScore, gamesPlayed };
+const createData = (firstName, lastName, totalScore, gamesPlayed, username) => {
+  return { firstName, lastName, totalScore, gamesPlayed, username };
 };
 
 const Leaderboard = (props) => {
   const { leaderboardData, followsDailyScores } = props;
   
   const rows = leaderboardData && leaderboardData.map(user => {
-    const { first_name, last_name, games_played, total_score } = user;
-    return createData(first_name, last_name, total_score, games_played)
+    const { first_name, last_name, games_played, total_score, username } = user;
+    return createData(first_name, last_name, total_score, games_played, username)
   });
     
   return (
@@ -21,7 +21,7 @@ const Leaderboard = (props) => {
         <Table sx={{minWidth: 350}} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
+              <TableCell>UserName</TableCell>
               {/* <TableCell align="right">Todays Game Score</TableCell> */}
               <TableCell align="right" className='ldrbrd-column' id="total-score">Total Score</TableCell>
               <TableCell align="right" className='ldrbrd-column' id="games-played">Games Played</TableCell>
@@ -37,7 +37,8 @@ const Leaderboard = (props) => {
                 sx={{ '&:last-child td, &:last-child th': {border: 0} }}
               >
                 <TableCell component="th" scope="row">
-                  {row.firstName} {row.lastName}
+                  {/* {row.firstName} {row.lastName} */}
+                  {row.username}
                 </TableCell>
                 <TableCell align="right" className='ldrbrd-column' id="total-score">{row.totalScore}</TableCell>
                 <TableCell align="right" className='ldrbrd-column' id="games-played">{row.gamesPlayed}</TableCell>
