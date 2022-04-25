@@ -2,11 +2,13 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 import { v4 as uuidv4 } from 'uuid';
 import './leaderboard.scss'
 
+
 const createData =  (username, totalScore, gamesPlayed) => {
   return { username, totalScore, gamesPlayed };
 };
 
 const Leaderboard = (props) => {
+
   
   const { leaderboardData, followsDailyScores } = props;
   

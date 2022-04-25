@@ -19,6 +19,7 @@ const Leaderboards = () => {
         setLeaderboardData([...res.data.rows]);
       })
       .catch(err => {
+
         console.log("Error:", err);
       })
   };
