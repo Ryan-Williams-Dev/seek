@@ -15,10 +15,12 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Cookies from 'js-cookie';
 import { fetchUserData } from './helpers/users/userhelpers';
+import { dailyGameContext } from './providers/DailyGameProvider'
 
 
 function App() {
   const { auth, login } = useContext(authContext)
+  const { initDailyGameId } = useContext(dailyGameContext)
 
   const [ loginCheckCompleted, setLoginCheckCompleted ] = useState(false);
 
@@ -27,13 +29,19 @@ function App() {
       setLoginCheckCompleted(true)
     }
     if (Cookies.get('userId') && !auth) {
-      fetchUserData(Cookies.get('userId'))
+        fetchUserData(Cookies.get('userId'))
         .then(res => {
           login(res.data)
-          setLoginCheckCompleted(true)
+          initDailyGameId()
+          .then(r => {
+            setLoginCheckCompleted(true)
+          })
+        })
+        .catch(err => {
+          console.log(err)
         })
       }
-    }, [auth, login]);
+    }, [auth, login, initDailyGameId]);
     
     return (
       <ThemeProvider theme={Theme}>
