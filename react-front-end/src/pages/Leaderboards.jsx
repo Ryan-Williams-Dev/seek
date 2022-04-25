@@ -35,7 +35,7 @@ const Leaderboards = () => {
       .catch(err => {
         console.log(err)
       })
-  },[user, dailyGameId])
+  },[user, dailyGameId]);
 
   // console.log(leaderboardData);
 
