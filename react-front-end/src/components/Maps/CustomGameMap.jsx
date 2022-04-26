@@ -40,7 +40,7 @@ const CustomGameMap = (props) => {
 
   return (
     <GoogleMap 
-      zoom={1}
+      zoom={2.2}
       center={center}
       mapContainerClassName="map-container-full"
       options={options}
