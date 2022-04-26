@@ -13,7 +13,7 @@ const CustomGameMap = (props) => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
   })
 
-  const [center, setCenter] = useState({lat: 50, lng: 50})
+  const [center] = useState({lat: 50, lng: 50})
   const [marker, setMarker] = useState([]);
 
   const onMapClick = useCallback((event) => {

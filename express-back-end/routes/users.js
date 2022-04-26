@@ -10,9 +10,10 @@ module.exports = (db) => {
       `SELECT first_name, last_name, username, COUNT(guesses.id) as games_played, SUM(score) as total_score
       FROM users
       JOIN guesses ON user_id = users.id
-      GROUP BY users.id;`)
+      GROUP BY users.id
+      ORDER BY total_score DESC;`)
       .then(data => {
-        console.log("LEADERBOARD DATA DB QUERY DATA:", data);
+        // console.log("LEADERBOARD DATA DB QUERY DATA:", data);
         res.send(data);
       })
       .catch(err => {
@@ -21,7 +22,7 @@ module.exports = (db) => {
   });
 
   router.post('/new', (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     const { username, email, password, firstName, lastName, description } = req.body;
 
     bcrypt.hash(password, saltRounds, function(err, hash) {
@@ -29,15 +30,15 @@ module.exports = (db) => {
         INSERT INTO users ( username, email, password_digest, first_name, last_name, description )
         VALUES ( $1, $2, $3, $4, $5, $6 );
       `, [username, email, hash, firstName, lastName, description])
-      .then(r => {
-        res.send(r)
-      })
-      .catch(err => {
-        console.log(err)
-        res.send(err)
-      })
-    })
-  })
+        .then(r => {
+          res.send(r);
+        })
+        .catch(err => {
+          console.log(err);
+          res.send(err);
+        });
+    });
+  });
 
   // retrieve data for specific user for Account page
   router.get('/:id', (req, res) => {
@@ -70,7 +71,7 @@ module.exports = (db) => {
     return db.query("SELECT * FROM users WHERE email = $1;", [email])
       .then((data) => {
         const user = data.rows[0];
-        const hash = data.rows[0].password_digest
+        const hash = data.rows[0].password_digest;
 
         bcrypt.compare(password, hash, function(err, result) {
           if (result) {
