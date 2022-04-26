@@ -9,7 +9,7 @@ const CreateCustomGame = () => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
   })
 
-  const [popupTrigger, setPopupTrigger] = useState(true);
+  const [popupTrigger, setPopupTrigger] = useState(false);
 
   const triggerPopup = (gameId) => {
     setPopupTrigger(gameId);
