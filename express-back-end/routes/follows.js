@@ -14,7 +14,6 @@ module.exports = (db) => {
         followedId = r.rows[0].id;
         db.query('SELECT count(*) FROM follows WHERE user_id = $1 AND followed_id = $2;', [userId, followedId])
           .then(r => {
-            // console.log(r)
             if (r.rows[0].count >= 1) {
               return res.send({message: 'Already following this user'})
             }

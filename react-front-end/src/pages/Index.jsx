@@ -42,19 +42,6 @@ const Index = () => {
     setCoords({...coords})
   } 
 
-  // Bottom Map State and Logic
-  // const onSubmitGuess = (marker, gameId, user) => {
-  //   axios.post('api/guess', {...marker, gameId, user})
-  //     .then(res => {
-  //       console.log("success:", res.data);
-  //       setResult(res.data);
-  //     })
-  //     .catch(err => {
-  //       // console.log("unsuccessful:", err)
-  //       alert("Error, please try again " + err)
-  //     })
-  // };
-
   // Other Logic
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',

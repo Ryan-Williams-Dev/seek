@@ -53,7 +53,6 @@ module.exports = (db) => {
 
   // Play custom game route.
   router.get('/:id', (req, res) => {
-    // console.log("req.params:", req.params);
     const gameID = req.params.id;
     return db.query(
       `SELECT latitude, longitude FROM games

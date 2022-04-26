@@ -22,19 +22,18 @@ const Leaderboard = (props) => {
       <Typography 
         variant="h5" 
         component="div"
-        sx={{ marginTop: '1em', marginBottom: '1em' }}
+        sx={{ marginBottom: '0.2em' }}
       >
         Global Leaderboard
       </Typography>
 
       <TableContainer component={Paper}>
-        <Table sx={{minWidth: 350}} size="small" aria-label="a dense table">
+        <Table sx={{maxWidth: "700px"}} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
               <TableCell>UserName</TableCell>
               { props.filter === "Total Score" && <TableCell align="right" >Total Score</TableCell>}
               { props.filter === "Games Played" && <TableCell align="right" >Games Played</TableCell>}
-              {/* <TableCell align="right">Todays Game Score</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -44,12 +43,10 @@ const Leaderboard = (props) => {
                 sx={{ '&:last-child td, &:last-child th': {border: 0} }}
               >
                 <TableCell component="th" scope="row">
-                  {/* {row.firstName} {row.lastName} */}
-                  {row.username}
+                {row.username}
                 </TableCell>
                 { props.filter === "Total Score" && <TableCell align="right" >{row.totalScore}</TableCell> }
                 { props.filter === "Games Played" && <TableCell align="right" >{row.gamesPlayed}</TableCell> }
-                {/* <TableCell align="right">{row.todaysGameScore}</TableCell> */}
               </TableRow>
             ))}
           </TableBody>
@@ -59,17 +56,17 @@ const Leaderboard = (props) => {
       <Typography 
         variant="h5" 
         component="div"
-        sx={{ marginTop: '1em', marginBottom: '1em' }}
+        sx={{ marginTop: '0.7em', marginBottom: '0.2em' }}
       >
         Friends Scores Today
       </Typography>
 
       <TableContainer component={Paper}>
-        <Table sx={{minWidth: 350}} size="small" aria-label="a dense table">
+        <Table sx={{maxWidth: '700px'}} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
               <TableCell>Username</TableCell>
-              <TableCell align="right">Todays Game Score</TableCell>
+              <TableCell align="right">score</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

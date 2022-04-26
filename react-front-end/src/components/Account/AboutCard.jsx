@@ -24,8 +24,8 @@ const AboutCard = () => {
           {user.first_name} {user.last_name}
         </Typography>
         <ul className='about-list'>
-          <dt><strong>Email:</strong></dt>
-          <dd>{user.email}</dd>
+          <dt><strong>Username:</strong></dt>
+          <dd>{user.username}</dd>
           <dt><strong>Location:</strong></dt>
           <dd>Vancouver, BC, Canada</dd>
         </ul>

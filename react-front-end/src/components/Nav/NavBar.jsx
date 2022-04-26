@@ -18,7 +18,7 @@ export default function ButtonAppBar(props) {
   return (
     <>
       <Box>
-        <AppBar position="static">
+        <AppBar position="fixed">
           <Toolbar>
             { auth &&
               <IconButton

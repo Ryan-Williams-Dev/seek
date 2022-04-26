@@ -33,31 +33,5 @@ const Theme = createTheme({
     borderRadius: 7,
   }, 
 });
-const DarkTheme = createTheme({
-  palette: {
-    type: 'dark',
-    primary: {
-      main: '#7f5af0',
-    },
-    secondary: {
-      main: '#2cb67d',
-      contrastText: '#fffffe',
-    },
-    background: {
-      default: '#242629',
-      paper: '#16161a',
-    },
-    text: {
-      primary: '#fffffe',
-      secondary: '#94a1b2',
-    },
-    success: {
-      main: '#2cb67d',
-    },
-  },
-  typography: {
-    fontFamily: 'Open Sans',
-  },
-});
 
-export { Theme, DarkTheme }
+export { Theme }

@@ -14,7 +14,7 @@ const Filters = (props) => {
 
   return (
     <div>
-      <FormControl sx={{ width: 300 }} size="small">
+      <FormControl sx={{ width: 300, marginTop: '0.8em' }} size="small">
         <InputLabel id="simple-select-label">Filter By...</InputLabel>
         <Select
           labelId="simple-select-label"

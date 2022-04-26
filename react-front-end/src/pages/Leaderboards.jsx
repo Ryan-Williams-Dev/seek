@@ -31,7 +31,6 @@ const Leaderboards = () => {
   useEffect(() => {
     axios.get(`api/leaderboards/${user.id}/${dailyGameId}`)
       .then(r => {
-        // console.log(r.data)
         setfollowsDailyScores(r.data)
       })
       .catch(err => {
@@ -39,10 +38,8 @@ const Leaderboards = () => {
       })
   },[user, dailyGameId]);
 
-  // console.log(leaderboardData);
-
   return (
-    <div>
+    <div className="leaderboard-container">
       <Filters filter={filter} setFilter={setFilter}/>
       <Leaderboard leaderboardData={leaderboardData} followsDailyScores={followsDailyScores} filter={filter}/>
     </div>
