@@ -29,6 +29,9 @@ const Theme = createTheme({
       fontFamily: 'Roboto'
     }
   },
+  shape: {
+    borderRadius: 7,
+  }, 
 });
 const DarkTheme = createTheme({
   palette: {
