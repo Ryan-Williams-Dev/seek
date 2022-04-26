@@ -49,11 +49,6 @@ Ryan MacEachern
 - Achievements/badges
 - Difficulty toggles
 
-
-## Wireframe
-
-## ERD
-
 ## STACK
 - React
 - Node/Express.js
