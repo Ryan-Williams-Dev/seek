@@ -1,13 +1,29 @@
+/* eslint-disable no-useless-escape */
 import { Box, Button, TextField } from '@mui/material'
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target[0].value);
-    console.log(event.target[2].value);
-    console.log(event.target[4].value);
+    const input = event.target;
+    const newUser = {
+      username: input[0].value,
+      email: input[2].value,
+      password: input[4].value,
+      passwordConfirmation: input[6].value,
+      firstName: input[8].value || '',
+      lastName: input[10].value || '',
+      description: input[12].value || ''
+    };
+
+    if (newUser.password !== newUser.passwordConfirmation) {
+      alert("Password and password confirmation did not match.")
+    }
+
+    axios.post('users/new', newUser)
+    
   }
 
   return (
@@ -21,13 +37,19 @@ export default function Register() {
         autoComplete="off"
         onSubmit={(event) => handleSubmit(event)}
       >
-        <div 
+        <div
           className='form-container'
         >
           <TextField
             required
             label="username"
-            inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
+            inputProps={{
+              style: {fontFamily: 'Roboto', fontSize: '1.5em'}, 
+              minLength: 4,
+              maxLength: 20,
+              pattern: "[A-Za-z0-9]+",
+              title: "Letters and numbers only, No special characters or white space"
+            }}
           />
           <TextField
             type='email'
@@ -39,25 +61,39 @@ export default function Register() {
             type='password'
             required
             label="password"
-            inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
+            inputProps={{
+              style: {fontFamily: 'Roboto', fontSize: '1.5em'},
+              pattern: "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}",
+              title: "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            }}
           />
           <TextField
             type='password'
             required
             label="confirm password"
-            inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
+            inputProps={{
+              style: {fontFamily: 'Roboto', fontSize: '1.5em'},
+              pattern: "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}",
+              title: "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            }}
           />
           <TextField
             label="first name"
-            inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
+            inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'},
+              maxLength: 20,
+            }}
           />
           <TextField
             label="last name"
-            inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
+            inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'},
+              maxLength: 20
+            }}
           />
           <TextField
             label="description"
-            inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
+            inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'},
+            maxLength: 255,
+            }}
           />
           <div className='login-register-buttons'>
             <Button
