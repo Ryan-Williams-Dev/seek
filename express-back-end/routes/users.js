@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 module.exports = (db) => {
 
@@ -16,6 +18,25 @@ module.exports = (db) => {
         console.log("Error: users.js route, leaderboard query...", err);
       });
   });
+
+  router.post('/new', (req, res) => {
+    console.log(req.body)
+    const { username, email, password, firstName, lastName, description } = req.body;
+
+    bcrypt.hash(password, saltRounds, function(err, hash) {
+      db.query(`
+        INSERT INTO users ( username, email, password_digest, first_name, last_name, description )
+        VALUES ( $1, $2, $3, $4, $5, $6 );
+      `, [username, email, hash, firstName, lastName, description])
+      .then(r => {
+        res.send(r)
+      })
+      .catch(err => {
+        console.log(err)
+        res.send(err)
+      })
+    })
+  })
 
   // retrieve data for specific user for Account page
   router.get('/:id', (req, res) => {
@@ -48,10 +69,26 @@ module.exports = (db) => {
     return db.query("SELECT * FROM users WHERE email = $1;", [email])
       .then((data) => {
         const user = data.rows[0];
-        if (password !== user.password_digest) {
-          return res.send({valid: false});
-        }
-        return res.send({valid: true, user});
+        const hash = data.rows[0].password_digest
+
+        bcrypt.compare(password, hash, function(err, result) {
+          if (result) {
+            return res.send({valid: true, user: {
+              id: user.id,
+              username: user.username,
+              email: user.email,
+              first_name: user.first_name,
+              last_name: user.last_name,
+              avatar_url: user.avatar_url,
+              description: user.description
+            }});
+          }
+          else {
+            console.log("Invalid password!");
+            return res.send({valid: false});
+          }
+        });
+
       })
       .catch((err) => {
         console.log(err);
