@@ -1,20 +1,15 @@
 import { InputLabel, MenuItem, Select, FormControl } from "@mui/material";
-import { useState } from "react";
 
 const filters = [
   "Total Score",
-  "Name",
   "Games Played",
-  "Last Game Score",
-  "Last Week Score"
 ];
 
-const Filters = () => {
-  const [filter, setFilter] = useState("")
+const Filters = (props) => {
+  const { filter, setFilter } = props;
 
   const handleChange = (event) => {
     setFilter(event.target.value);
-    // filter function goes here
   }
 
   return (

@@ -10,7 +10,8 @@ const Leaderboards = () => {
   const { dailyGameId } = useContext(dailyGameContext)
   const  [ leaderboardData, setLeaderboardData ] = useState(null);
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
-  const [ followsDailyScores, setfollowsDailyScores ] = useState([])
+  const [ followsDailyScores, setfollowsDailyScores ] = useState([]);
+  const [ filter, setFilter ] = useState("Total Score");
 
   const getLeaderboardData = (url, user) => {
     axios.get(`${url}users`)
@@ -18,32 +19,32 @@ const Leaderboards = () => {
         setLeaderboardData([...res.data.rows]);
       })
       .catch(err => {
-        console.log("Error: in catch block", err);
+
+        console.log("Error:", err);
       })
   };
 
   useEffect(() => {
-    console.log("in use effect");
     getLeaderboardData(baseUrl, user);
   }, [baseUrl, user]);
 
   useEffect(() => {
     axios.get(`api/leaderboards/${user.id}/${dailyGameId}`)
       .then(r => {
-        console.log(r.data)
+        // console.log(r.data)
         setfollowsDailyScores(r.data)
       })
       .catch(err => {
         console.log(err)
       })
-  },[user, dailyGameId])
+  },[user, dailyGameId]);
 
-  console.log(leaderboardData)
+  // console.log(leaderboardData);
 
   return (
     <div>
-      <Filters />
-      <Leaderboard leaderboardData={leaderboardData} followsDailyScores={followsDailyScores}/>
+      <Filters filter={filter} setFilter={setFilter}/>
+      <Leaderboard leaderboardData={leaderboardData} followsDailyScores={followsDailyScores} filter={filter}/>
     </div>
   );
 }

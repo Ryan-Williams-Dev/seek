@@ -8,7 +8,6 @@ module.exports = (db) => {
   */
 
   router.get('/:userId/:gameId', (req, res) => {
-    console.log(req.params);
     const userId = req.params.userId;
     const gameId = req.params.gameId;
     db.query(`SELECT DISTINCT users.username, guesses.score

@@ -27,7 +27,7 @@ const CustomGameMap = (props) => {
   const onSubmitClick = () => {
     setGameLocation(marker[0])
     .then(res => {
-      console.log("response:", res)
+      // console.log("response:", res)
       props.triggerPopup(res.id);
     });
   };

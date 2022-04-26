@@ -5,7 +5,7 @@ module.exports = (db) => {
 
   router.get('/', (req, res) => {
     db.query(
-      `SELECT first_name, last_name, COUNT(guesses.id) as games_played, SUM(score) as total_score
+      `SELECT first_name, last_name, username, COUNT(guesses.id) as games_played, SUM(score) as total_score
       FROM users
       JOIN guesses ON user_id = users.id
       GROUP BY users.id;`)

@@ -3,7 +3,7 @@ import axios from 'axios';
 export const onSubmitGuess = (marker, gameId, user, setResult) => {
   axios.post('api/guess', {...marker, gameId, user})
     .then(res => {
-      console.log("success:", res.data);
+      // console.log("success:", res.data);
       setResult(res.data);
     })
     .catch(err => {
