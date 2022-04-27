@@ -15,16 +15,21 @@ const CustomGameMap = (props) => {
 
   const [center] = useState({lat: 50, lng: 50})
   const [marker, setMarker] = useState([]);
+  const [ hasSubmitted, setHasSubmitted ] = useState(false)
 
   const onMapClick = useCallback((event) => {
-    setMarker(() => [{
-      lat: event.latLng.lat(),
-      lng: event.latLng.lng(),
-      time: new Date(),
-    }]);
-  }, []);
+    if(!hasSubmitted) {
+      console.log(hasSubmitted)
+      setMarker(() => [{
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng(),
+        time: new Date(),
+      }]);
+    }
+  }, [hasSubmitted]);
 
   const onSubmitClick = () => {
+    setHasSubmitted(true)
     setGameLocation(marker[0])
     .then(res => {
       props.triggerPopup(res.id);
@@ -36,11 +41,13 @@ const CustomGameMap = (props) => {
 
   const options = {
     styles: mapStyles,
+    disableDefaultUI: true,
+    streetViewControl:true
   };
 
   return (
     <GoogleMap 
-      zoom={2.2}
+      zoom={3}
       center={center}
       mapContainerClassName="map-container-full"
       options={options}
@@ -60,13 +67,13 @@ const CustomGameMap = (props) => {
           }}
         />
       })}
-      <Button 
+      { !hasSubmitted && <Button 
         variant="contained"
         onClick={() => onSubmitClick()}
         startIcon={<FontAwesomeIcon icon={faMapPin} />}
         sx={{m: 1, mb: 3.5 }}
         >Set Location
-      </Button>
+      </Button>}
     </GoogleMap>
   );
 };
