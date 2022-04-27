@@ -10,8 +10,13 @@ APIs: Google Maps
 
 [Click here for a video demo](https://youtu.be/JxEkY1mD_Nc)
 
+### The daily game challenge
 ![Daily game](https://github.com/Ryan-Williams-Dev/seek/blob/master/docs/img/Daily-game.png?raw=true)
+### Post guess scorecard
 ![Scorecard](https://github.com/Ryan-Williams-Dev/seek/blob/master/docs/img/score.png?raw=true)
+### Leaderboards
 ![Leaderboard](https://github.com/Ryan-Williams-Dev/seek/blob/master/docs/img/Leaderbaord.png?raw=true)
+### Account page
 ![Account](https://github.com/Ryan-Williams-Dev/seek/blob/master/docs/img/account.png?raw=true)
+### Selecting a location for a custom challenge
 ![Custom game location selection](https://github.com/Ryan-Williams-Dev/seek/blob/master/docs/img/custom-game.png?raw=true)
