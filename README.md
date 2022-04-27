@@ -8,3 +8,6 @@ Front-end: React, SCSS, MaterialUI, HTML
 Back-end: Node, Express, PostgreSQL
 APIs: Google Maps
 
+[Click here for a video demo](https://youtu.be/JxEkY1mD_Nc)
+
+[Daily-game]()[]()[]()[]()[]()[]()
