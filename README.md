@@ -10,4 +10,8 @@ APIs: Google Maps
 
 [Click here for a video demo](https://youtu.be/JxEkY1mD_Nc)
 
-[Daily-game]()[]()[]()[]()[]()[]()
+[Daily game](https://github.com/Ryan-Williams-Dev/seek/blob/master/docs/img/Daily-game.png?raw=true)
+[Scorecard](https://github.com/Ryan-Williams-Dev/seek/blob/master/docs/img/score.png?raw=true)
+[Leaderboard](https://github.com/Ryan-Williams-Dev/seek/blob/master/docs/img/Leaderbaord.png?raw=true)
+[Account](https://github.com/Ryan-Williams-Dev/seek/blob/master/docs/img/account.png?raw=true)
+[Custom game location selection](https://github.com/Ryan-Williams-Dev/seek/blob/master/docs/img/custom-game.png?raw=true)
