@@ -2,9 +2,9 @@ import { useState, useCallback, useEffect, useRef, useContext } from 'react';
 import { authContext } from '../../providers/AuthProvider'
 import { GoogleMap, useJsApiLoader, Marker, Polyline } from "@react-google-maps/api";
 import mapStyles from "../../mapStyles";
-import { Button } from "@mui/material"
+import { Button } from "@mui/material";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapPin } from '@fortawesome/free-solid-svg-icons'
+import { faMapPin } from '@fortawesome/free-solid-svg-icons';
 import { setAnswerMarker, setView } from '../../helpers/maps/map-helpers';
 
 export default function Map(props) {
