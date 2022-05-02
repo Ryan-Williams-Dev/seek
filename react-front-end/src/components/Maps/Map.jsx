@@ -63,7 +63,13 @@ export default function Map(props) {
       setView(props.result.answer, setCenter, mapRef)
       hasPlacedAnswer.current = true;
       // setLine();
-      console.log("Polyline:", Polyline)
+      const polyLine = new google.maps.Polyline({
+        path: [{...props.result.answer}, {marker}],
+        geodesic: true,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1.0,
+        strokeWeight: 2.0
+      });
     }
   }, [props.result, markers, isLoaded]);
   
