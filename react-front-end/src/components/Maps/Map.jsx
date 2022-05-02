@@ -63,6 +63,7 @@ export default function Map(props) {
       setView(props.result.answer, setCenter, mapRef)
       hasPlacedAnswer.current = true;
       // setLine();
+      console.log("Polyline:", Polyline)
     }
   }, [props.result, markers, isLoaded]);
   
