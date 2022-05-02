@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef, useContext } from 'react';
 import { authContext } from '../../providers/AuthProvider'
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, Marker, Polyline } from "@react-google-maps/api";
 import mapStyles from "../../mapStyles";
 import { Button } from "@mui/material"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,6 +13,7 @@ export default function Map(props) {
   // State initialisations
   const [markers, setMarkers] = useState([]);
   const [center, setCenter] = useState({lat: 50, lng: 50})
+  const [line, setLine] = useState();
   const hasPlacedAnswer = useRef(false)
   const mapRef = useRef(null);
 
@@ -61,6 +62,7 @@ export default function Map(props) {
       setAnswerMarker(props.result.answer, setMarkers);
       setView(props.result.answer, setCenter, mapRef)
       hasPlacedAnswer.current = true;
+      // setLine();
     }
   }, [props.result, markers, isLoaded]);
   
