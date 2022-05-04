@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
-import { GoogleMap, useJsApiLoader, Marker, Polyline } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import mapStyles from '../../mapStyles';
-import { v4 as uuidv4 } from 'uuid';
 import { Button } from "@mui/material"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons'
