@@ -16,17 +16,6 @@ export default function Map(props) {
   const hasPlacedAnswer = useRef(false)
   const mapRef = useRef(null);
 
-  // Variables for Polyline
-  // const answerPathPoint = {
-  //   lat: props.result.answer.latitude,
-  //   lng: props.result.answer.longitude
-  // };
-
-  // const guessPathPoint = {
-  //   lat: props.result.guess.latitude,
-  //   lng: props.result.guess.longitude
-  // };
-
   // Handles initial load in logic
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
@@ -68,7 +57,23 @@ export default function Map(props) {
           lng: props.result.guess.longitude,
           answer:false
         }])
-        // console.log("markers", markers);
+
+        const answerPathPoint = {
+          lat: props.result.answer.latitude,
+          lng: props.result.answer.longitude
+        };
+      
+        const guessPathPoint = {
+          lat: props.result.guess.latitude,
+          lng: props.result.guess.longitude
+        };
+        const polyLine = new Polyline({
+          path: [answerPathPoint, guessPathPoint],
+          geodesic: true,
+          strokeColor: "#FF0000",
+          strokeOpacity: 1.0,
+          strokeWeight: 2.0
+        });
 
       }
       setAnswerMarker(props.result.answer, setMarkers);
@@ -76,13 +81,7 @@ export default function Map(props) {
       hasPlacedAnswer.current = true;
       // console.log("props.result.answer", props.result.answer);
       // console.log("answerPathPoint", answerPathPoint);
-      // const polyLine = new Polyline({
-      //   path: [answerPathPoint, guessPathPoint],
-      //   geodesic: true,
-      //   strokeColor: "#FF0000",
-      //   strokeOpacity: 1.0,
-      //   strokeWeight: 2.0
-      // });
+
     }
   }, [props.result, markers, isLoaded]);
   
