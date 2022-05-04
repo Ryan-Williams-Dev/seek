@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker, Polyline } from '@react-google-maps/api';
 import mapStyles from '../../mapStyles';
+import { v4 as uuidv4 } from 'uuid';
 import { Button } from "@mui/material"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons'
@@ -13,9 +14,9 @@ const CustomGameMap = (props) => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 
   })
 
-  const [center] = useState({lat: 50, lng: 50})
+  const [center] = useState({lat: 50, lng: 50});
   const [marker, setMarker] = useState([]);
-  const [ hasSubmitted, setHasSubmitted ] = useState(false)
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const onMapClick = useCallback((event) => {
     if(!hasSubmitted) {
@@ -67,6 +68,7 @@ const CustomGameMap = (props) => {
           }}
         />
       })}
+      
       { !hasSubmitted && <Button 
         variant="contained"
         onClick={() => onSubmitClick()}
@@ -74,6 +76,7 @@ const CustomGameMap = (props) => {
         sx={{m: 1, mb: 3.5 }}
         >Set Location
       </Button>}
+
     </GoogleMap>
   );
 };
