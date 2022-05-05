@@ -1,8 +1,12 @@
 import { Typography, Box, TextField, Button } from "@mui/material";
 import axios from 'axios';
+import { useEffect } from "react";
 
 const Admin = () => {
 
+  useEffect(() => {
+    document.title = 'Admin | Seek'
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault()

@@ -13,6 +13,10 @@ const Leaderboards = () => {
   const [ followsDailyScores, setfollowsDailyScores ] = useState([]);
   const [ filter, setFilter ] = useState("Total Score");
 
+  useEffect(() => {
+    document.title = 'Leaderboards | Seek'
+  }, []);
+
   const getLeaderboardData = (url, user) => {
     axios.get(`${url}users`)
       .then(res => {
