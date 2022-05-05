@@ -5,6 +5,30 @@ const router = express.Router();
 
 module.exports = (db) => {
 
+  router.post('/daily', (req, res) => {
+    console.log('/daily', req.body)
+    const { lat, lng } = req.body;
+
+    if (lat <= -90 || lat >= 90 || lng <= -180 || lng >= 180) {
+      return res.send("Inccorect Format")
+    }
+
+    return db.query(`
+      INSERT INTO games (
+        game_type_id, latitude, longitude
+      ) VALUES (
+        1, $1, $2
+      );
+    `, [lat, lng])
+    .then(r => {
+      console.log(r)
+      res.send("Success!")
+    })
+    .catch(err => {
+      res.send(err)
+    })
+  })
+
   router.get('/', (req, res) => {
     const userId = req.query.userId;
     const gameNum = generateDailyGameNum();
