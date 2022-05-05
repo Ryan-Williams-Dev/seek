@@ -15,6 +15,10 @@ const Index = () => {
   const [gameId, setGameId] = useState()
 
   useEffect(() => {
+    document.title = 'Daily Game | Seek'
+  }, []);
+
+  useEffect(() => {
     const id = user ? user.id : null
     getDailyGame(id)
       .then(res => {

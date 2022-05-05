@@ -14,6 +14,10 @@ const PlayCustomGame = () => {
   const [coords, setCoords] = useState();
 
   useEffect(() => {
+    document.title = 'Custom Game | Seek'
+  }, []);
+
+  useEffect(() => {
     getCustomGame(gameID)
       .then(res => {
         setCoords({lat: res.latitude, lng: res.longitude})

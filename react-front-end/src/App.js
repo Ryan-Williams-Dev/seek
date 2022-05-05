@@ -26,6 +26,10 @@ function App() {
   const [ loginCheckCompleted, setLoginCheckCompleted ] = useState(false);
 
   useEffect(() => {
+    document.title = 'Seek'
+  }, []);
+
+  useEffect(() => {
     if(!dailyGameId) {
       initDailyGameId()
       .catch(err => {

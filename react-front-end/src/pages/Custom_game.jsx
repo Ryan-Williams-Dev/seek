@@ -1,9 +1,14 @@
 import CustomGameMap from "../components/Maps/CustomGameMap";
 import { useJsApiLoader } from "@react-google-maps/api";
 import CreateGamePopup from "../components/Popup/CreateGamePopup";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const CreateCustomGame = () => {
+
+  useEffect(() => {
+    document.title = 'Create Custom Game | Seek'
+  }, []);
+
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY 

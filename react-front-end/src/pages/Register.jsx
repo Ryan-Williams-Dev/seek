@@ -2,8 +2,13 @@
 import { Box, Button, TextField } from '@mui/material'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import { useEffect } from 'react';
 
 export default function Register() {
+
+  useEffect(() => {
+    document.title = 'Register | Seek'
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();

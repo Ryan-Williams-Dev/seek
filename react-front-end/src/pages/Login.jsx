@@ -2,13 +2,17 @@ import { Box, Button, TextField } from '@mui/material'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./page-styles.scss";
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { authContext } from '../providers/AuthProvider';
 import Cookies from 'js-cookie';
 
 export default function Login() {
   
   const { login } = useContext(authContext)
+
+  useEffect(() => {
+    document.title = 'Login | Seek'
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();

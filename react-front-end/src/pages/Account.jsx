@@ -12,6 +12,10 @@ const Account = () => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
+    document.title = 'Account | Seek'
+  }, []);
+
+  useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_BASE_URL}users/${user.id}`)
       .then(res => {
         setUserData({
