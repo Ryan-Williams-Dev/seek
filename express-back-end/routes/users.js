@@ -82,7 +82,8 @@ module.exports = (db) => {
               first_name: user.first_name,
               last_name: user.last_name,
               avatar_url: user.avatar_url,
-              description: user.description
+              description: user.description,
+              is_admin: user.is_admin
             }});
           }
           else {
