@@ -5,11 +5,13 @@ import Drawerlist from './DrawerList';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import './nav-styles.scss'
 import { authContext } from '../../providers/AuthProvider';
+import { AdminPanelSettings } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 export default function ButtonAppBar(props) {
 
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { auth, logout } = useContext(authContext)
+  const { auth, admin, logout } = useContext(authContext)
 
   const toggleDrawer = (open) => (event) => {
     setDrawerOpen(open);
@@ -35,7 +37,11 @@ export default function ButtonAppBar(props) {
             <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
               SEEK
             </Typography>
-
+            { admin &&
+              <Link to='/admin' >
+                <AdminPanelSettings className='admin-button' sx={{marginRight: '0.5em'}} />
+              </Link>
+            }
             { auth && <Button variant='outlined' color="inherit" onClick={logout} >Logout</Button> }
 
           </Toolbar>

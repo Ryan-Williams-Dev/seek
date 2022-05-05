@@ -16,10 +16,11 @@ import Register from './pages/Register';
 import Cookies from 'js-cookie';
 import { fetchUserData } from './helpers/users/userhelpers';
 import { dailyGameContext } from './providers/DailyGameProvider'
+import Admin from './pages/Admin';
 
 
 function App() {
-  const { auth, login } = useContext(authContext)
+  const { auth, admin, login } = useContext(authContext)
   const { initDailyGameId, dailyGameId } = useContext(dailyGameContext)
 
   const [ loginCheckCompleted, setLoginCheckCompleted ] = useState(false);
@@ -100,6 +101,10 @@ function App() {
 
                       <Route path="/custom-game/:gameID">
                         { !auth ? <Redirect to='/login' /> : <PlayCustomGame />}
+                      </Route>
+
+                      <Route exact path="/admin">
+                        { !admin ? <Redirect to="/" /> : <Admin /> }
                       </Route>
                     
                     </Switch>
