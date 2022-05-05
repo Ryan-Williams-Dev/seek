@@ -142,7 +142,7 @@ export default function Map(props) {
         path={polyline}
         options={{
           geodesic: true,
-          strokeColor: "#FF0000",
+          strokeColor: "#ad0b0b",
           strokeOpacity: 1.0,
           strokeWeight: 3.0
         }}
