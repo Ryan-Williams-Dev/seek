@@ -8,5 +8,6 @@ CREATE TABLE users (
   first_name VARCHAR(255),
   last_name VARCHAR(255),
   avatar_url VARCHAR(255),
-  description TEXT
+  description TEXT,
+  is_admin BOOLEAN NOT NULL DEFAULT FALSE
 );
