@@ -72,6 +72,7 @@ export default function Map(props) {
         };
         
         setPolyline([answerPathPoint, guessPathPoint]);
+        console.log("Hi")
       }
       setAnswerMarker(props.result.answer, setMarkers);
       setView(props.result.answer, setCenter, mapRef)
@@ -86,7 +87,6 @@ export default function Map(props) {
   const options = {
     styles: mapStyles,
     disableDefaultUI: true,
-    mapTypeId: "terrain"
   }
   
   if (!isLoaded) return <div>Loading...</div>;
@@ -136,7 +136,7 @@ export default function Map(props) {
       }
     )}
 
-    {hasPlacedAnswer.current &&
+    {hasPlacedAnswer.current === true &&
       <Polyline
         key={uuidv4()}
         path={polyline}
