@@ -27,6 +27,7 @@ const FollowList = (props) => {
           message,
           severity
         })
+        props.setNewFollow(prev => [...prev])
       })
       .catch(err => {
         console.log(err)

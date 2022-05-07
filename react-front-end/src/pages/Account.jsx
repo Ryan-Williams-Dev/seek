@@ -10,12 +10,14 @@ const Account = () => {
   
   const { user } = useContext(authContext);
   const [userData, setUserData] = useState(null);
+  const [ newFollow, setNewFollow ] = useState([]);
 
   useEffect(() => {
     document.title = 'Account | Seek'
   }, []);
 
   useEffect(() => {
+    console.log("vibe check")
     axios.get(`${process.env.REACT_APP_API_BASE_URL}users/${user.id}`)
       .then(res => {
         setUserData({
@@ -26,7 +28,7 @@ const Account = () => {
       .catch(err => { 
         console.log("Error:", err);
       });
-  }, [user.id]);
+  }, [user.id, newFollow]);
 
   return (
     <div className='account-cards-div'>
@@ -39,7 +41,7 @@ const Account = () => {
       {userData && 
         <>
           <Stats totals={userData.totals}/>
-          <FollowList follows={userData.follows} />
+          <FollowList follows={userData.follows} setNewFollow={setNewFollow} />
         </>
       }
 
