@@ -6,7 +6,7 @@ import mapStyles from "../../mapStyles";
 import { Button } from "@mui/material";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons';
-import { setAnswerMarker, setView } from '../../helpers/maps/map-helpers';
+import { setAnswerMarker, setPolyFromMarkers, setView } from '../../helpers/maps/map-helpers';
 
 export default function Map(props) {
   const { user } = useContext(authContext)
@@ -59,29 +59,18 @@ export default function Map(props) {
           lng: props.result.guess.longitude,
           answer:false
         }])
-        
-        // Polyline variables
-        const answerPathPoint = {
-          lat: props.result.answer.latitude,
-          lng: props.result.answer.longitude
-        };
-        
-        const guessPathPoint = {
-          lat: props.result.guess.latitude,
-          lng: props.result.guess.longitude
-        };
-        
-        setPolyline([answerPathPoint, guessPathPoint]);
-        console.log("Hi")
       }
       setAnswerMarker(props.result.answer, setMarkers);
       setView(props.result.answer, setCenter, mapRef)
       hasPlacedAnswer.current = true;
-      // console.log("props.result.answer", props.result.answer);
-      // console.log("answerPathPoint", answerPathPoint);
-
     }
   }, [props.result, markers, isLoaded]);
+
+  useEffect(() => {
+    if(markers.length > 1) {
+       setPolyFromMarkers(markers, setPolyline)
+    }
+  }, [markers])
   
   // see https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions
   const options = {

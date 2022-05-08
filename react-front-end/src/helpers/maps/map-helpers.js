@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const onSubmitGuess = (marker, gameId, user, setResult) => {
-  axios.post('api/guess', {...marker, gameId, user})
+  return axios.post('api/guess', {...marker, gameId, user})
     .then(res => {
       setResult(res.data);
     })
@@ -74,3 +74,15 @@ export const getCustomGame = (gameID) => {
       return err;
     })
 };
+
+export const setPolyFromMarkers = (markers, setPolyline) => {
+  const point1 = {
+    lat: markers[0].lat,
+    lng: markers[0].lng
+  }
+  const point2 = {
+    lat: markers[1].lat,
+    lng: markers[1].lng
+  }
+  setPolyline([point1, point2]);
+}
