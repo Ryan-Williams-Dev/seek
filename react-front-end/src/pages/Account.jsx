@@ -17,7 +17,6 @@ const Account = () => {
   }, []);
 
   useEffect(() => {
-    console.log("vibe check")
     axios.get(`${process.env.REACT_APP_API_BASE_URL}users/${user.id}`)
       .then(res => {
         setUserData({
