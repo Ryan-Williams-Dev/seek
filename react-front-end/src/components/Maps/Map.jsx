@@ -93,7 +93,8 @@ export default function Map(props) {
     path: "M 0,-1 0,1",
     strokeOpacity: 1,
     scale: 5,
-    strokeColor: "#ad0b0b"
+    strokeColor: "#ad0b0b",
+    anchor: new window.google.maps.Point(0, -0.5),
   };
   
   const lineOptions = {
@@ -104,8 +105,8 @@ export default function Map(props) {
     icons: [
       {
         icon: lineSymbol,
-        offset: "0",
-        repeat: "20px"
+        offset: "1",
+        repeat: "20px",
       }
     ],
   };
