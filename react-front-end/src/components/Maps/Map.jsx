@@ -77,6 +77,28 @@ export default function Map(props) {
     styles: mapStyles,
     disableDefaultUI: true,
   }
+
+  const lineSymbol = {
+    path: "M 0,-1 0,1",
+    strokeOpacity: 1,
+    scale: 5,
+    strokeColor: "#ad0b0b",
+    anchor: new window.google.maps.Point(0, -0.5),
+  };
+  
+  const lineOptions = {
+    geodesic: true,
+    strokeOpacity: 0,
+    fillOpacity: 0,
+    zIndex: 1,
+    icons: [
+      {
+        icon: lineSymbol,
+        offset: "1",
+        repeat: "20px",
+      }
+    ],
+  };
   
   if (!isLoaded) return <div>Loading...</div>;
   if (loadError) return `Error loading maps: ${loadError}`;
@@ -129,12 +151,8 @@ export default function Map(props) {
       <Polyline
         key={uuidv4()}
         path={polyline}
-        options={{
-          geodesic: true,
-          strokeColor: "#ad0b0b",
-          strokeOpacity: 1.0,
-          strokeWeight: 3.0
-        }}
+        options={lineOptions}
+        
       />
     }
 
