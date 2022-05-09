@@ -9,7 +9,7 @@ import { CircularProgress, Box } from '@mui/material';
 const Account = () => {
   
   const { user } = useContext(authContext);
-  const [userData, setUserData] = useState(null);
+  const [ userData, setUserData ] = useState(null);
   const [ newFollow, setNewFollow ] = useState([]);
 
   useEffect(() => {
