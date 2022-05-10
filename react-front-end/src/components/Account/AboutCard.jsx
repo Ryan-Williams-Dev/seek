@@ -9,7 +9,12 @@ const AboutCard = () => {
   const { user } = useContext(authContext);
   const [ editMode, setEditMode ] = useState(false);
 
-  const saveDetails = () => {
+  const saveDetails = (e) => {
+    e.preventDefault()
+    const params = {
+      username: e.target[0].value || null,
+    } 
+    console.log(params)
     setEditMode(false);
   }
 
@@ -21,7 +26,7 @@ const AboutCard = () => {
         image={user.avatar_url}
         alt="profile-photo"
       />
-        <Fab color="secondary" size="small" aria-label="edit">
+        <Fab onClick={() => setEditMode(prev => !prev)} color="secondary" size="small" aria-label="edit">
           <EditIcon />
         </Fab>
 
@@ -64,18 +69,18 @@ const AboutCard = () => {
                 label="username"
                 inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
               />
-              <TextField
+              {/* <TextField
                 type='text'
                 label="location"
                 inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
-              />
+              /> */}
+              <CardActions>
+                <Button type='submit' size="small" >Save</Button>
+                <Button size="small" onClick={() => setEditMode(false)} >Back</Button>
+              </CardActions>
             </div>
           </Box>
         </CardContent>
-        <CardActions>
-          <Button size="small">Save</Button>
-          <Button size="small" onClick={() => setEditMode(false)} >Back</Button>
-        </CardActions>
       </>
       }
 
