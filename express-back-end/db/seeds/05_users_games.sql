@@ -4,4 +4,4 @@ INSERT INTO users_games (
 ) VALUES (
   1,
   2
-)
+);
