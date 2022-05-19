@@ -1,6 +1,7 @@
 let dbParams = {};
 if (process.env.DATABASE_URL) {
   dbParams.connectionString = process.env.DATABASE_URL;
+  dbParams.ssl = process.env.DATABASE_URL ? { rejectUnauthorized: false } : false
 } else {
   dbParams = {
     host: process.env.DB_HOST,
