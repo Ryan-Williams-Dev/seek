@@ -3,6 +3,7 @@ import { Box, Button, TextField } from '@mui/material'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { useEffect } from 'react';
+import Login from './Login';
 
 export default function Register() {
 
@@ -27,7 +28,13 @@ export default function Register() {
       alert("Password and password confirmation did not match.")
     }
 
-    axios.post('users/new', newUser)
+    return axios.post('users/new', newUser)
+      .then(r => {
+        console.log(r.data)
+      })
+      .catch(err => {
+        alert(err)
+      })
     
   }
 
