@@ -1,14 +1,15 @@
 import { Box, Button, TextField } from '@mui/material'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import "./page-styles.scss";
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { authContext } from '../providers/AuthProvider';
-import Cookies from 'js-cookie';
 
 export default function Login() {
   
   const { login } = useContext(authContext)
+
+  const emailRef = useRef('')
+  const passwordRef = useRef('')
 
   useEffect(() => {
     document.title = 'Login | Seek'
@@ -16,23 +17,7 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const params = {}
-    params.email = event.target[0].value
-    params.password = event.target[2].value
-
-    axios.post(process.env.REACT_APP_API_BASE_URL + 'users', params)
-      .then((res) => {
-        if (!res.data.valid) {
-          return alert("Incorrect credentials")
-        }
-        
-        Cookies.set('userId', res.data.user.id, { expires: 7 })
-        login(res.data.user)
-      })
-      .catch((err) => {
-        console.log('Front end: ', err)
-      })
+    login(emailRef.current.value, passwordRef.current.value)
   }
 
   return (
@@ -53,12 +38,14 @@ export default function Login() {
             type='email'
             required
             label="email"
+            inputRef={emailRef}
             inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
           />
           <TextField
             type='password'
             required
             label="password"
+            inputRef={passwordRef}
             inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
           />
           <div className='login-register-buttons'>
