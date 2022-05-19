@@ -30,8 +30,25 @@ export default function AuthProvider(props) {
       .catch((err) => {
         console.log(err)
       })
-    
   };
+
+  const register = async function(userData) {
+    if (userData.password !== userData.passwordConfirmation) {
+      alert("Password and password confirmation did not match.")
+    }
+
+    return axios.post('users/new', userData)
+      .then(r => {
+        if (r.data.severity === 'ERROR') {
+          return alert(r.data.detail)
+        }
+        login(userData.email, userData.password)
+      })
+      .catch(err => {
+        alert(err)
+      })
+    
+  }
 
   const logout = function() {
     setAuth(false);
@@ -41,7 +58,7 @@ export default function AuthProvider(props) {
     window.location.reload(false);
   };
 
-  const userData = { auth, user, admin, login, logout };
+  const userData = { auth, user, admin, login, logout, register };
 
   return (
     <authContext.Provider value={userData}>
