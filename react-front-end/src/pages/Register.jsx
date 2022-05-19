@@ -1,7 +1,6 @@
 /* eslint-disable no-useless-escape */
 import { Box, Button, TextField } from '@mui/material'
 import { Link } from 'react-router-dom';
-import axios from 'axios'
 import { useEffect, useRef, useContext } from 'react';
 import { authContext } from '../providers/AuthProvider';
 
