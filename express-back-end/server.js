@@ -16,7 +16,10 @@ db.connect();
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
-App.use(cors());
+App.use(cors({
+  origin: process.env.REACT_FRONT_END_ORIGIN,
+  credentials: true
+}));
 
 
 // Routes
