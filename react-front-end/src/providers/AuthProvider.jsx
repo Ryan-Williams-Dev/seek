@@ -9,6 +9,15 @@ export default function AuthProvider(props) {
   const [user, setUser] = useState(null);
   const [admin, setAdmin] = useState(false)
 
+  const loginFromCookie = async function(user) {
+    const { id, username, email, first_name, last_name, avatar_url, is_admin, description } = user;
+    const currentUser = { id, username, email, first_name, last_name, avatar_url, is_admin, description }
+    Cookies.set('userId', currentUser.id, { expires: 7 })
+    if (currentUser.is_admin) setAdmin(true)
+    setAuth(true);
+    setUser(currentUser);
+  }
+
   // Perform login process for the user & save authID
   const login = async function(email, password) {
     const params = {
@@ -58,7 +67,7 @@ export default function AuthProvider(props) {
     window.location.reload(false);
   };
 
-  const userData = { auth, user, admin, login, logout, register };
+  const userData = { auth, user, admin, login, logout, register, loginFromCookie };
 
   return (
     <authContext.Provider value={userData}>
