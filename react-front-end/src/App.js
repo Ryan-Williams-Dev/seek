@@ -20,7 +20,7 @@ import Admin from './pages/Admin';
 
 
 function App() {
-  const { auth, admin, login } = useContext(authContext)
+  const { auth, admin, loginFromCookie } = useContext(authContext)
   const { initDailyGameId, dailyGameId } = useContext(dailyGameContext)
 
   const [ loginCheckCompleted, setLoginCheckCompleted ] = useState(false);
@@ -45,14 +45,14 @@ function App() {
     if (Cookies.get('userId') && !auth) {
         fetchUserData(Cookies.get('userId'))
         .then(res => {
-          login(res.data)
+          loginFromCookie(res.data)
           setLoginCheckCompleted(true)
         })
         .catch(err => {
           console.log(err)
         })
       }
-    }, [auth, login]);
+    }, [auth, loginFromCookie]);
     
     return (
       <ThemeProvider theme={Theme}>
