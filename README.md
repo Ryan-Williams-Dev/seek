@@ -8,6 +8,8 @@ Seek is a browser based game designed for mobile devices. Each day users are giv
  * Back-end: Node, Express, PostgreSQL
  * APIs: Google Maps
 
+ Visit [https://www.seekgame.net/](https://www.seekgame.net/)
+
 [Click here for a video demo](https://youtu.be/JxEkY1mD_Nc)
 
 ### The daily game challenge
