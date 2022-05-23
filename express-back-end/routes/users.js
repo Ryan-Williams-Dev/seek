@@ -99,6 +99,10 @@ module.exports = (db) => {
       });
   });
 
+  router.put('/:id', (req,res) => {
+    const id = Number(req.params.id)
+    res.send("Hey, I got it.")
+  });
   
   return router;
 };
