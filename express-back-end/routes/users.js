@@ -99,8 +99,9 @@ module.exports = (db) => {
       });
   });
 
-  router.put('/:id', (req,res) => {
-    const id = Number(req.params.id)
+  router.put('/', (req,res) => {
+    const { userId, newUsername } = req.body
+    console.log(userId, newUsername)
     res.send("Hey, I got it.")
   });
   

@@ -1,8 +1,9 @@
-import { Card, CardActions, CardContent, CardMedia, Typography, Button, Fab, Box, TextField} from '@mui/material';
+import { Card, CardActions, CardContent, CardMedia, Typography, Button, Fab, Box, TextField, Snackbar } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import './about-card-styles.scss';
 import { useContext, useState } from 'react';
 import { authContext } from '../../providers/AuthProvider';
+import axios from 'axios';
 
 const AboutCard = () => {
 
@@ -12,9 +13,12 @@ const AboutCard = () => {
   const saveDetails = (e) => {
     e.preventDefault()
     const params = {
-      username: e.target[0].value || null,
+      userId: user.id,
+      newUsername: e.target[0].value || null,
     } 
     console.log(params)
+    axios.put('/users', params)
+
     setEditMode(false);
   }
 
