@@ -9,17 +9,42 @@ const AboutCard = () => {
 
   const { user } = useContext(authContext);
   const [ editMode, setEditMode ] = useState(false);
+  const [snackbar, setSnackBar] = useState({
+    open: false,
+    message: '',
+    severity: ''
+  })
 
-  const saveDetails = (e) => {
+  async function saveDetails(e) {
     e.preventDefault()
     const params = {
       userId: user.id,
       newUsername: e.target[0].value || null,
     } 
-    console.log(params)
-    axios.put('/users', params)
 
-    setEditMode(false);
+    try {
+      const res = await axios.put('/users', params)
+      console.log("res: ", res)
+      const { message, error } = res.data
+      
+      setSnackBar({
+        open: true,
+        message: message,
+        severity: error ? 'warning' : 'success'
+      })
+      
+      if (!error) {
+        setEditMode(false);
+      }
+
+    } catch (error) {
+      console.log(error)
+      setSnackBar({
+        open: true,
+        severity: 'error',
+        message: 'Oops, something went wrong.'
+      })
+    }
   }
 
   return (
@@ -71,7 +96,13 @@ const AboutCard = () => {
                 placeholder={user.username}
                 type='text'
                 label="username"
-                inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
+                inputProps={{
+                  style: {fontFamily: 'Roboto', fontSize: '1.5em'},
+                  minLength: 4,
+                  maxLength: 20,
+                  pattern: "[A-Za-z0-9]+",
+                  title: "Letters and numbers only, No special characters or white space"   
+                }}
               />
               {/* <TextField
                 type='text'
@@ -88,9 +119,17 @@ const AboutCard = () => {
       </>
       }
 
-
-
-
+    <Snackbar 
+      open={snackbar.open}
+      autoHideDuration={6000}
+      onClose={() => setSnackBar({
+        open: false,
+        message: '',
+        severity: ''
+      })}
+      message={snackbar.message}
+      severity={snackbar.severity}
+    />
     </Card>
   );
 }

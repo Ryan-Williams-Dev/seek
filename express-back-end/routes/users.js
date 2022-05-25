@@ -102,7 +102,23 @@ module.exports = (db) => {
   router.put('/', (req,res) => {
     const { userId, newUsername } = req.body
     console.log(userId, newUsername)
-    res.send("Hey, I got it.")
+    db.query('UPDATE users SET username = $1 WHERE id = $2', [newUsername, userId])
+    .then(r => {
+      console.log(r)
+      res.status(200).send({
+        message: "Successfully updated username",
+        error: false
+      })
+    })
+    .catch(err => {
+      console.log(err.code)
+      if (err.code === '23505') {
+        res.send({
+          message: "This username is already taken",
+          error: true
+        })
+      }
+    })
   });
   
   return router;
