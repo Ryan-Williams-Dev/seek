@@ -127,6 +127,8 @@ module.exports = (db) => {
     if (req.files === null) {
       return res.status(400).json({message: "No file uploaded"})
     }
+
+
     return res.json({message: "Well, I got something"})
   })
   

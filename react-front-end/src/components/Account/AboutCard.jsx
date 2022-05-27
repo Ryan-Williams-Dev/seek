@@ -16,7 +16,7 @@ const AboutCard = () => {
     severity: ''
   })
 
-  const [openFileSelector, { filesContent, loading, errors }] = useFilePicker({
+  const [openFileSelector, { filesContent, loading, errors, clear }] = useFilePicker({
     readAs: 'DataURL',
     accept: 'image/*',
     multiple: true,
@@ -33,7 +33,13 @@ const AboutCard = () => {
 
   useEffect(() => {
     if (filesContent.length === 1) {
-      
+      axios.put('/users/image', filesContent.content)
+      .then(r => {
+        console.log(r)
+      })
+      .catch(err => {
+        console.error(err)
+      })
     }
   }, [filesContent]);
 
@@ -101,14 +107,7 @@ const AboutCard = () => {
       {editMode &&
         <>
           <CardContent>
-          {filesContent.map((file, index) => (
-            <div key={index}>
-              <h2>{file.name}</h2>
-              <img alt={file.name} src={file.content}></img>
-              <br />
-            </div>
-          ))}
-          {errors.length && errors.map(err => {
+          {errors.map(err => {
              return (<div>{JSON.stringify(err)}</div>) 
           })}
           {loading && <div>Loading...</div>}
@@ -124,7 +123,10 @@ const AboutCard = () => {
                 className='form-container'
               >
 
-                <Fab onClick={openFileSelector} color="secondary" size="small" aria-label="edit">
+                <Fab onClick={() => {
+                  clear()
+                  openFileSelector()
+                }} color="secondary" size="small" aria-label="edit">
                   <AddPhotoAlternate color='primary' />
                 </Fab>
 
