@@ -105,7 +105,7 @@ module.exports = (db) => {
     db.query('UPDATE users SET username = $1 WHERE id = $2', [newUsername, userId])
     .then(r => {
       console.log(r)
-      res.status(200).send({
+      return res.status(200).send({
         message: "Successfully updated username",
         error: false
       })
@@ -113,13 +113,22 @@ module.exports = (db) => {
     .catch(err => {
       console.log(err.code)
       if (err.code === '23505') {
-        res.send({
+        return res.send({
           message: "This username is already taken",
           error: true
         })
       }
+      return res.send(err)
     })
   });
+
+  router.put('/image', (req, res) => {
+    console.log(req.files)
+    if (req.files === null) {
+      return res.status(400).json({message: "No file uploaded"})
+    }
+    return res.json({message: "Well, I got something"})
+  })
   
   return router;
 };

@@ -1,19 +1,41 @@
 import { Card, CardActions, CardContent, CardMedia, Typography, Button, Fab, Box, TextField, Snackbar } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
+import { AddPhotoAlternate } from '@mui/icons-material';
 import './about-card-styles.scss';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { authContext } from '../../providers/AuthProvider';
 import axios from 'axios';
+import { useFilePicker } from 'use-file-picker';
 
 const AboutCard = () => {
 
   const { user } = useContext(authContext);
   const [ editMode, setEditMode ] = useState(false);
-  const [snackbar, setSnackBar] = useState({
+  const [ snackbar, setSnackBar ] = useState({
     open: false,
     message: '',
     severity: ''
   })
+
+  const [openFileSelector, { filesContent, loading, errors }] = useFilePicker({
+    readAs: 'DataURL',
+    accept: 'image/*',
+    multiple: true,
+    limitFilesConfig: { max: 1 },
+    // minFileSize: 0.1, // in megabytes
+    maxFileSize: 1,
+    imageSizeRestrictions: {
+      maxHeight: 900, // in pixels
+      maxWidth: 1600,
+      minHeight: 200,
+      minWidth: 200,
+    },
+  });
+
+  useEffect(() => {
+    if (filesContent.length === 1) {
+      
+    }
+  }, [filesContent]);
 
   async function saveDetails(e) {
     e.preventDefault()
@@ -55,13 +77,11 @@ const AboutCard = () => {
         image={user.avatar_url}
         alt="profile-photo"
       />
-        <Fab onClick={() => setEditMode(prev => !prev)} color="secondary" size="small" aria-label="edit">
-          <EditIcon />
-        </Fab>
 
       {!editMode &&
         <>
           <CardContent>
+        
             <Typography gutterBottom variant="h4">
               {user.first_name} {user.last_name}
             </Typography>
@@ -80,43 +100,59 @@ const AboutCard = () => {
       }
       {editMode &&
         <>
-        <CardContent>
-          <Box
-            component="form"
-            sx={{
-              '& .MuiTextField-root': { m: 1, width: '25ch', height: '100%' },
-            }}
-            autoComplete="off"
-            onSubmit={(event) => saveDetails(event)}
-          >
-            <div 
-              className='form-container'
-            >
-              <TextField
-                placeholder={user.username}
-                type='text'
-                label="username"
-                inputProps={{
-                  style: {fontFamily: 'Roboto', fontSize: '1.5em'},
-                  minLength: 4,
-                  maxLength: 20,
-                  pattern: "[A-Za-z0-9]+",
-                  title: "Letters and numbers only, No special characters or white space"   
-                }}
-              />
-              {/* <TextField
-                type='text'
-                label="location"
-                inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
-              /> */}
-              <CardActions>
-                <Button type='submit' size="small" >Save</Button>
-                <Button size="small" onClick={() => setEditMode(false)} >Back</Button>
-              </CardActions>
+          <CardContent>
+          {filesContent.map((file, index) => (
+            <div key={index}>
+              <h2>{file.name}</h2>
+              <img alt={file.name} src={file.content}></img>
+              <br />
             </div>
-          </Box>
-        </CardContent>
-      </>
+          ))}
+          {errors.length && errors.map(err => {
+             return (<div>{JSON.stringify(err)}</div>) 
+          })}
+          {loading && <div>Loading...</div>}
+            <Box
+              component="form"
+              sx={{
+                '& .MuiTextField-root': { m: 1, width: '25ch', height: '100%' },
+              }}
+              autoComplete="off"
+              onSubmit={(event) => saveDetails(event)}
+            >
+              <div 
+                className='form-container'
+              >
+
+                <Fab onClick={openFileSelector} color="secondary" size="small" aria-label="edit">
+                  <AddPhotoAlternate color='primary' />
+                </Fab>
+
+                <TextField
+                  placeholder={user.username}
+                  type='text'
+                  label="username"
+                  inputProps={{
+                    style: {fontFamily: 'Roboto', fontSize: '1.5em'},
+                    minLength: 4,
+                    maxLength: 20,
+                    pattern: "[A-Za-z0-9]+",
+                    title: "Letters and numbers only, No special characters or white space"   
+                  }}
+                />
+                {/* <TextField
+                  type='text'
+                  label="location"
+                  inputProps={{style: {fontFamily: 'Roboto', fontSize: '1.5em'}}}
+                /> */}
+                <CardActions>
+                  <Button type='submit' size="small" >Save</Button>
+                  <Button size="small" onClick={() => setEditMode(false)} >Back</Button>
+                </CardActions>
+              </div>
+            </Box>
+          </CardContent>
+        </>
       }
 
     <Snackbar 
