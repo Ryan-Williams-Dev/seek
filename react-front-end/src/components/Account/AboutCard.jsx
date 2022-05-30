@@ -16,7 +16,7 @@ const AboutCard = () => {
     severity: ''
   })
 
-  const [openFileSelector, { filesContent, loading, errors, clear }] = useFilePicker({
+  const [openFileSelector, { plainFiles, loading, errors, clear }] = useFilePicker({
     readAs: 'DataURL',
     accept: 'image/*',
     multiple: true,
@@ -32,8 +32,14 @@ const AboutCard = () => {
   });
 
   useEffect(() => {
-    if (filesContent.length === 1) {
-      axios.put('/users/image', filesContent.content)
+    if (plainFiles.length === 1) {
+      console.log(plainFiles)
+      const file = plainFiles[0]
+      axios.put('/users/image', file, {
+        headers: {
+          'Content-Type': file.type
+        }
+      })
       .then(r => {
         console.log(r)
       })
@@ -41,7 +47,7 @@ const AboutCard = () => {
         console.error(err)
       })
     }
-  }, [filesContent]);
+  }, [plainFiles]);
 
   async function saveDetails(e) {
     e.preventDefault()

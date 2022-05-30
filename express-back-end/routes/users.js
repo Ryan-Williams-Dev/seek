@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const fs = require('fs');
 
 module.exports = (db) => {
 
@@ -123,12 +124,14 @@ module.exports = (db) => {
   });
 
   router.put('/image', (req, res) => {
-    console.log(req.files)
-    if (req.files === null) {
+    console.log(req)
+    if (!req.files) {
       return res.status(400).json({message: "No file uploaded"})
     }
+    fs.writeFile('docs/test', req.files, function (err) {
+      if (err) return console.log(err);
 
-
+    })
     return res.json({message: "Well, I got something"})
   })
   
