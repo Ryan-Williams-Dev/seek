@@ -8,7 +8,7 @@ Seek is a browser based game designed for mobile devices. Each day users are giv
  * Back-end: Node, Express, PostgreSQL
  * APIs: Google Maps
 
-<!-- Visit [https://www.seekgame.net/](https://www.seekgame.net/). The back-end is hosted on heroku, so the app may take several seconds to load if it has not been active. -->
+Visit [https://www.seekgame.net/](https://www.seekgame.net/). The back-end is hosted on heroku, so the app may take several seconds to load if it has not been active.
 
 [Click here for a video demo](https://youtu.be/JxEkY1mD_Nc)
 
