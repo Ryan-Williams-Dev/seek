@@ -40,6 +40,9 @@ module.exports = (db) => {
       LIMIT $1;
     `, [gameNum])
       .then(answerData => {
+        if(!answerData.length) {
+          return res.send({message: `We handpick our daily challenge locations for the best game experience.\nIf you see this message, we ran out of locations and need to pick some more!\nPlease check back again soon for more challenges!`})
+        }
         const answer = answerData.rows[gameNum - 1];
         const gameId = answer.id;
         const answerCoords = {
@@ -72,7 +75,12 @@ module.exports = (db) => {
             console.log("Error!", err);
             res.send(err);
           });
+      })
+      .catch(err => {
+        console.log(err)
+        return res.status(500).send(err)
       });
+
   });
 
   // Play custom game route.

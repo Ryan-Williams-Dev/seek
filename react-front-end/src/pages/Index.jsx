@@ -22,6 +22,9 @@ const Index = () => {
     const id = user ? user.id : null
     getDailyGame(id)
       .then(res => {
+        if(res.message) {
+          alert(res.message)
+        }
         setGameId(res.gameId)
         if (res.guess) {
           setResult({
