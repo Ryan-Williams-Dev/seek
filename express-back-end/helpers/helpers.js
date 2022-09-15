@@ -35,7 +35,7 @@ const calculateScore = (distance) => {
 };
 
 const generateDailyGameNum = () => {
-  const startDate = new Date(2022, 7, 14); // month is by index (so april = 3), setting startDay to today will result in id = 1;
+  const startDate = new Date(2022, 9, 13); // month is by index (so april = 3), setting startDay to today will result in id = 1;
   const todayDate = new Date();
   const differenceInTime = Math.abs(startDate - todayDate);
   const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
